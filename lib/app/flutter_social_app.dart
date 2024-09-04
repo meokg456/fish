@@ -2,6 +2,7 @@ import 'package:fish/app/error_observer.dart';
 import 'package:fish/app/logging_observer.dart';
 import 'package:fish/app/scaffold_messenger_global.dart';
 import 'package:fish/screens/home_screen.dart';
+import 'package:fish/screens/post_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +21,7 @@ class FlutterSocialApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const HomeScreen(),
+        home: PostCard(),
       ),
     );
   }
