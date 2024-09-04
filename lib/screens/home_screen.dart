@@ -1,5 +1,6 @@
 import 'package:fish/models/post.dart';
 import 'package:fish/riverpods/posts.dart';
+import 'package:fish/screens/post_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,9 +26,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final AsyncValue<List<Post>> postsValue = ref.watch(postsProvider);
     return Scaffold(
       body: switch (postsValue) {
-        AsyncData(:final value) => ListView.builder(
+        AsyncData(:final value) => ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 16),
             itemCount: value.length,
-            itemBuilder: (context, index) => Text(value[index].author),
+            itemBuilder: (context, index) => PostCard(
+              model: value[index],
+            ),
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(height: 16);
+            },
           ),
         AsyncError() => Container(),
         _ => const Center(

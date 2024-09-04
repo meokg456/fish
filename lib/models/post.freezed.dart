@@ -21,7 +21,11 @@ Post _$PostFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Post {
   String get author => throw _privateConstructorUsedError;
+  String get avatarUrl => throw _privateConstructorUsedError;
+  DateTime get postAt => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
+  int get likes => throw _privateConstructorUsedError;
 
   /// Serializes this Post to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +41,13 @@ abstract class $PostCopyWith<$Res> {
   factory $PostCopyWith(Post value, $Res Function(Post) then) =
       _$PostCopyWithImpl<$Res, Post>;
   @useResult
-  $Res call({String author, String content});
+  $Res call(
+      {String author,
+      String avatarUrl,
+      DateTime postAt,
+      String content,
+      String imageUrl,
+      int likes});
 }
 
 /// @nodoc
@@ -56,17 +66,37 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
   @override
   $Res call({
     Object? author = null,
+    Object? avatarUrl = null,
+    Object? postAt = null,
     Object? content = null,
+    Object? imageUrl = null,
+    Object? likes = null,
   }) {
     return _then(_value.copyWith(
       author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
+      avatarUrl: null == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      postAt: null == postAt
+          ? _value.postAt
+          : postAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      likes: null == likes
+          ? _value.likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -78,7 +108,13 @@ abstract class _$$PostImplCopyWith<$Res> implements $PostCopyWith<$Res> {
       __$$PostImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String author, String content});
+  $Res call(
+      {String author,
+      String avatarUrl,
+      DateTime postAt,
+      String content,
+      String imageUrl,
+      int likes});
 }
 
 /// @nodoc
@@ -94,17 +130,37 @@ class __$$PostImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? author = null,
+    Object? avatarUrl = null,
+    Object? postAt = null,
     Object? content = null,
+    Object? imageUrl = null,
+    Object? likes = null,
   }) {
     return _then(_$PostImpl(
       author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
+      avatarUrl: null == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      postAt: null == postAt
+          ? _value.postAt
+          : postAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      likes: null == likes
+          ? _value.likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -112,7 +168,13 @@ class __$$PostImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PostImpl implements _Post {
-  _$PostImpl({required this.author, required this.content});
+  _$PostImpl(
+      {required this.author,
+      required this.avatarUrl,
+      required this.postAt,
+      required this.content,
+      required this.imageUrl,
+      required this.likes});
 
   factory _$PostImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostImplFromJson(json);
@@ -120,11 +182,19 @@ class _$PostImpl implements _Post {
   @override
   final String author;
   @override
+  final String avatarUrl;
+  @override
+  final DateTime postAt;
+  @override
   final String content;
+  @override
+  final String imageUrl;
+  @override
+  final int likes;
 
   @override
   String toString() {
-    return 'Post(author: $author, content: $content)';
+    return 'Post(author: $author, avatarUrl: $avatarUrl, postAt: $postAt, content: $content, imageUrl: $imageUrl, likes: $likes)';
   }
 
   @override
@@ -133,12 +203,19 @@ class _$PostImpl implements _Post {
         (other.runtimeType == runtimeType &&
             other is _$PostImpl &&
             (identical(other.author, author) || other.author == author) &&
-            (identical(other.content, content) || other.content == content));
+            (identical(other.avatarUrl, avatarUrl) ||
+                other.avatarUrl == avatarUrl) &&
+            (identical(other.postAt, postAt) || other.postAt == postAt) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.likes, likes) || other.likes == likes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, author, content);
+  int get hashCode => Object.hash(
+      runtimeType, author, avatarUrl, postAt, content, imageUrl, likes);
 
   /// Create a copy of Post
   /// with the given fields replaced by the non-null parameter values.
@@ -157,15 +234,28 @@ class _$PostImpl implements _Post {
 }
 
 abstract class _Post implements Post {
-  factory _Post({required final String author, required final String content}) =
-      _$PostImpl;
+  factory _Post(
+      {required final String author,
+      required final String avatarUrl,
+      required final DateTime postAt,
+      required final String content,
+      required final String imageUrl,
+      required final int likes}) = _$PostImpl;
 
   factory _Post.fromJson(Map<String, dynamic> json) = _$PostImpl.fromJson;
 
   @override
   String get author;
   @override
+  String get avatarUrl;
+  @override
+  DateTime get postAt;
+  @override
   String get content;
+  @override
+  String get imageUrl;
+  @override
+  int get likes;
 
   /// Create a copy of Post
   /// with the given fields replaced by the non-null parameter values.
