@@ -15,7 +15,7 @@ class ScaffoldMessengerGlobal {
             TextButton(
               onPressed: () => context.pop(),
               child: const Text('Close'),
-            )
+            ),
           ],
         ),
       );

@@ -1,5 +1,4 @@
 import 'package:fish/app/scaffold_messenger_global.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ErrorObserver extends ProviderObserver {

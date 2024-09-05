@@ -10,6 +10,7 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 2,
       child: Column(
         children: [
           ListTile(
@@ -19,7 +20,6 @@ class PostCard extends StatelessWidget {
               height: 50,
               child: CircleAvatar(
                 backgroundImage: NetworkImage(model.avatarUrl),
-                backgroundColor: Colors.blue,
                 radius: 50,
               ),
             ),
@@ -49,57 +49,49 @@ class PostCard extends StatelessWidget {
             child: Row(
               children: [
                 const Icon(Icons.favorite, color: Colors.red),
-                Text(model.likes.toString())
+                Text(model.likes.toString()),
               ],
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              OutlinedButton.icon(
+              TextButton.icon(
                 onPressed: () {
                   // Handle button press
                 },
                 icon: const Icon(Icons.favorite_border, size: 24),
                 label: const Text('Like', style: TextStyle(fontSize: 15)),
                 style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  foregroundColor: Colors.black,
-                  side: const BorderSide(color: Colors.transparent),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 ),
               ),
-              OutlinedButton.icon(
+              TextButton.icon(
                 onPressed: () {
                   // Handle button press
                 },
                 icon: const Icon(Icons.mode_comment_outlined, size: 24),
                 label: const Text('Comment', style: TextStyle(fontSize: 15)),
                 style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  foregroundColor: Colors.black,
-                  side: const BorderSide(color: Colors.transparent),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 ),
               ),
-              OutlinedButton.icon(
+              TextButton.icon(
                 onPressed: () {
                   // Handle button press
                 },
                 icon: const Icon(Icons.share_outlined, size: 24),
                 label: const Text('Share', style: TextStyle(fontSize: 15)),
                 style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  foregroundColor: Colors.black,
-                  side: const BorderSide(color: Colors.transparent),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 ),
-              )
+              ),
             ],
-          )
+          ),
+          const SizedBox(height: 16),
         ],
       ),
     );
