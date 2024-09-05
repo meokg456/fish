@@ -21,5 +21,9 @@ Future<void> initLightTheme() async {
   final themeStr =
       await rootBundle.loadString('assets/themes/light_theme.json');
   final themeJson = jsonDecode(themeStr);
-  lightTheme = ThemeDecoder.decodeThemeData(themeJson)!;
+  final theme = ThemeDecoder.decodeThemeData(themeJson)!;
+  lightTheme = theme.copyWith(
+    colorScheme: theme.colorScheme
+        .copyWith(surfaceContainerLow: const Color(0xFFFAF4FE)),
+  );
 }

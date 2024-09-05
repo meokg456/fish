@@ -25,22 +25,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final AsyncValue<List<Post>> postsValue = ref.watch(postsProvider);
     return Scaffold(
-      body: switch (postsValue) {
-        AsyncData(:final value) => ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 16),
-            itemCount: value.length,
-            itemBuilder: (context, index) => PostCard(
-              model: value[index],
+      body: SafeArea(
+        child: switch (postsValue) {
+          AsyncData(:final value) => ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              itemCount: value.length,
+              itemBuilder: (context, index) => PostCard(
+                model: value[index],
+              ),
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(height: 16);
+              },
             ),
-            separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(height: 16);
-            },
-          ),
-        AsyncError() => Container(),
-        _ => const Center(
-            child: CircularProgressIndicator(),
-          ),
-      },
+          AsyncError() => Container(),
+          _ => const Center(
+              child: CircularProgressIndicator(),
+            ),
+        },
+      ),
     );
   }
 }
