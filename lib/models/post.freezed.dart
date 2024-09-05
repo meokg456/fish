@@ -169,27 +169,30 @@ class __$$PostImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PostImpl implements _Post {
   _$PostImpl(
-      {required this.author,
+      {this.author = "",
       required this.avatarUrl,
       required this.postAt,
-      required this.content,
+      this.content = "",
       required this.imageUrl,
-      required this.likes});
+      this.likes = 0});
 
   factory _$PostImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostImplFromJson(json);
 
   @override
+  @JsonKey()
   final String author;
   @override
   final String avatarUrl;
   @override
   final DateTime postAt;
   @override
+  @JsonKey()
   final String content;
   @override
   final String imageUrl;
   @override
+  @JsonKey()
   final int likes;
 
   @override
@@ -235,12 +238,12 @@ class _$PostImpl implements _Post {
 
 abstract class _Post implements Post {
   factory _Post(
-      {required final String author,
+      {final String author,
       required final String avatarUrl,
       required final DateTime postAt,
-      required final String content,
+      final String content,
       required final String imageUrl,
-      required final int likes}) = _$PostImpl;
+      final int likes}) = _$PostImpl;
 
   factory _Post.fromJson(Map<String, dynamic> json) = _$PostImpl.fromJson;
 

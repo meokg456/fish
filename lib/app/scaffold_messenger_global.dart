@@ -1,10 +1,10 @@
+import 'package:fish/app/router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ScaffoldMessengerGlobal {
-  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
   static void showErrorMessage(String message) {
-    final context = navigatorKey.currentContext;
+    final context = router.routerDelegate.navigatorKey.currentContext;
     if (context != null) {
       showDialog(
         context: context,
@@ -13,7 +13,7 @@ class ScaffoldMessengerGlobal {
           content: Text(message),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => context.pop(),
               child: const Text('Close'),
             )
           ],

@@ -19,8 +19,20 @@ void main() {
 
   test('Test $postsProvider success has data', () async {
     final response = [
-      Post(author: 'Author 1', content: 'Content 1'),
-      Post(author: 'Author 2', content: 'Content 2'),
+      Post(
+        author: 'Author 1',
+        content: 'Content 1',
+        avatarUrl: '',
+        postAt: DateTime.now(),
+        imageUrl: '',
+      ),
+      Post(
+        author: 'Author 2',
+        content: 'Content 2',
+        avatarUrl: '',
+        postAt: DateTime.now(),
+        imageUrl: '',
+      ),
     ];
 
     when(mockRepository.getPosts()).thenAnswer((_) async => response);
