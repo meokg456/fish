@@ -1,6 +1,5 @@
 import 'package:fish/app/flavor_config.dart';
 import 'package:fish/app/flutter_social_app.dart';
-import 'package:fish/app/theme/themes.dart';
 import 'package:fish/prepare_run.dart';
 import 'package:flutter/material.dart';
 
