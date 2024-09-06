@@ -1,6 +1,7 @@
 import 'package:fish/models/post.dart';
 import 'package:fish/riverpods/posts.dart';
-import 'package:fish/screens/post_card.dart';
+import 'package:fish/screens/home_screen/post_card.dart';
+import 'package:fish/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,7 +29,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: SafeArea(
         child: switch (postsValue) {
           AsyncData(:final value) => ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              padding: EdgeInsets.symmetric(
+                horizontal: Utils.horizontalPadding(context),
+                vertical: 16,
+              ),
               itemCount: value.length,
               itemBuilder: (context, index) => PostCard(
                 model: value[index],

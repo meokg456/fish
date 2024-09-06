@@ -1,3 +1,8 @@
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+
 class Utils {
   static String timeSpendFromCreated(DateTime createTime) {
     int timeSpendSeconds = DateTime.now().second - createTime.second;
@@ -20,5 +25,15 @@ class Utils {
     }
 
     return "now";
+  }
+
+  static double horizontalPadding(BuildContext context) {
+    final screenSize = MediaQuery.sizeOf(context);
+    return getValueForScreenType<double>(
+      context: context,
+      mobile: 16,
+      tablet: 118,
+      desktop: screenSize.width * 0.25,
+    );
   }
 }

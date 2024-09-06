@@ -12,6 +12,7 @@ class PostCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Card(
       elevation: 5,
+      margin: EdgeInsets.zero,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
