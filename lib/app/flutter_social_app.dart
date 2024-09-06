@@ -1,7 +1,8 @@
 import 'package:fish/app/error_observer.dart';
 import 'package:fish/app/logging_observer.dart';
 import 'package:fish/app/router.dart';
-import 'package:fish/app/theme/theme.dart';
+import 'package:fish/app/theme/dark_theme.dart';
+import 'package:fish/app/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,8 +14,6 @@ class FlutterSocialApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    MaterialTheme theme = MaterialTheme(textTheme);
     return ProviderScope(
       observers: [LoggingObserver(), ErrorObserver()],
       child: MaterialApp.router(
@@ -30,10 +29,8 @@ class FlutterSocialApp extends StatelessWidget {
           Locale('vi'),
         ],
         routerConfig: router,
-        theme: theme.light(),
-        highContrastTheme: theme.lightHighContrast(),
-        darkTheme: theme.dark(),
-        highContrastDarkTheme: theme.darkHighContrast(),
+        theme: lightTheme,
+        darkTheme: darkTheme,
       ),
     );
   }
