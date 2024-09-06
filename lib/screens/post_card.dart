@@ -9,6 +9,7 @@ class PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Card(
       elevation: 5,
       child: Column(
@@ -25,36 +26,39 @@ class PostCard extends StatelessWidget {
             ),
             title: Text(
               model.author,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
+              style:
+                  textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
             subtitle: Row(
               children: [
-                Text(Utils.timeSpendFromCreated(model.postAt)),
-                SizedBox.fromSize(size: const Size(10, 10)),
+                Text(
+                  Utils.timeSpendFromCreated(model.postAt),
+                  style: textTheme.titleSmall,
+                ),
+                const SizedBox(width: 4),
                 const Icon(Icons.public, size: 20),
               ],
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             alignment: Alignment.centerLeft,
-            child: Text(model.content, style: const TextStyle(fontSize: 15)),
+            child: Text(model.content, style: textTheme.bodyLarge),
           ),
+          const SizedBox(height: 8),
           Image.network(model.imageUrl),
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(16),
             child: Row(
               children: [
                 const Icon(Icons.favorite, color: Colors.red),
+                const SizedBox(width: 4),
                 Text(model.likes.toString()),
               ],
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton.icon(
                 onPressed: () {
