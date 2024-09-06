@@ -13,6 +13,7 @@ class PostCard extends StatelessWidget {
     return Card(
       elevation: 5,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
             leading: Container(
@@ -40,14 +41,13 @@ class PostCard extends StatelessWidget {
               ],
             ),
           ),
-          Container(
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            alignment: Alignment.centerLeft,
             child: Text(model.content, style: textTheme.bodyLarge),
           ),
           const SizedBox(height: 8),
           Image.network(model.imageUrl),
-          Container(
+          Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
@@ -57,43 +57,40 @@ class PostCard extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton.icon(
-                onPressed: () {
-                  // Handle button press
-                },
-                icon: const Icon(Icons.favorite_border, size: 24),
-                label: const Text('Like', style: TextStyle(fontSize: 15)),
-                style: OutlinedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: () {
+                      // Handle button press
+                    },
+                    icon: const Icon(Icons.favorite_border, size: 24),
+                    label: const Text('Like', style: TextStyle(fontSize: 15)),
+                  ),
                 ),
-              ),
-              TextButton.icon(
-                onPressed: () {
-                  // Handle button press
-                },
-                icon: const Icon(Icons.mode_comment_outlined, size: 24),
-                label: const Text('Comment', style: TextStyle(fontSize: 15)),
-                style: OutlinedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: () {
+                      // Handle button press
+                    },
+                    icon: const Icon(Icons.mode_comment_outlined, size: 24),
+                    label:
+                        const Text('Comment', style: TextStyle(fontSize: 15)),
+                  ),
                 ),
-              ),
-              TextButton.icon(
-                onPressed: () {
-                  // Handle button press
-                },
-                icon: const Icon(Icons.share_outlined, size: 24),
-                label: const Text('Share', style: TextStyle(fontSize: 15)),
-                style: OutlinedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: () {
+                      // Handle button press
+                    },
+                    icon: const Icon(Icons.share_outlined, size: 24),
+                    label: const Text('Share', style: TextStyle(fontSize: 15)),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           const SizedBox(height: 16),
         ],
