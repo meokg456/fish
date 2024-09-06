@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-const textTheme = TextTheme(
-  displayLarge: TextStyle(fontFamily: 'SFProDisplay'),
-  displayMedium: TextStyle(fontFamily: 'SFProDisplay'),
-  displaySmall: TextStyle(fontFamily: 'SFProDisplay'),
-  headlineLarge: TextStyle(fontFamily: 'SFProDisplay'),
-  headlineMedium: TextStyle(fontFamily: 'SFProDisplay'),
-  headlineSmall: TextStyle(fontFamily: 'SFProDisplay'),
-  titleLarge: TextStyle(fontFamily: 'SFProRounded'),
-  titleMedium: TextStyle(fontFamily: 'SFProRounded'),
-  titleSmall: TextStyle(fontFamily: 'SFCompactRounded'),
-  labelLarge: TextStyle(fontFamily: 'SFCompactRounded'),
-  labelMedium: TextStyle(fontFamily: 'SFCompactRounded'),
-  labelSmall: TextStyle(fontFamily: 'SFCompactRounded'),
-  bodyLarge: TextStyle(fontFamily: 'SFProText'),
-  bodyMedium: TextStyle(fontFamily: 'SFCompactText'),
-  bodySmall: TextStyle(fontFamily: 'SFCompactText'),
+final font = GoogleFonts.sourceSans3();
+
+final textTheme = TextTheme(
+  displayLarge: font,
+  displayMedium: font,
+  displaySmall: font,
+  headlineLarge: font,
+  headlineMedium: font,
+  headlineSmall: font,
+  titleLarge: font,
+  titleMedium: font,
+  titleSmall: font,
+  labelLarge: font,
+  labelMedium: font,
+  labelSmall: font,
+  bodyLarge: font,
+  bodyMedium: font,
+  bodySmall: font,
 );

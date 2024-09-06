@@ -45,6 +45,7 @@ dependencies:
     sdk: flutter
   intl: any
   json_theme_plus: ^6.6.1
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -79,73 +80,73 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # light 300 | regular 400 | medium 500 | bold 700 | heavy 900
-  fonts:
-     - family: SFCompactDisplay
-       fonts:
-         - asset: assets/fonts/SFCompactDisplay-Regular.otf
-           weight: 400
-         - asset: assets/fonts/SFCompactDisplay-Light.otf
-           weight: 300
-         - asset: assets/fonts/SFCompactDisplay-Bold.otf
-           weight: 700
-     - family: SFCompactRounded
-       fonts:
-         - asset: assets/fonts/SFCompactRounded-Regular.otf
-           weight: 400
-         - asset: assets/fonts/SFCompactRounded-Light.otf
-           weight: 300
-         - asset: assets/fonts/SFCompactRounded-Bold.otf
-           weight: 700
-     - family: SFCompactText
-       fonts:
-         - asset: assets/fonts/SFCompactText-Regular.otf
-           weight: 400
-         - asset: assets/fonts/SFCompactText-RegularItalic.otf
-           weight: 400
-           style: italic
-         - asset: assets/fonts/SFCompactText-Light.otf
-           weight: 300
-         - asset: assets/fonts/SFCompactText-LightItalic.otf
-           weight: 300
-           style: italic
-         - asset: assets/fonts/SFCompactText-Bold.otf
-           weight: 700
-         - asset: assets/fonts/SFCompactText-BoldItalic.otf
-           weight: 700
-           style: italic
-     - family: SFProDisplay
-       fonts:
-         - asset: assets/fonts/SFProDisplay-Regular.otf
-           weight: 400
-         - asset: assets/fonts/SFProDisplay-Light.otf
-           weight: 300
-         - asset: assets/fonts/SFProDisplay-Bold.otf
-           weight: 700
-     - family: SFProRounded
-       fonts:
-         - asset: assets/fonts/SFProRounded-Regular.otf
-           weight: 400
-         - asset: assets/fonts/SFProRounded-Light.otf
-           weight: 300
-         - asset: assets/fonts/SFProRounded-Bold.otf
-           weight: 700
-     - family: SFProText
-       fonts:
-         - asset: assets/fonts/SFProText-Regular.otf
-           weight: 400
-         - asset: assets/fonts/SFProText-RegularItalic.otf
-           weight: 400
-           style: italic
-         - asset: assets/fonts/SFProText-Light.otf
-           weight: 300
-         - asset: assets/fonts/SFProText-LightItalic.otf
-           weight: 300
-           style: italic
-         - asset: assets/fonts/SFProText-Bold.otf
-           weight: 700
-         - asset: assets/fonts/SFProText-BoldItalic.otf
-           weight: 700
-           style: italic
+#  fonts:
+#     - family: SFCompactDisplay
+#       fonts:
+#         - asset: assets/fonts/SFCompactDisplay-Regular.otf
+#           weight: 400
+#         - asset: assets/fonts/SFCompactDisplay-Light.otf
+#           weight: 300
+#         - asset: assets/fonts/SFCompactDisplay-Bold.otf
+#           weight: 700
+#     - family: SFCompactRounded
+#       fonts:
+#         - asset: assets/fonts/SFCompactRounded-Regular.otf
+#           weight: 400
+#         - asset: assets/fonts/SFCompactRounded-Light.otf
+#           weight: 300
+#         - asset: assets/fonts/SFCompactRounded-Bold.otf
+#           weight: 700
+#     - family: SFCompactText
+#       fonts:
+#         - asset: assets/fonts/SFCompactText-Regular.otf
+#           weight: 400
+#         - asset: assets/fonts/SFCompactText-RegularItalic.otf
+#           weight: 400
+#           style: italic
+#         - asset: assets/fonts/SFCompactText-Light.otf
+#           weight: 300
+#         - asset: assets/fonts/SFCompactText-LightItalic.otf
+#           weight: 300
+#           style: italic
+#         - asset: assets/fonts/SFCompactText-Bold.otf
+#           weight: 700
+#         - asset: assets/fonts/SFCompactText-BoldItalic.otf
+#           weight: 700
+#           style: italic
+#     - family: SFProDisplay
+#       fonts:
+#         - asset: assets/fonts/SFProDisplay-Regular.otf
+#           weight: 400
+#         - asset: assets/fonts/SFProDisplay-Light.otf
+#           weight: 300
+#         - asset: assets/fonts/SFProDisplay-Bold.otf
+#           weight: 700
+#     - family: SFProRounded
+#       fonts:
+#         - asset: assets/fonts/SFProRounded-Regular.otf
+#           weight: 400
+#         - asset: assets/fonts/SFProRounded-Light.otf
+#           weight: 300
+#         - asset: assets/fonts/SFProRounded-Bold.otf
+#           weight: 700
+#     - family: SFProText
+#       fonts:
+#         - asset: assets/fonts/SFProText-Regular.otf
+#           weight: 400
+#         - asset: assets/fonts/SFProText-RegularItalic.otf
+#           weight: 400
+#           style: italic
+#         - asset: assets/fonts/SFProText-Light.otf
+#           weight: 300
+#         - asset: assets/fonts/SFProText-LightItalic.otf
+#           weight: 300
+#           style: italic
+#         - asset: assets/fonts/SFProText-Bold.otf
+#           weight: 700
+#         - asset: assets/fonts/SFProText-BoldItalic.otf
+#           weight: 700
+#           style: italic
 
   #
   # For details regarding fonts from package dependencies,

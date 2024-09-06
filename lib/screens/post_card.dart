@@ -16,6 +16,7 @@ class PostCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
             leading: Container(
               padding: const EdgeInsets.all(2),
               width: 50,
@@ -42,13 +43,13 @@ class PostCard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(model.content, style: textTheme.bodyLarge),
           ),
           const SizedBox(height: 8),
           Image.network(model.imageUrl),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             child: Row(
               children: [
                 const Icon(Icons.favorite, color: Colors.red),
@@ -58,7 +59,7 @@ class PostCard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: [
                 Expanded(
