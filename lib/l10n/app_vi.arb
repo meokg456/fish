@@ -1,3 +1,30 @@
 {
-  "hello": "Xin chào"
+  "signUp": "Đăng ký",
+  "signUpMessage": "Nhanh chóng và dễ dàng.",
+  "firstName": "Họ",
+  "lastName": "Tên",
+  "userName": "Tên đăng nhập",
+  "done": "Xác nhận",
+  "gender": "Giới tính",
+  "male": "Nam",
+  "female": "Nữ",
+  "other": "Khác",
+  "terms": "Điều khoản",
+  "privacyPolicy": "Quy định bảo mật",
+  "cookiesPolicy": "Quy định về Cookies",
+  "signUpConfirmMessage": "Mọi người khi sử dụng dịch vụ của chúng tôi có thể sẽ đăng tải thông tin liên lạc lên ứng dụng của chúng tôi. Xem thêm",
+  "signUpTermAndPolicyAgreement": "Bằng việc bấm đăng ký, bạn sẽ đồng ý với những Điều khoản, Quy định bảo mật và Quy định về Cookies. Bạn có thể sẽ nhận thông báo SMS từ chúng tôi.",
+  "dateMonthYear": "{date}",
+  "@dateMonthYear": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "dd/MM/yyyy",
+        "isCustomDateFormat": "true"
+      }
+    }
+  },
+  "dateOfBirth": "Ngày sinh",
+  "newPassword": "Mật khẩu mới",
+  "confirmPassword": "Nhập lại mật khẩu"
 }

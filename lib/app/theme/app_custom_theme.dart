@@ -20,3 +20,9 @@ final textTheme = TextTheme(
   bodyMedium: font,
   bodySmall: font,
 );
+
+const inputDecorationTheme = InputDecorationTheme(
+  border: OutlineInputBorder(),
+);
+
+const seedColor = Color(0xff38d3e6);

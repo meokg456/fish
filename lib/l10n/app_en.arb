@@ -1,3 +1,30 @@
 {
-  "hello": "Hello"
+  "signUp": "Sign Up",
+  "signUpMessage": "It's quick and easy.",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "userName": "Username",
+  "done": "Done",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "other": "Other",
+  "terms": "Terms",
+  "privacyPolicy": "Privacy Policy",
+  "cookiesPolicy": "Cookies Policy",
+  "signUpConfirmMessage": "People who use our service may have uploaded your contact information to our App. Learn more",
+  "signUpTermAndPolicyAgreement": "By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy. You may receive SMS notifications from us and can opt out at any time.",
+  "dateOfBirth": "Date of birth",
+  "dateMonthYear": "{date}",
+  "@dateMonthYear": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "dd/MM/yyyy",
+        "isCustomDateFormat": "true"
+      }
+    }
+  },
+  "newPassword": "New password",
+  "confirmPassword": "Confirm password"
 }
