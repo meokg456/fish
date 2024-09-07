@@ -32,7 +32,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateLastName() {
-    final value = state.lastname;
+    final value = state.lastName;
     if (value.isEmpty) {
       return ValidateErrors.empty;
     }
@@ -40,7 +40,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateUsername() {
-    final value = state.userName;
+    final value = state.username;
     if (value.isEmpty) {
       return ValidateErrors.empty;
     }

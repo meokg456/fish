@@ -23,7 +23,7 @@ class UserNameTextField extends ConsumerWidget {
         final form = ref.read(signUpProvider);
         ref
             .read(signUpProvider.notifier)
-            .updateForm(form.copyWith(userName: value));
+            .updateForm(form.copyWith(username: value));
       },
       autovalidateMode: AutovalidateMode.onUnfocus,
       validator: (value) => validate(localizations, ref),

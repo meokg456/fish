@@ -42,7 +42,7 @@ class _DateOfBirthTextFieldState extends ConsumerState<DateOfBirthTextField> {
           final form = ref.read(signUpProvider);
           ref
               .read(signUpProvider.notifier)
-              .updateForm(form.copyWith(dateOfBirth: value));
+              .updateForm(form.copyWith(dateOfBirth: value.toUtc()));
         },
       ),
     );

@@ -19,5 +19,9 @@ class DioAuthenticationService implements AuthenticationService {
   DioAuthenticationService(this._dio);
 
   @override
-  Future<void> signUp(SignUpForm form) async {}
+  Future<void> signUp(SignUpForm form) async {
+    final data = form.toJson();
+    data['fullName'] = '${form.firstName} ${form.lastName}';
+    await _dio.post('/user-manager/register', data: data);
+  }
 }

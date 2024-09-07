@@ -21,11 +21,12 @@ SignUpForm _$SignUpFormFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SignUpForm {
   String get firstName => throw _privateConstructorUsedError;
-  String get lastname => throw _privateConstructorUsedError;
-  String get userName => throw _privateConstructorUsedError;
+  String get lastName => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get confirmPassword => throw _privateConstructorUsedError;
   DateTime? get dateOfBirth => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sex', toJson: genderToJson)
   Gender? get gender => throw _privateConstructorUsedError;
 
   /// Serializes this SignUpForm to a JSON map.
@@ -46,12 +47,12 @@ abstract class $SignUpFormCopyWith<$Res> {
   @useResult
   $Res call(
       {String firstName,
-      String lastname,
-      String userName,
+      String lastName,
+      String username,
       String password,
       String confirmPassword,
       DateTime? dateOfBirth,
-      Gender? gender});
+      @JsonKey(name: 'sex', toJson: genderToJson) Gender? gender});
 }
 
 /// @nodoc
@@ -70,8 +71,8 @@ class _$SignUpFormCopyWithImpl<$Res, $Val extends SignUpForm>
   @override
   $Res call({
     Object? firstName = null,
-    Object? lastname = null,
-    Object? userName = null,
+    Object? lastName = null,
+    Object? username = null,
     Object? password = null,
     Object? confirmPassword = null,
     Object? dateOfBirth = freezed,
@@ -82,13 +83,13 @@ class _$SignUpFormCopyWithImpl<$Res, $Val extends SignUpForm>
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String,
-      lastname: null == lastname
-          ? _value.lastname
-          : lastname // ignore: cast_nullable_to_non_nullable
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -120,12 +121,12 @@ abstract class _$$SignUpFormImplCopyWith<$Res>
   @useResult
   $Res call(
       {String firstName,
-      String lastname,
-      String userName,
+      String lastName,
+      String username,
       String password,
       String confirmPassword,
       DateTime? dateOfBirth,
-      Gender? gender});
+      @JsonKey(name: 'sex', toJson: genderToJson) Gender? gender});
 }
 
 /// @nodoc
@@ -142,8 +143,8 @@ class __$$SignUpFormImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? firstName = null,
-    Object? lastname = null,
-    Object? userName = null,
+    Object? lastName = null,
+    Object? username = null,
     Object? password = null,
     Object? confirmPassword = null,
     Object? dateOfBirth = freezed,
@@ -154,13 +155,13 @@ class __$$SignUpFormImplCopyWithImpl<$Res>
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String,
-      lastname: null == lastname
-          ? _value.lastname
-          : lastname // ignore: cast_nullable_to_non_nullable
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -187,12 +188,12 @@ class __$$SignUpFormImplCopyWithImpl<$Res>
 class _$SignUpFormImpl implements _SignUpForm {
   _$SignUpFormImpl(
       {this.firstName = "",
-      this.lastname = "",
-      this.userName = "",
+      this.lastName = "",
+      this.username = "",
       this.password = "",
       this.confirmPassword = "",
       this.dateOfBirth,
-      this.gender});
+      @JsonKey(name: 'sex', toJson: genderToJson) this.gender});
 
   factory _$SignUpFormImpl.fromJson(Map<String, dynamic> json) =>
       _$$SignUpFormImplFromJson(json);
@@ -202,10 +203,10 @@ class _$SignUpFormImpl implements _SignUpForm {
   final String firstName;
   @override
   @JsonKey()
-  final String lastname;
+  final String lastName;
   @override
   @JsonKey()
-  final String userName;
+  final String username;
   @override
   @JsonKey()
   final String password;
@@ -215,11 +216,12 @@ class _$SignUpFormImpl implements _SignUpForm {
   @override
   final DateTime? dateOfBirth;
   @override
+  @JsonKey(name: 'sex', toJson: genderToJson)
   final Gender? gender;
 
   @override
   String toString() {
-    return 'SignUpForm(firstName: $firstName, lastname: $lastname, userName: $userName, password: $password, confirmPassword: $confirmPassword, dateOfBirth: $dateOfBirth, gender: $gender)';
+    return 'SignUpForm(firstName: $firstName, lastName: $lastName, username: $username, password: $password, confirmPassword: $confirmPassword, dateOfBirth: $dateOfBirth, gender: $gender)';
   }
 
   @override
@@ -229,10 +231,10 @@ class _$SignUpFormImpl implements _SignUpForm {
             other is _$SignUpFormImpl &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
-            (identical(other.lastname, lastname) ||
-                other.lastname == lastname) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.confirmPassword, confirmPassword) ||
@@ -244,7 +246,7 @@ class _$SignUpFormImpl implements _SignUpForm {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastname, userName,
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, username,
       password, confirmPassword, dateOfBirth, gender);
 
   /// Create a copy of SignUpForm
@@ -265,13 +267,14 @@ class _$SignUpFormImpl implements _SignUpForm {
 
 abstract class _SignUpForm implements SignUpForm {
   factory _SignUpForm(
-      {final String firstName,
-      final String lastname,
-      final String userName,
-      final String password,
-      final String confirmPassword,
-      final DateTime? dateOfBirth,
-      final Gender? gender}) = _$SignUpFormImpl;
+          {final String firstName,
+          final String lastName,
+          final String username,
+          final String password,
+          final String confirmPassword,
+          final DateTime? dateOfBirth,
+          @JsonKey(name: 'sex', toJson: genderToJson) final Gender? gender}) =
+      _$SignUpFormImpl;
 
   factory _SignUpForm.fromJson(Map<String, dynamic> json) =
       _$SignUpFormImpl.fromJson;
@@ -279,9 +282,9 @@ abstract class _SignUpForm implements SignUpForm {
   @override
   String get firstName;
   @override
-  String get lastname;
+  String get lastName;
   @override
-  String get userName;
+  String get username;
   @override
   String get password;
   @override
@@ -289,6 +292,7 @@ abstract class _SignUpForm implements SignUpForm {
   @override
   DateTime? get dateOfBirth;
   @override
+  @JsonKey(name: 'sex', toJson: genderToJson)
   Gender? get gender;
 
   /// Create a copy of SignUpForm

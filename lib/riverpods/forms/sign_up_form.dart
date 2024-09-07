@@ -8,12 +8,12 @@ part 'sign_up_form.g.dart';
 class SignUpForm with _$SignUpForm {
   factory SignUpForm({
     @Default("") String firstName,
-    @Default("") String lastname,
-    @Default("") String userName,
+    @Default("") String lastName,
+    @Default("") String username,
     @Default("") String password,
     @Default("") String confirmPassword,
     DateTime? dateOfBirth,
-    Gender? gender,
+    @JsonKey(name: 'sex', toJson: genderToJson) Gender? gender,
   }) = _SignUpForm;
 
   factory SignUpForm.fromJson(Map<String, Object?> json) =>
