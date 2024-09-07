@@ -1,3 +1,4 @@
+import 'package:fish/riverpods/enums/validate_errors.dart';
 import 'package:fish/riverpods/sign_up.dart';
 import 'package:fish/widgets/app_cupertino_date_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -47,6 +48,17 @@ class _DateOfBirthTextFieldState extends ConsumerState<DateOfBirthTextField> {
     );
   }
 
+  String? validate(AppLocalizations localizations, WidgetRef ref) {
+    final error = ref.read(signUpProvider.notifier).validateDateOfBirth();
+    if (error == ValidateErrors.empty) {
+      return localizations.dateOfBirthEmptyMessages;
+    }
+    if (error == ValidateErrors.invalid) {
+      return localizations.dateOfBirthWrongInfoMessages;
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context);
@@ -55,6 +67,8 @@ class _DateOfBirthTextFieldState extends ConsumerState<DateOfBirthTextField> {
       controller: controller,
       readOnly: true,
       onTap: () => showCalendar(context, ref),
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: (value) => validate(localizations, ref),
       decoration: InputDecoration(
         hintText: localizations.dateOfBirth,
         suffixIcon: const Icon(Icons.calendar_month),

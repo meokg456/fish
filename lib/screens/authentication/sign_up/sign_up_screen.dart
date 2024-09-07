@@ -21,6 +21,7 @@ class SignUpScreen extends ConsumerStatefulWidget {
 class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   late final AppLocalizations localizations;
   late final ThemeData theme;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void didChangeDependencies() {
@@ -44,92 +45,97 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
               children: [
                 Card(
                   margin: EdgeInsets.zero,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  localizations.signUp,
-                                  style: theme.textTheme.headlineLarge
-                                      ?.copyWith(fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  localizations.signUpMessage,
-                                  style: theme.textTheme.bodyLarge,
-                                ),
-                              ],
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.close),
-                            ),
-                          ],
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    localizations.signUp,
+                                    style: theme.textTheme.headlineLarge
+                                        ?.copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    localizations.signUpMessage,
+                                    style: theme.textTheme.bodyLarge,
+                                  ),
+                                ],
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.close),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      const Divider(),
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: FirstNameTextField(),
-                                ),
-                                SizedBox(width: 16),
-                                Expanded(
-                                  child: LastNameTextField(),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 16),
-                            const UserNameTextField(),
-                            const SizedBox(height: 16),
-                            const PasswordTextField(),
-                            const SizedBox(height: 16),
-                            const ConfirmPasswordTextField(),
-                            const SizedBox(height: 16),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: DateOfBirthTextField(),
-                                ),
-                                SizedBox(width: 16),
-                                Expanded(
-                                  child: GenderTextField(),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              localizations.signUpConfirmMessage,
-                              style: theme.textTheme.bodySmall,
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              localizations.signUpTermAndPolicyAgreement,
-                              style: theme.textTheme.bodySmall,
-                            ),
-                            const SizedBox(height: 32),
-                            const Align(
-                              alignment: Alignment.center,
-                              child: SignUpButton(),
-                            ),
-                            const SizedBox(height: 16),
-                          ],
+                        const Divider(),
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: FirstNameTextField(),
+                                  ),
+                                  SizedBox(width: 16),
+                                  Expanded(
+                                    child: LastNameTextField(),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 16),
+                              const UserNameTextField(),
+                              const SizedBox(height: 16),
+                              const PasswordTextField(),
+                              const SizedBox(height: 16),
+                              const ConfirmPasswordTextField(),
+                              const SizedBox(height: 16),
+                              const Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: DateOfBirthTextField(),
+                                  ),
+                                  SizedBox(width: 16),
+                                  Expanded(
+                                    child: GenderTextField(),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                localizations.signUpConfirmMessage,
+                                style: theme.textTheme.bodySmall,
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                localizations.signUpTermAndPolicyAgreement,
+                                style: theme.textTheme.bodySmall,
+                              ),
+                              const SizedBox(height: 32),
+                              Align(
+                                alignment: Alignment.center,
+                                child: SignUpButton(_formKey),
+                              ),
+                              const SizedBox(height: 16),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],
