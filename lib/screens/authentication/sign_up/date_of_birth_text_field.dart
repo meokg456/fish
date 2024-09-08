@@ -21,7 +21,8 @@ class _DateOfBirthTextFieldState extends ConsumerState<DateOfBirthTextField> {
   @override
   void initState() {
     super.initState();
-    ref.listenManual(signUpProvider.select((it) => it.dateOfBirth), (_, date) {
+    ref.listenManual(signUpProvider.select((it) => it.valueOrNull?.dateOfBirth),
+        (_, date) {
       controller.text = localizations.dateMonthYear(date ?? DateTime.now());
     });
   }
@@ -33,16 +34,16 @@ class _DateOfBirthTextFieldState extends ConsumerState<DateOfBirthTextField> {
   }
 
   void showCalendar(BuildContext context, WidgetRef ref) {
-    final initialDate = ref.read(signUpProvider.select((it) => it.dateOfBirth));
+    final initialDate =
+        ref.read(signUpProvider.select((it) => it.requireValue.dateOfBirth));
     showCupertinoModalPopup(
       context: context,
       builder: (context) => AppCupertinoDatePicker(
         initialDate: initialDate,
         onDone: (value) {
           final form = ref.read(signUpProvider);
-          ref
-              .read(signUpProvider.notifier)
-              .updateForm(form.copyWith(dateOfBirth: value.toUtc()));
+          ref.read(signUpProvider.notifier).updateForm(
+              form.requireValue.copyWith(dateOfBirth: value.toUtc()));
         },
       ),
     );

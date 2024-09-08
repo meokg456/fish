@@ -11,20 +11,26 @@ class SignUp extends _$SignUp {
       ref.watch(authenticationRepositoryProvider);
 
   @override
-  SignUpForm build() {
+  Future<SignUpForm> build() async {
     return SignUpForm();
   }
 
   void updateForm(SignUpForm form) {
-    state = form;
+    state = AsyncData(form);
   }
 
   Future<void> signUp() async {
-    return _authenticationRepository.signUp(state);
+    try {
+      state = const AsyncLoading();
+      await _authenticationRepository.signUp(state.requireValue);
+    } catch (error, stackTrace) {
+      state = AsyncError(error, stackTrace);
+    }
+    state = AsyncData(await future);
   }
 
   ValidateErrors validateFirstName() {
-    final value = state.firstName;
+    final value = state.value?.firstName ?? '';
     if (value.isEmpty) {
       return ValidateErrors.empty;
     }
@@ -32,7 +38,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateLastName() {
-    final value = state.lastName;
+    final value = state.value?.lastName ?? '';
     if (value.isEmpty) {
       return ValidateErrors.empty;
     }
@@ -40,7 +46,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateUsername() {
-    final value = state.username;
+    final value = state.value?.username ?? '';
     if (value.isEmpty) {
       return ValidateErrors.empty;
     }
@@ -48,7 +54,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validatePassword() {
-    final value = state.password;
+    final value = state.value?.password ?? '';
     if (value.length < 6 || value.length > 50) {
       return ValidateErrors.invalid;
     }
@@ -56,8 +62,9 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateConfirmPassword() {
-    final value = state.confirmPassword;
-    final password = ref.read(signUpProvider.select((it) => it.password));
+    final value = state.value?.confirmPassword ?? '';
+    final password =
+        ref.read(signUpProvider.select((it) => it.value?.password ?? ''));
     if (value != password) {
       return ValidateErrors.notMatch;
     }
@@ -65,7 +72,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateDateOfBirth() {
-    final value = state.dateOfBirth;
+    final value = state.value?.dateOfBirth;
     if (value == null) {
       return ValidateErrors.empty;
     }
@@ -76,7 +83,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateGender() {
-    final value = state.gender;
+    final value = state.value?.gender;
     if (value == null) {
       return ValidateErrors.empty;
     }

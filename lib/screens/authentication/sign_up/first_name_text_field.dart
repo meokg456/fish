@@ -23,9 +23,9 @@ class FirstNameTextField extends ConsumerWidget {
         final form = ref.read(signUpProvider);
         ref
             .read(signUpProvider.notifier)
-            .updateForm(form.copyWith(firstName: value));
+            .updateForm(form.requireValue.copyWith(firstName: value));
       },
-      autovalidateMode: AutovalidateMode.onUnfocus,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) => validate(localizations, ref),
       decoration: InputDecoration(
         hintText: localizations.firstName,

@@ -23,9 +23,9 @@ class LastNameTextField extends ConsumerWidget {
         final form = ref.read(signUpProvider);
         ref
             .read(signUpProvider.notifier)
-            .updateForm(form.copyWith(lastName: value));
+            .updateForm(form.requireValue.copyWith(lastName: value));
       },
-      autovalidateMode: AutovalidateMode.onUnfocus,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) => validate(localizations, ref),
       decoration: InputDecoration(
         hintText: localizations.lastName,

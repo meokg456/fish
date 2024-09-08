@@ -1,4 +1,5 @@
 import 'package:fish/riverpods/sign_up.dart';
+import 'package:fish/widgets/button_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -31,12 +32,19 @@ class _SignUpButtonState extends ConsumerState<SignUpButton> {
 
   @override
   Widget build(BuildContext context) {
+    final response = ref.watch(signUpProvider);
     return SizedBox(
       height: 36,
       width: 194,
-      child: FilledButton.tonal(
-        onPressed: onTap,
-        child: Text(localizations.signUp),
+      child: FilledButton(
+        onPressed: switch (response) {
+          AsyncLoading() => null,
+          _ => onTap,
+        },
+        child: switch (response) {
+          AsyncLoading() => const ButtonProgressIndicator(),
+          _ => Text(localizations.signUp),
+        },
       ),
     );
   }

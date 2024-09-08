@@ -6,11 +6,12 @@ part of 'sign_up.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signUpHash() => r'8cb2f0d67d608dddd9ee7ebcc716027dbfcf3817';
+String _$signUpHash() => r'2b58879a625d9467bccfc9905654d555a39d4967';
 
 /// See also [SignUp].
 @ProviderFor(SignUp)
-final signUpProvider = AutoDisposeNotifierProvider<SignUp, SignUpForm>.internal(
+final signUpProvider =
+    AutoDisposeAsyncNotifierProvider<SignUp, SignUpForm>.internal(
   SignUp.new,
   name: r'signUpProvider',
   debugGetCreateSourceHash:
@@ -19,6 +20,6 @@ final signUpProvider = AutoDisposeNotifierProvider<SignUp, SignUpForm>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$SignUp = AutoDisposeNotifier<SignUpForm>;
+typedef _$SignUp = AutoDisposeAsyncNotifier<SignUpForm>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
