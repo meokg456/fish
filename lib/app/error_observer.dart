@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:fish/app/scaffold_messenger_global.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,8 +10,12 @@ class ErrorObserver extends ProviderObserver {
     StackTrace stackTrace,
     ProviderContainer container,
   ) {
+    String message = error.toString();
+    if (error is DioException) {
+      message = error.message ?? '';
+    }
     ScaffoldMessengerGlobal.showErrorMessage(
-      error.toString().replaceAll('Exception: ', ""),
+      message,
     );
   }
 }

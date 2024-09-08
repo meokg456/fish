@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:fish/app/flavor_config.dart';
+import 'package:fish/dio_config/dio_interceptor.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:dio/dio.dart';
 
@@ -13,26 +15,6 @@ Dio dio(DioRef ref) {
   dio.options.headers = {
     HttpHeaders.contentTypeHeader: ContentType.json.value,
   };
-  // dio.interceptors.add(
-  //   InterceptorsWrapper(
-  //     onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-  //       // Do something before request is sent.
-  //       // If you want to resolve the request with custom data,
-  //       // you can resolve a `Response` using `handler.resolve(response)`.
-  //       // If you want to reject the request with a error message,
-  //       // you can reject with a `DioException` using `handler.reject(dioError)`.
-  //       return handler.next(options);
-  //     },
-  //     onResponse: (Response response, ResponseInterceptorHandler handler) {
-  //       print('RESPONSE[${response.statusCode}] => PATH: ${response.data}');
-  //       return handler.next(response);
-  //     },
-  //     onError: (DioException error, ErrorInterceptorHandler handler) {
-  //       print(
-  //           'ERROR[${error.response?.statusCode}] => PATH: ${error.response?.data}');
-  //       return handler.next(error);
-  //     },
-  //   ),
-  // );
+  dio.interceptors.add(DioInterceptor());
   return dio;
 }

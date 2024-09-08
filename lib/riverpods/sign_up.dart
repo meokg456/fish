@@ -23,10 +23,10 @@ class SignUp extends _$SignUp {
     try {
       state = const AsyncLoading();
       await _authenticationRepository.signUp(state.requireValue);
+      state = AsyncData(state.requireValue);
     } catch (error, stackTrace) {
       state = AsyncError(error, stackTrace);
     }
-    state = AsyncData(await future);
   }
 
   ValidateErrors validateFirstName() {

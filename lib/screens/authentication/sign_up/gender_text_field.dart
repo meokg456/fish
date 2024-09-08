@@ -1,4 +1,4 @@
-import 'package:fish/models/gender.dart';
+import 'package:fish/models/enums/gender.dart';
 import 'package:fish/riverpods/enums/validate_errors.dart';
 import 'package:fish/riverpods/sign_up.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:fish/models/gender.dart';
+import 'package:fish/models/enums/gender.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'sign_up_form.freezed.dart';
