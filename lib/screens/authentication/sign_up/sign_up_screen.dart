@@ -7,9 +7,11 @@ import 'package:fish/screens/authentication/sign_up/password_text_field.dart';
 import 'package:fish/screens/authentication/sign_up/sign_up_button.dart';
 import 'package:fish/screens/authentication/sign_up/user_name_text_field.dart';
 import 'package:fish/utils/utils.dart';
+import 'package:fish/widgets/rich_text/app_rich_text.dart';
+import 'package:fish/widgets/rich_text/hyperlink_span.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fish/l10n/app_localizations.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
   const SignUpScreen({super.key});
@@ -116,14 +118,47 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                                 ],
                               ),
                               const SizedBox(height: 16),
-                              Text(
-                                localizations.signUpConfirmMessage,
+                              AppRichText(
+                                sourceText: localizations.signUpConfirmMessage,
                                 style: theme.textTheme.bodySmall,
+                                replaces: {
+                                  localizations.learnMore: HyperlinkSpan(
+                                    text: localizations.learnMore,
+                                    url: 'https://www.google.com/',
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      color: theme.colorScheme.primary,
+                                    ),
+                                  ),
+                                },
                               ),
                               const SizedBox(height: 16),
-                              Text(
-                                localizations.signUpTermAndPolicyAgreement,
+                              AppRichText(
+                                sourceText:
+                                    localizations.signUpTermAndPolicyAgreement,
                                 style: theme.textTheme.bodySmall,
+                                replaces: {
+                                  localizations.terms: HyperlinkSpan(
+                                    text: localizations.terms,
+                                    url: 'https://www.google.com/',
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      color: theme.colorScheme.primary,
+                                    ),
+                                  ),
+                                  localizations.privacyPolicy: HyperlinkSpan(
+                                    text: localizations.privacyPolicy,
+                                    url: 'https://www.google.com/',
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      color: theme.colorScheme.primary,
+                                    ),
+                                  ),
+                                  localizations.cookiesPolicy: HyperlinkSpan(
+                                    text: localizations.cookiesPolicy,
+                                    url: 'https://www.google.com/',
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      color: theme.colorScheme.primary,
+                                    ),
+                                  ),
+                                },
                               ),
                               const SizedBox(height: 32),
                               Align(

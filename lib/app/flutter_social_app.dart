@@ -3,10 +3,10 @@ import 'package:fish/app/logging_observer.dart';
 import 'package:fish/app/router.dart';
 import 'package:fish/app/theme/dark_theme.dart';
 import 'package:fish/app/theme/light_theme.dart';
+import 'package:fish/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FlutterSocialApp extends StatelessWidget {
   const FlutterSocialApp({super.key});

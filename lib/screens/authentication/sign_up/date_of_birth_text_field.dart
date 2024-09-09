@@ -4,7 +4,7 @@ import 'package:fish/widgets/app_cupertino_date_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fish/l10n/app_localizations.dart';
 
 class DateOfBirthTextField extends ConsumerStatefulWidget {
   const DateOfBirthTextField({super.key});
@@ -43,7 +43,8 @@ class _DateOfBirthTextFieldState extends ConsumerState<DateOfBirthTextField> {
         onDone: (value) {
           final form = ref.read(signUpProvider);
           ref.read(signUpProvider.notifier).updateForm(
-              form.requireValue.copyWith(dateOfBirth: value.toUtc()));
+                form.requireValue.copyWith(dateOfBirth: value.toUtc()),
+              );
         },
       ),
     );

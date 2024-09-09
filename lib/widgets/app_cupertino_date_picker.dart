@@ -2,7 +2,7 @@ import 'package:fish/utils/utils.dart';
 import 'package:fish/widgets/all_type_scroll_behavior.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fish/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 
 class AppCupertinoDatePicker extends StatelessWidget {

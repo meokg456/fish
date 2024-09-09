@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:fish/app/flavor_config.dart';
 import 'package:fish/dio_config/dio_interceptor.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:dio/dio.dart';
 
