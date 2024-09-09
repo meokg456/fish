@@ -30,6 +30,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get close => 'Close';
 
   @override
+  String get error => 'Error';
+
+  @override
+  String get createNewAccount => 'Create new account';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get welcome => 'Welcome!';
+
+  @override
+  String welcomeMessages(String appName) {
+    return 'to $appName';
+  }
+
+  @override
   String get accountExist => 'Account existed';
 
   @override
@@ -43,6 +63,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get usernameEmptyMessages => 'You\'ll use this when you log in';
+
+  @override
+  String get invalidUsername => 'Invalid username';
+
+  @override
+  String get invalidPassword => 'Invalid password';
 
   @override
   String get invalidPasswordMessages => 'Enter a password between 6 and 50 characters';

@@ -2,15 +2,15 @@ import 'package:fish/riverpods/enums/validate_errors.dart';
 import 'package:fish/riverpods/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fish/l10n/app_localizations.dart';
+import 'package:fish/l10n/generated/app_localizations.dart';
 
-class PasswordTextField extends ConsumerWidget {
-  const PasswordTextField({super.key});
+class ConfirmPasswordTextField extends ConsumerWidget {
+  const ConfirmPasswordTextField({super.key});
 
   String? validate(AppLocalizations localizations, WidgetRef ref) {
-    final error = ref.read(signUpProvider.notifier).validatePassword();
-    if (error == ValidateErrors.invalid) {
-      return localizations.invalidPasswordMessages;
+    final error = ref.read(signUpProvider.notifier).validateConfirmPassword();
+    if (error == ValidateErrors.notMatch) {
+      return localizations.confirmPasswordDoesNotMatchMessages;
     }
     return null;
   }
@@ -23,13 +23,14 @@ class PasswordTextField extends ConsumerWidget {
         final form = ref.read(signUpProvider);
         ref
             .read(signUpProvider.notifier)
-            .updateForm(form.requireValue.copyWith(password: value));
+            .updateForm(form.requireValue.copyWith(confirmPassword: value));
       },
       obscureText: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      textInputAction: TextInputAction.next,
       validator: (value) => validate(localizations, ref),
       decoration: InputDecoration(
-        hintText: localizations.newPassword,
+        hintText: localizations.confirmPassword,
       ),
     );
   }

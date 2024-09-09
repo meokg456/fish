@@ -1,16 +1,16 @@
 import 'package:fish/riverpods/enums/validate_errors.dart';
-import 'package:fish/riverpods/sign_up.dart';
+import 'package:fish/riverpods/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fish/l10n/app_localizations.dart';
+import 'package:fish/l10n/generated/app_localizations.dart';
 
-class FirstNameTextField extends ConsumerWidget {
-  const FirstNameTextField({super.key});
+class UserNameTextField extends ConsumerWidget {
+  const UserNameTextField({super.key});
 
   String? validate(AppLocalizations localizations, WidgetRef ref) {
-    final error = ref.read(signUpProvider.notifier).validateFirstName();
-    if (error == ValidateErrors.empty) {
-      return localizations.firstNameEmptyMessages;
+    final error = ref.read(loginProvider.notifier).validateUsername();
+    if (error == ValidateErrors.invalid) {
+      return localizations.invalidUsername;
     }
     return null;
   }
@@ -20,15 +20,16 @@ class FirstNameTextField extends ConsumerWidget {
     final localizations = AppLocalizations.of(context);
     return TextFormField(
       onChanged: (value) {
-        final form = ref.read(signUpProvider);
+        final form = ref.read(loginProvider);
         ref
-            .read(signUpProvider.notifier)
-            .updateForm(form.requireValue.copyWith(firstName: value));
+            .read(loginProvider.notifier)
+            .updateForm(form.requireValue.copyWith(username: value));
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      textInputAction: TextInputAction.next,
       validator: (value) => validate(localizations, ref),
       decoration: InputDecoration(
-        hintText: localizations.firstName,
+        hintText: localizations.userName,
       ),
     );
   }

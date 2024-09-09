@@ -4,7 +4,7 @@ import 'package:fish/widgets/app_cupertino_date_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fish/l10n/app_localizations.dart';
+import 'package:fish/l10n/generated/app_localizations.dart';
 
 class DateOfBirthTextField extends ConsumerStatefulWidget {
   const DateOfBirthTextField({super.key});

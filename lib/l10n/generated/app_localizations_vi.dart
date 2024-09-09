@@ -30,6 +30,26 @@ class AppLocalizationsVi extends AppLocalizations {
   String get close => 'Đóng';
 
   @override
+  String get error => 'Lỗi';
+
+  @override
+  String get createNewAccount => 'Tạo tài khoản';
+
+  @override
+  String get password => 'Mật khẩu';
+
+  @override
+  String get login => 'Đăng nhập';
+
+  @override
+  String get welcome => 'Chào mừng!';
+
+  @override
+  String welcomeMessages(String appName) {
+    return 'đến với $appName';
+  }
+
+  @override
   String get accountExist => 'Tài khoản đã tồn tại';
 
   @override
@@ -43,6 +63,12 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get usernameEmptyMessages => 'Bạn sẽ sử dụng tên đăng nhập để đăng nhập';
+
+  @override
+  String get invalidUsername => 'Tên đăng nhập không hợp lệ';
+
+  @override
+  String get invalidPassword => 'Mật khẩu không hợp lệ';
 
   @override
   String get invalidPasswordMessages => 'Nhập 1 chuỗi có khoảng từ 6 đến 50 ký tự';

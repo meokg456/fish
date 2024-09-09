@@ -6,3 +6,6 @@ build-watch:
 
 translate:
 	flutter gen-l10n
+
+gen-app-icon:
+	flutter pub run flutter_launcher_icons

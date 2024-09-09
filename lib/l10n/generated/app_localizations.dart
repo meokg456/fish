@@ -18,7 +18,7 @@ import 'app_localizations_vi.dart';
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'l10n/app_localizations.dart';
+/// import 'generated/app_localizations.dart';
 ///
 /// return MaterialApp(
 ///   localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -137,6 +137,42 @@ abstract class AppLocalizations {
   /// **'Close'**
   String get close;
 
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// No description provided for @createNewAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create new account'**
+  String get createNewAccount;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome!'**
+  String get welcome;
+
+  /// No description provided for @welcomeMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'to {appName}'**
+  String welcomeMessages(String appName);
+
   /// No description provided for @accountExist.
   ///
   /// In en, this message translates to:
@@ -166,6 +202,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You\'ll use this when you log in'**
   String get usernameEmptyMessages;
+
+  /// No description provided for @invalidUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid username'**
+  String get invalidUsername;
+
+  /// No description provided for @invalidPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid password'**
+  String get invalidPassword;
 
   /// No description provided for @invalidPasswordMessages.
   ///

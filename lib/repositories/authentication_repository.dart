@@ -1,3 +1,4 @@
+import 'package:fish/riverpods/forms/login_form.dart';
 import 'package:fish/riverpods/forms/sign_up_form.dart';
 import 'package:fish/services/authentication_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -12,6 +13,7 @@ AuthenticationRepository authenticationRepository(
 
 abstract class AuthenticationRepository {
   Future<void> signUp(SignUpForm form);
+  Future<String> login(LoginForm form);
 }
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
@@ -22,5 +24,10 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<void> signUp(SignUpForm form) {
     return _authenticationService.signUp(form);
+  }
+
+  @override
+  Future<String> login(LoginForm form) {
+    return _authenticationService.login(form);
   }
 }

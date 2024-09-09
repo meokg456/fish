@@ -6,11 +6,26 @@
   "userName": "Username",
   "done": "Done",
   "close": "Close",
+  "error": "Error",
+  "createNewAccount": "Create new account",
+  "password": "Password",
+  "login": "Login",
+  "welcome": "Welcome!",
+  "welcomeMessages": "to {appName}",
+  "@welcomeMessages": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
   "accountExist": "Account existed",
   "accountExistMessages": "Username is already registered.",
   "firstNameEmptyMessages": "What's your name?",
   "lastNameEmptyMessages": "What's your name?",
   "usernameEmptyMessages": "You'll use this when you log in",
+  "invalidUsername": "Invalid username",
+  "invalidPassword": "Invalid password",
   "invalidPasswordMessages": "Enter a password between 6 and 50 characters",
   "confirmPasswordDoesNotMatchMessages": "Confirm password doesn't match",
   "dateOfBirthEmptyMessages": "Enter your date of birth",

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fish/app/flavor_config.dart';
 import 'package:fish/app/flutter_social_app.dart';
 import 'package:fish/prepare_run.dart';
@@ -8,7 +10,10 @@ void main() async {
 
   FlavorConfig(
     flavor: Flavor.dev,
-    values: FlavorValues(baseUrl: 'http://localhost:8080'),
+    values: FlavorValues(
+      baseUrl:
+          Platform.isAndroid ? 'http://10.0.2.2:8080' : 'http://localhost:8080',
+    ),
   );
   // ignore: missing_provider_scope
   runApp(const FlutterSocialApp());

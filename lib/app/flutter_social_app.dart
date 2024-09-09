@@ -3,7 +3,7 @@ import 'package:fish/app/logging_observer.dart';
 import 'package:fish/app/router.dart';
 import 'package:fish/app/theme/dark_theme.dart';
 import 'package:fish/app/theme/light_theme.dart';
-import 'package:fish/l10n/app_localizations.dart';
+import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +16,7 @@ class FlutterSocialApp extends StatelessWidget {
     return ProviderScope(
       observers: [LoggingObserver(), ErrorObserver()],
       child: MaterialApp.router(
-        title: 'Flutter social app',
+        title: 'Fish',
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,

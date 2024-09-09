@@ -2,15 +2,15 @@ import 'package:fish/riverpods/enums/validate_errors.dart';
 import 'package:fish/riverpods/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fish/l10n/app_localizations.dart';
+import 'package:fish/l10n/generated/app_localizations.dart';
 
-class UserNameTextField extends ConsumerWidget {
-  const UserNameTextField({super.key});
+class LastNameTextField extends ConsumerWidget {
+  const LastNameTextField({super.key});
 
   String? validate(AppLocalizations localizations, WidgetRef ref) {
-    final error = ref.read(signUpProvider.notifier).validateUsername();
+    final error = ref.read(signUpProvider.notifier).validateLastName();
     if (error == ValidateErrors.empty) {
-      return localizations.usernameEmptyMessages;
+      return localizations.lastNameEmptyMessages;
     }
     return null;
   }
@@ -23,12 +23,13 @@ class UserNameTextField extends ConsumerWidget {
         final form = ref.read(signUpProvider);
         ref
             .read(signUpProvider.notifier)
-            .updateForm(form.requireValue.copyWith(username: value));
+            .updateForm(form.requireValue.copyWith(lastName: value));
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      textInputAction: TextInputAction.next,
       validator: (value) => validate(localizations, ref),
       decoration: InputDecoration(
-        hintText: localizations.userName,
+        hintText: localizations.lastName,
       ),
     );
   }
