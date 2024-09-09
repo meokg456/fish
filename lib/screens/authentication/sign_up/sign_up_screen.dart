@@ -21,8 +21,8 @@ class SignUpScreen extends ConsumerStatefulWidget {
 }
 
 class _SignUpScreenState extends ConsumerState<SignUpScreen> {
-  late final AppLocalizations localizations;
-  late final ThemeData theme;
+  late AppLocalizations localizations;
+  late ThemeData theme;
   final _formKey = GlobalKey<FormState>();
 
   @override

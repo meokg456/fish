@@ -16,8 +16,8 @@ class SignUpButton extends ConsumerStatefulWidget {
 }
 
 class _SignUpButtonState extends ConsumerState<SignUpButton> {
-  late final AppLocalizations localizations;
-  late final ThemeData theme;
+  late AppLocalizations localizations;
+  late ThemeData theme;
 
   @override
   void didChangeDependencies() {

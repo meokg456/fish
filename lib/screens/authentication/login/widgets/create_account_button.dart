@@ -13,8 +13,8 @@ class CreateAccountButton extends ConsumerStatefulWidget {
 }
 
 class _CreateAccountButtonState extends ConsumerState<CreateAccountButton> {
-  late final AppLocalizations localizations;
-  late final ThemeData theme;
+  late AppLocalizations localizations;
+  late ThemeData theme;
 
   @override
   void didChangeDependencies() {

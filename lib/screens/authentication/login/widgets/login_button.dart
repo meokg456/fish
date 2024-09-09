@@ -3,6 +3,7 @@ import 'package:fish/riverpods/authentication.dart';
 import 'package:fish/riverpods/login.dart';
 import 'package:fish/widgets/button_progress_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:go_router/go_router.dart';
@@ -17,8 +18,8 @@ class LoginButton extends ConsumerStatefulWidget {
 }
 
 class _LoginButtonState extends ConsumerState<LoginButton> {
-  late final AppLocalizations localizations;
-  late final ThemeData theme;
+  late AppLocalizations localizations;
+  late ThemeData theme;
 
   @override
   void didChangeDependencies() {

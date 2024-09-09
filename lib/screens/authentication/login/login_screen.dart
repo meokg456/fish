@@ -17,9 +17,10 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  late final AppLocalizations localizations;
-  late final ThemeData theme;
+  late AppLocalizations localizations;
+  late ThemeData theme;
   final _formKey = GlobalKey<FormState>();
+  final buttonKey = GlobalKey();
 
   @override
   void didChangeDependencies() {
@@ -31,58 +32,64 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final appSetting = ref.watch(appSettingProvider);
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(
-              horizontal: Utils.horizontalPadding(context),
-              vertical: 16,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Form(
-                  key: _formKey,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          appSetting.appIcon,
-                          height: 200,
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          localizations.welcome,
-                          style: theme.textTheme.displayMedium,
-                        ),
-                        AppRichText(
-                          sourceText:
-                              localizations.welcomeMessages(appSetting.appName),
-                          style: theme.textTheme.displayMedium,
-                          replaces: {
-                            appSetting.appName: TextSpan(
-                              text: appSetting.appName,
-                              style: theme.textTheme.displayMedium?.copyWith(
-                                color: theme.colorScheme.primary,
+    return NotificationListener<ScrollMetricsNotification>(
+      onNotification: (notification) {
+        Scrollable.ensureVisible(buttonKey.currentContext!);
+        return false;
+      },
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                horizontal: Utils.horizontalPadding(context),
+                vertical: 16,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Form(
+                    key: _formKey,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            appSetting.appIcon,
+                            height: 200,
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            localizations.welcome,
+                            style: theme.textTheme.displayMedium,
+                          ),
+                          AppRichText(
+                            sourceText: localizations
+                                .welcomeMessages(appSetting.appName),
+                            style: theme.textTheme.displayMedium,
+                            replaces: {
+                              appSetting.appName: TextSpan(
+                                text: appSetting.appName,
+                                style: theme.textTheme.displayMedium?.copyWith(
+                                  color: theme.colorScheme.primary,
+                                ),
                               ),
-                            ),
-                          },
-                        ),
-                        const SizedBox(height: 32),
-                        const UserNameTextField(),
-                        const SizedBox(height: 16),
-                        const PasswordTextField(),
-                        const SizedBox(height: 32),
-                        LoginButton(_formKey),
-                        const CreateAccountButton(),
-                      ],
+                            },
+                          ),
+                          const SizedBox(height: 32),
+                          const UserNameTextField(),
+                          const SizedBox(height: 16),
+                          const PasswordTextField(),
+                          const SizedBox(height: 32),
+                          LoginButton(key: buttonKey, _formKey),
+                          const CreateAccountButton(),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
