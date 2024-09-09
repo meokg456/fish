@@ -1,8 +1,10 @@
+import 'package:fish/app/router.dart';
 import 'package:fish/riverpods/sign_up.dart';
 import 'package:fish/widgets/button_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpButton extends ConsumerStatefulWidget {
   const SignUpButton(this.formKey, {super.key});
@@ -26,7 +28,13 @@ class _SignUpButtonState extends ConsumerState<SignUpButton> {
 
   void onTap() {
     if (widget.formKey.currentState?.validate() ?? false) {
-      ref.read(signUpProvider.notifier).signUp();
+      ref.read(signUpProvider.notifier).signUp().then((success) {
+        if (success) {
+          if (mounted) {
+            context.pop();
+          }
+        }
+      });
     }
   }
 

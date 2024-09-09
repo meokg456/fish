@@ -1,4 +1,5 @@
 import 'package:fish/app/router.dart';
+import 'package:fish/riverpods/authentication.dart';
 import 'package:fish/riverpods/login.dart';
 import 'package:fish/widgets/button_progress_indicator.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +27,15 @@ class _LoginButtonState extends ConsumerState<LoginButton> {
     super.didChangeDependencies();
   }
 
-  void onTap() async {
+  void onTap() {
     if (widget.formKey.currentState?.validate() ?? false) {
-      await ref.read(loginProvider.notifier).login();
-      if (mounted) {
-        context.pushReplacement(Routes.home);
-      }
+      ref.read(loginProvider.notifier).login().then((success) {
+        if (success) {
+          if (mounted) {
+            context.pushReplacement(Routes.home);
+          }
+        }
+      });
     }
   }
 

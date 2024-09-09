@@ -20,14 +20,16 @@ class Login extends _$Login {
     state = AsyncData(form);
   }
 
-  Future<void> login() async {
+  Future<bool> login() async {
     try {
       state = const AsyncLoading();
       final token = await _authenticationRepository.login(state.requireValue);
       ref.read(authenticationProvider.notifier).setToken(token);
       state = AsyncData(state.requireValue);
+      return true;
     } catch (error, stackTrace) {
       state = AsyncError(error, stackTrace);
+      return false;
     }
   }
 

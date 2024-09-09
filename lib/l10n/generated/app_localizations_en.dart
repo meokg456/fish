@@ -71,6 +71,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get invalidPassword => 'Invalid password';
 
   @override
+  String get incorrectPasswordMessages => 'Password is incorrect';
+
+  @override
+  String get accountNotExistMessages => 'Account is not existed';
+
+  @override
   String get invalidPasswordMessages => 'Enter a password between 6 and 50 characters';
 
   @override

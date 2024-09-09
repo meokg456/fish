@@ -26,6 +26,8 @@
   "usernameEmptyMessages": "You'll use this when you log in",
   "invalidUsername": "Invalid username",
   "invalidPassword": "Invalid password",
+  "incorrectPasswordMessages": "Password is incorrect",
+  "accountNotExistMessages": "Account is not existed",
   "invalidPasswordMessages": "Enter a password between 6 and 50 characters",
   "confirmPasswordDoesNotMatchMessages": "Confirm password doesn't match",
   "dateOfBirthEmptyMessages": "Enter your date of birth",

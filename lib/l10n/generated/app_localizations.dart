@@ -215,6 +215,18 @@ abstract class AppLocalizations {
   /// **'Invalid password'**
   String get invalidPassword;
 
+  /// No description provided for @incorrectPasswordMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is incorrect'**
+  String get incorrectPasswordMessages;
+
+  /// No description provided for @accountNotExistMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'Account is not existed'**
+  String get accountNotExistMessages;
+
   /// No description provided for @invalidPasswordMessages.
   ///
   /// In en, this message translates to:

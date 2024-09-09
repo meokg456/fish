@@ -19,13 +19,15 @@ class SignUp extends _$SignUp {
     state = AsyncData(form);
   }
 
-  Future<void> signUp() async {
+  Future<bool> signUp() async {
     try {
       state = const AsyncLoading();
       await _authenticationRepository.signUp(state.requireValue);
       state = AsyncData(state.requireValue);
+      return true;
     } catch (error, stackTrace) {
       state = AsyncError(error, stackTrace);
+      return false;
     }
   }
 

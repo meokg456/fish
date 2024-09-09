@@ -71,6 +71,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get invalidPassword => 'Mật khẩu không hợp lệ';
 
   @override
+  String get incorrectPasswordMessages => 'Mật khẩu không đúng';
+
+  @override
+  String get accountNotExistMessages => 'Tài khoản không tôn tại';
+
+  @override
   String get invalidPasswordMessages => 'Nhập 1 chuỗi có khoảng từ 6 đến 50 ký tự';
 
   @override

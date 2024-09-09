@@ -26,6 +26,8 @@
   "usernameEmptyMessages": "Bạn sẽ sử dụng tên đăng nhập để đăng nhập",
   "invalidUsername": "Tên đăng nhập không hợp lệ",
   "invalidPassword": "Mật khẩu không hợp lệ",
+  "incorrectPasswordMessages": "Mật khẩu không đúng",
+  "accountNotExistMessages": "Tài khoản không tôn tại",
   "invalidPasswordMessages": "Nhập 1 chuỗi có khoảng từ 6 đến 50 ký tự",
   "confirmPasswordDoesNotMatchMessages": "Xác nhận mật khẩu không đúng",
   "dateOfBirthWrongInfoMessages": "Có vẻ bạn đã nhập sai ngày sinh",
