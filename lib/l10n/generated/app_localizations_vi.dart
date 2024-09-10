@@ -50,6 +50,9 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
+  String get doNotHaveAccount => 'Chưa có tài khoản?';
+
+  @override
   String get accountExist => 'Tài khoản đã tồn tại';
 
   @override

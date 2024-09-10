@@ -31,12 +31,12 @@ class _CreateAccountButtonState extends ConsumerState<CreateAccountButton> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 54,
-      width: 240,
       child: TextButton(
         onPressed: onTap,
         style: FilledButton.styleFrom(
           textStyle: theme.textTheme.titleMedium
               ?.copyWith(fontWeight: FontWeight.bold),
+          overlayColor: Colors.transparent,
         ),
         child: Text(localizations.createNewAccount),
       ),

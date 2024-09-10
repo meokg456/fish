@@ -19,6 +19,7 @@
       }
     }
   },
+  "doNotHaveAccount": "Don't have an account?",
   "accountExist": "Account existed",
   "accountExistMessages": "Username is already registered.",
   "firstNameEmptyMessages": "What's your name?",

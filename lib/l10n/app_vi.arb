@@ -19,6 +19,7 @@
       }
     }
   },
+  "doNotHaveAccount": "Chưa có tài khoản?",
   "accountExist": "Tài khoản đã tồn tại",
   "accountExistMessages": "Tên đăng nhập đã được đăng ký.",
   "firstNameEmptyMessages": "Tên của bạn là gì?",

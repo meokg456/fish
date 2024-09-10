@@ -43,7 +43,7 @@ class _LoginButtonState extends ConsumerState<LoginButton> {
     final response = ref.watch(loginProvider);
     return SizedBox(
       height: 54,
-      width: 240,
+      width: double.infinity,
       child: FilledButton(
         onPressed: switch (response) {
           AsyncLoading() => null,

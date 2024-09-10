@@ -173,6 +173,12 @@ abstract class AppLocalizations {
   /// **'to {appName}'**
   String welcomeMessages(String appName);
 
+  /// No description provided for @doNotHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get doNotHaveAccount;
+
   /// No description provided for @accountExist.
   ///
   /// In en, this message translates to:

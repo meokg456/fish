@@ -8,6 +8,7 @@ import 'package:fish/utils/utils.dart';
 import 'package:fish/widgets/rich_text/app_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -32,6 +33,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final appSetting = ref.watch(appSettingProvider);
+    final size = MediaQuery.sizeOf(context);
     return NotificationListener<ScrollMetricsNotification>(
       onNotification: (notification) {
         Scrollable.ensureVisible(buttonKey.currentContext!);
@@ -39,59 +41,104 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       },
       child: Scaffold(
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                horizontal: Utils.horizontalPadding(context),
-                vertical: 16,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Form(
-                    key: _formKey,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            appSetting.appIcon,
-                            height: 200,
-                          ),
-                          const SizedBox(height: 16),
-                          Text(
-                            localizations.welcome,
-                            style: theme.textTheme.displayMedium,
-                          ),
-                          AppRichText(
-                            sourceText: localizations
-                                .welcomeMessages(appSetting.appName),
-                            style: theme.textTheme.displayMedium,
-                            replaces: {
-                              appSetting.appName: TextSpan(
-                                text: appSetting.appName,
-                                style: theme.textTheme.displayMedium?.copyWith(
-                                  color: theme.colorScheme.primary,
-                                ),
-                              ),
-                            },
-                          ),
-                          const SizedBox(height: 32),
-                          const UserNameTextField(),
-                          const SizedBox(height: 16),
-                          const PasswordTextField(),
-                          const SizedBox(height: 32),
-                          LoginButton(key: buttonKey, _formKey),
-                          const SizedBox(height: 16),
-                          const CreateAccountButton(),
-                        ],
+          child: Row(
+            children: [
+              if (size.width > 1080)
+                Expanded(
+                  child: Container(
+                    height: double.infinity,
+                    padding: const EdgeInsets.all(32),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(28),
+                      child: Image.asset(
+                        fit: BoxFit.fill,
+                        'assets/images/underwater.jpg',
                       ),
                     ),
                   ),
-                ],
+                ),
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: getValueForScreenType(
+                      context: context,
+                      mobile: 16,
+                      tablet: 96,
+                    ),
+                    vertical: 96,
+                  ),
+                  child: Column(
+                    children: [
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              appSetting.appIcon,
+                              height: 200,
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              localizations.welcome,
+                              style: theme.textTheme.displayMedium,
+                            ),
+                            AppRichText(
+                              sourceText: localizations
+                                  .welcomeMessages(appSetting.appName),
+                              style: theme.textTheme.displayMedium,
+                              replaces: {
+                                appSetting.appName: TextSpan(
+                                  text: appSetting.appName,
+                                  style:
+                                      theme.textTheme.displayMedium?.copyWith(
+                                    color: theme.colorScheme.primary,
+                                  ),
+                                ),
+                              },
+                            ),
+                            const SizedBox(height: 32),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                localizations.userName,
+                                style: theme.textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            const UserNameTextField(),
+                            const SizedBox(height: 16),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                localizations.password,
+                                style: theme.textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            const PasswordTextField(),
+                            const SizedBox(height: 32),
+                            LoginButton(key: buttonKey, _formKey),
+                            const SizedBox(height: 16),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  localizations.doNotHaveAccount,
+                                  style: theme.textTheme.titleMedium,
+                                ),
+                                const CreateAccountButton(),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),
