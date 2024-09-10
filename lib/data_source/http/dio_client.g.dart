@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_service.dart';
+part of 'dio_client.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postServiceHash() => r'6f6e5109a09a494254c437f69545f2874bb286bf';
+String _$dioClientHash() => r'fab6f95629cd49b0d70f18e436c93930ec21050a';
 
-/// See also [postService].
-@ProviderFor(postService)
-final postServiceProvider = AutoDisposeProvider<PostService>.internal(
-  postService,
-  name: r'postServiceProvider',
+/// See also [DioClient].
+@ProviderFor(DioClient)
+final dioClientProvider = NotifierProvider<DioClient, Dio>.internal(
+  DioClient.new,
+  name: r'dioClientProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$postServiceHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$dioClientHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef PostServiceRef = AutoDisposeProviderRef<PostService>;
+typedef _$DioClient = Notifier<Dio>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

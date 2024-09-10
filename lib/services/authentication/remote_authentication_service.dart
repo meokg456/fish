@@ -1,23 +1,26 @@
 import 'package:dio/dio.dart';
-import 'package:fish/dio_config/dio_config.dart';
+import 'package:fish/data_source/http/dio_client.dart';
 import 'package:fish/riverpods/forms/login_form.dart';
 import 'package:fish/riverpods/forms/sign_up_form.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'authentication_service.g.dart';
+part 'remote_authentication_service.g.dart';
 
 @riverpod
-AuthenticationService authenticationService(AuthenticationServiceRef ref) =>
-    DioAuthenticationService(ref.watch(dioClientProvider));
+RemoteAuthenticationService remoteAuthenticationService(
+  RemoteAuthenticationServiceRef ref,
+) =>
+    DioAuthenticationService(
+      ref.watch(dioClientProvider),
+    );
 
-abstract class AuthenticationService {
+abstract class RemoteAuthenticationService {
   Future<void> signUp(SignUpForm form);
   Future<String> login(LoginForm form);
 }
 
-class DioAuthenticationService implements AuthenticationService {
+class DioAuthenticationService implements RemoteAuthenticationService {
   final Dio _dio;
-
   DioAuthenticationService(this._dio);
 
   @override

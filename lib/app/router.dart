@@ -1,16 +1,22 @@
 import 'package:fish/screens/authentication/login/login_screen.dart';
 import 'package:fish/screens/authentication/sign_up/sign_up_screen.dart';
 import 'package:fish/screens/home_screen/home_screen.dart';
+import 'package:fish/screens/splash_screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class Routes {
-  static String login = '/';
+  static String splash = '/';
+  static String login = '/login';
   static String home = '/home';
   static String signUp = '/sign_up';
 }
 
 final router = GoRouter(
   routes: [
+    GoRoute(
+      path: Routes.splash,
+      builder: (context, state) => const SplashScreen(),
+    ),
     GoRoute(
       path: Routes.login,
       builder: (context, state) => const LoginScreen(),

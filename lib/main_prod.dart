@@ -1,7 +1,10 @@
+import 'package:fish/app/error_observer.dart';
 import 'package:fish/app/flavor_config.dart';
 import 'package:fish/app/flutter_social_app.dart';
+import 'package:fish/app/logging_observer.dart';
 import 'package:fish/prepare_run.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
   await prepareRun();
@@ -11,5 +14,10 @@ Future<void> main() async {
     values: FlavorValues(baseUrl: 'http://localhost:8080'),
   );
   // ignore: missing_provider_scope
-  runApp(const FlutterSocialApp());
+  runApp(
+    ProviderScope(
+      observers: [LoggingObserver(), ErrorObserver()],
+      child: const FlutterSocialApp(),
+    ),
+  );
 }

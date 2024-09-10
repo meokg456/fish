@@ -1,19 +1,19 @@
 import 'package:dio/dio.dart';
-import 'package:fish/dio_config/dio_config.dart';
+import 'package:fish/data_source/http/dio_client.dart';
 import 'package:fish/models/post.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'post_service.g.dart';
+part 'remote_post_service.g.dart';
 
 @riverpod
-PostService postService(PostServiceRef ref) =>
+RemotePostService remotePostService(RemotePostServiceRef ref) =>
     DioPostService(ref.watch(dioClientProvider));
 
-abstract class PostService {
+abstract class RemotePostService {
   Future<List<Post>> getPosts();
 }
 
-class DioPostService implements PostService {
+class DioPostService implements RemotePostService {
   final Dio _dio;
 
   DioPostService(this._dio);

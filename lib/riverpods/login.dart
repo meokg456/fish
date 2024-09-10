@@ -1,5 +1,6 @@
-import 'package:fish/dio_config/dio_config.dart';
+import 'package:fish/data_source/http/dio_client.dart';
 import 'package:fish/repositories/authentication_repository.dart';
+import 'package:fish/riverpods/authentication.dart';
 import 'package:fish/riverpods/enums/validate_errors.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fish/riverpods/forms/login_form.dart';
@@ -24,7 +25,7 @@ class Login extends _$Login {
     try {
       state = const AsyncLoading();
       final token = await _authenticationRepository.login(state.requireValue);
-      ref.read(dioClientProvider.notifier).setToken(token);
+      await ref.read(authenticationProvider.notifier).setToken(token);
       state = AsyncData(state.requireValue);
       return true;
     } catch (error, stackTrace) {

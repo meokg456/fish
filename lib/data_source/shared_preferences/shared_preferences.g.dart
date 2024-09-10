@@ -1,25 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_repository.dart';
+part of 'shared_preferences.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postRepositoryHash() => r'fa380d8a53a17860a5d43cf322c3f69535346ef9';
+String _$sharedPreferencesServiceHash() =>
+    r'ddf42231e2ac016825b2a3604e7f4cdc66e882a1';
 
-/// See also [postRepository].
-@ProviderFor(postRepository)
-final postRepositoryProvider = AutoDisposeProvider<PostRepository>.internal(
-  postRepository,
-  name: r'postRepositoryProvider',
+/// See also [SharedPreferencesService].
+@ProviderFor(SharedPreferencesService)
+final sharedPreferencesServiceProvider =
+    NotifierProvider<SharedPreferencesService, SharedPreferencesAsync>.internal(
+  SharedPreferencesService.new,
+  name: r'sharedPreferencesServiceProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$postRepositoryHash,
+      : _$sharedPreferencesServiceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef PostRepositoryRef = AutoDisposeProviderRef<PostRepository>;
+typedef _$SharedPreferencesService = Notifier<SharedPreferencesAsync>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

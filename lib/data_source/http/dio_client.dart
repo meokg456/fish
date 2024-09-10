@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:fish/app/flavor_config.dart';
-import 'package:fish/dio_config/dio_interceptor.dart';
+import 'package:fish/data_source/http/dio_interceptor.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:dio/dio.dart';
 
-part 'dio_config.g.dart';
+part 'dio_client.g.dart';
 
 @Riverpod(keepAlive: true)
 class DioClient extends _$DioClient {
