@@ -1,3 +1,4 @@
+import 'package:fish/gen/assets.gen.dart';
 import 'package:fish/models/app_setting.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -12,6 +13,6 @@ AppSetting appSetting(
 ) {
   return AppSetting(
     appName: packageInfo.appName,
-    appIcon: 'assets/icon/icon.png',
+    appIcon: Assets.icon.icon.keyName,
   );
 }

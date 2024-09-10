@@ -5,7 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
 
 class PasswordTextField extends ConsumerWidget {
-  const PasswordTextField({super.key});
+  const PasswordTextField({super.key, this.onSubmit, this.onTap});
+
+  final void Function()? onSubmit;
+  final void Function()? onTap;
 
   String? validate(AppLocalizations localizations, WidgetRef ref) {
     final error = ref.read(loginProvider.notifier).validatePassword();
@@ -25,6 +28,8 @@ class PasswordTextField extends ConsumerWidget {
             .read(loginProvider.notifier)
             .updateForm(form.requireValue.copyWith(password: value));
       },
+      onFieldSubmitted: (value) => onSubmit?.call(),
+      onTap: onTap,
       obscureText: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       textInputAction: TextInputAction.done,

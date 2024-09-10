@@ -1,15 +1,13 @@
-import 'package:fish/app/router.dart';
 import 'package:fish/riverpods/login.dart';
 import 'package:fish/widgets/loading/button_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginButton extends ConsumerStatefulWidget {
-  const LoginButton(this.formKey, {super.key});
+  const LoginButton({super.key, this.onSubmit});
 
-  final GlobalKey<FormState> formKey;
+  final void Function()? onSubmit;
 
   @override
   ConsumerState<LoginButton> createState() => _LoginButtonState();
@@ -26,18 +24,6 @@ class _LoginButtonState extends ConsumerState<LoginButton> {
     super.didChangeDependencies();
   }
 
-  void onTap() {
-    if (widget.formKey.currentState?.validate() ?? false) {
-      ref.read(loginProvider.notifier).login().then((success) {
-        if (success) {
-          if (mounted) {
-            context.pushReplacement(Routes.home);
-          }
-        }
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final response = ref.watch(loginProvider);
@@ -47,7 +33,7 @@ class _LoginButtonState extends ConsumerState<LoginButton> {
       child: FilledButton(
         onPressed: switch (response) {
           AsyncLoading() => null,
-          _ => onTap,
+          _ => widget.onSubmit,
         },
         style: FilledButton.styleFrom(textStyle: theme.textTheme.titleLarge),
         child: switch (response) {

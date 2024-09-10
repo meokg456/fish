@@ -38,13 +38,10 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(
-            horizontal: getValueForScreenType(
-              context: context,
-              mobile: 16,
-              tablet: 96,
-            ),
-            vertical: 96,
+          padding: getValueForScreenType(
+            context: context,
+            mobile: const EdgeInsets.all(16),
+            tablet: const EdgeInsets.all(96),
           ),
           child: SizedBox(
             width: double.infinity,

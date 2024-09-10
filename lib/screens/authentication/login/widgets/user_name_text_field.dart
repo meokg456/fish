@@ -5,7 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
 
 class UserNameTextField extends ConsumerWidget {
-  const UserNameTextField({super.key});
+  const UserNameTextField({super.key, this.onTap});
+
+  final void Function()? onTap;
 
   String? validate(AppLocalizations localizations, WidgetRef ref) {
     final error = ref.read(loginProvider.notifier).validateUsername();
@@ -25,6 +27,7 @@ class UserNameTextField extends ConsumerWidget {
             .read(loginProvider.notifier)
             .updateForm(form.requireValue.copyWith(username: value));
       },
+      onTap: onTap,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       textInputAction: TextInputAction.next,
       validator: (value) => validate(localizations, ref),
