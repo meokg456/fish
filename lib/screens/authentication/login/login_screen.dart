@@ -83,6 +83,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           const PasswordTextField(),
                           const SizedBox(height: 32),
                           LoginButton(key: buttonKey, _formKey),
+                          const SizedBox(height: 16),
                           const CreateAccountButton(),
                         ],
                       ),
