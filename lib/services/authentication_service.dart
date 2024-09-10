@@ -8,7 +8,7 @@ part 'authentication_service.g.dart';
 
 @riverpod
 AuthenticationService authenticationService(AuthenticationServiceRef ref) =>
-    DioAuthenticationService(ref.watch(dioProvider));
+    DioAuthenticationService(ref.watch(dioClientProvider));
 
 abstract class AuthenticationService {
   Future<void> signUp(SignUpForm form);

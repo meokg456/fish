@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class NotificationDialog extends StatelessWidget {
-  const NotificationDialog(
-      {super.key, required this.title, required this.content});
+  const NotificationDialog({
+    super.key,
+    required this.title,
+    required this.content,
+  });
 
   final String title;
   final String content;
@@ -12,13 +15,17 @@ class NotificationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context);
-    return AlertDialog(title: Text(title), content: Text(content), actions: [
-      TextButton(
-        onPressed: () {
-          context.pop();
-        },
-        child: Text(localization.ok),
-      ),
-    ]);
+    return AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: [
+        TextButton(
+          onPressed: () {
+            context.pop();
+          },
+          child: Text(localization.ok),
+        ),
+      ],
+    );
   }
 }

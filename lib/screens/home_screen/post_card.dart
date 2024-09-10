@@ -59,40 +59,36 @@ class PostCard extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextButton.icon(
-                    onPressed: () {
-                      // Handle button press
-                    },
-                    icon: const Icon(Icons.favorite_border, size: 24),
-                    label: const Text('Like', style: TextStyle(fontSize: 15)),
-                  ),
+          Row(
+            children: [
+              Expanded(
+                child: TextButton.icon(
+                  onPressed: () {
+                    // Handle button press
+                  },
+                  icon: const Icon(Icons.favorite_border, size: 24),
+                  label: const Text('Like', style: TextStyle(fontSize: 15)),
                 ),
-                Expanded(
-                  child: TextButton.icon(
-                    onPressed: () {
-                      // Handle button press
-                    },
-                    icon: const Icon(Icons.mode_comment_outlined, size: 24),
-                    label:
-                        const Text('Comment', style: TextStyle(fontSize: 15)),
-                  ),
+              ),
+              Expanded(
+                child: TextButton.icon(
+                  onPressed: () {
+                    // Handle button press
+                  },
+                  icon: const Icon(Icons.mode_comment_outlined, size: 24),
+                  label: const Text('Comment', style: TextStyle(fontSize: 15)),
                 ),
-                Expanded(
-                  child: TextButton.icon(
-                    onPressed: () {
-                      // Handle button press
-                    },
-                    icon: const Icon(Icons.share_outlined, size: 24),
-                    label: const Text('Share', style: TextStyle(fontSize: 15)),
-                  ),
+              ),
+              Expanded(
+                child: TextButton.icon(
+                  onPressed: () {
+                    // Handle button press
+                  },
+                  icon: const Icon(Icons.share_outlined, size: 24),
+                  label: const Text('Share', style: TextStyle(fontSize: 15)),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           const SizedBox(height: 16),
         ],

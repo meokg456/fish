@@ -6,19 +6,19 @@ part of 'dio_config.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dioHash() => r'4a39b0d5ccec0242be76461d25c858a4c4737b6a';
+String _$dioClientHash() => r'fab6f95629cd49b0d70f18e436c93930ec21050a';
 
-/// See also [dio].
-@ProviderFor(dio)
-final dioProvider = AutoDisposeProvider<Dio>.internal(
-  dio,
-  name: r'dioProvider',
+/// See also [DioClient].
+@ProviderFor(DioClient)
+final dioClientProvider = NotifierProvider<DioClient, Dio>.internal(
+  DioClient.new,
+  name: r'dioClientProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$dioHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$dioClientHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef DioRef = AutoDisposeProviderRef<Dio>;
+typedef _$DioClient = Notifier<Dio>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

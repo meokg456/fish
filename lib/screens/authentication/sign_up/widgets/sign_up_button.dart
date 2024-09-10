@@ -1,4 +1,3 @@
-import 'package:fish/app/router.dart';
 import 'package:fish/riverpods/sign_up.dart';
 import 'package:fish/widgets/dialog/notification_dialog.dart';
 import 'package:fish/widgets/loading/button_progress_indicator.dart';

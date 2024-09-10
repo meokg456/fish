@@ -4,7 +4,9 @@ import 'package:flutter/foundation.dart';
 class DioInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    debugPrint('REQUEST[${options.method}] => PATH: ${options.path}');
+    debugPrint(
+      'REQUEST[${options.method}] PATH: ${options.path} HEADER: ${options.headers}}',
+    );
     super.onRequest(options, handler);
   }
 

@@ -7,7 +7,7 @@ part 'post_service.g.dart';
 
 @riverpod
 PostService postService(PostServiceRef ref) =>
-    DioPostService(ref.watch(dioProvider));
+    DioPostService(ref.watch(dioClientProvider));
 
 abstract class PostService {
   Future<List<Post>> getPosts();
