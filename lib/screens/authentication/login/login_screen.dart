@@ -1,3 +1,4 @@
+import 'package:fish/app/scaffold_messenger_global.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/app_setting.dart';
 import 'package:fish/screens/authentication/login/widgets/create_account_button.dart';

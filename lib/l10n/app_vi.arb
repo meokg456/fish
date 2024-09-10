@@ -33,6 +33,8 @@
   "dateOfBirthWrongInfoMessages": "Có vẻ bạn đã nhập sai ngày sinh",
   "dateOfBirthEmptyMessages": "Hãy nhập ngày sinh của bạn",
   "genderEmptyMessages": "Giới tính của bạn là gì?",
+  "success": "Thành công",
+  "signUpSuccessfullyMessages": "Tài khoản của bạn đã được đăng ký thành công!",
   "gender": "Giới tính",
   "male": "Nam",
   "female": "Nữ",

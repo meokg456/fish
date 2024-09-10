@@ -1,5 +1,5 @@
 import 'package:fish/utils/utils.dart';
-import 'package:fish/widgets/all_type_scroll_behavior.dart';
+import 'package:fish/widgets/date_picker/all_type_scroll_behavior.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';

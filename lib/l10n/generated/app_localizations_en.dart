@@ -92,6 +92,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get genderEmptyMessages => 'What\'s your gender?';
 
   @override
+  String get success => 'Success';
+
+  @override
+  String get signUpSuccessfullyMessages => 'Your account registered successfully!';
+
+  @override
+  String get ok => 'OK';
+
+  @override
   String get gender => 'Gender';
 
   @override

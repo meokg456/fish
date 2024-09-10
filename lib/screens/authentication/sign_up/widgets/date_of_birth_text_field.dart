@@ -1,6 +1,6 @@
 import 'package:fish/riverpods/enums/validate_errors.dart';
 import 'package:fish/riverpods/sign_up.dart';
-import 'package:fish/widgets/app_cupertino_date_picker.dart';
+import 'package:fish/widgets/date_picker/app_cupertino_date_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

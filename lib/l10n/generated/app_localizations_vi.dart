@@ -92,6 +92,15 @@ class AppLocalizationsVi extends AppLocalizations {
   String get genderEmptyMessages => 'Giới tính của bạn là gì?';
 
   @override
+  String get success => 'Thành công';
+
+  @override
+  String get signUpSuccessfullyMessages => 'Tài khoản của bạn đã được đăng ký thành công!';
+
+  @override
+  String get ok => 'OK';
+
+  @override
   String get gender => 'Giới tính';
 
   @override

@@ -1,6 +1,7 @@
 import 'package:fish/app/router.dart';
 import 'package:fish/riverpods/sign_up.dart';
-import 'package:fish/widgets/button_progress_indicator.dart';
+import 'package:fish/widgets/dialog/notification_dialog.dart';
+import 'package:fish/widgets/loading/button_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
@@ -26,13 +27,25 @@ class _SignUpButtonState extends ConsumerState<SignUpButton> {
     super.didChangeDependencies();
   }
 
+  void showSuccessMessages() {
+    showDialog(
+      context: context,
+      builder: (context) => NotificationDialog(
+        title: localizations.success,
+        content: localizations.signUpSuccessfullyMessages,
+      ),
+    ).whenComplete(() {
+      if (mounted) {
+        context.pop();
+      }
+    });
+  }
+
   void onTap() {
     if (widget.formKey.currentState?.validate() ?? false) {
       ref.read(signUpProvider.notifier).signUp().then((success) {
         if (success) {
-          if (mounted) {
-            context.pop();
-          }
+          showSuccessMessages();
         }
       });
     }

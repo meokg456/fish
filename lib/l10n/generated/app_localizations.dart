@@ -257,6 +257,24 @@ abstract class AppLocalizations {
   /// **'What\'s your gender?'**
   String get genderEmptyMessages;
 
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
+
+  /// No description provided for @signUpSuccessfullyMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account registered successfully!'**
+  String get signUpSuccessfullyMessages;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
   /// No description provided for @gender.
   ///
   /// In en, this message translates to:
