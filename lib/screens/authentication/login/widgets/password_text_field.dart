@@ -26,7 +26,7 @@ class PasswordTextField extends ConsumerWidget {
         final form = ref.read(loginProvider);
         ref
             .read(loginProvider.notifier)
-            .updateForm(form.requireValue.copyWith(password: value));
+            .updateForm(form.copyWith(password: value));
       },
       onFieldSubmitted: (value) => onSubmit?.call(),
       onTap: onTap,

@@ -23,7 +23,7 @@ class FirstNameTextField extends ConsumerWidget {
         final form = ref.read(signUpProvider);
         ref
             .read(signUpProvider.notifier)
-            .updateForm(form.requireValue.copyWith(firstName: value));
+            .updateForm(form.copyWith(firstName: value));
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,
       textInputAction: TextInputAction.next,

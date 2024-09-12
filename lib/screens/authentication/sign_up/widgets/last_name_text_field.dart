@@ -23,7 +23,7 @@ class LastNameTextField extends ConsumerWidget {
         final form = ref.read(signUpProvider);
         ref
             .read(signUpProvider.notifier)
-            .updateForm(form.requireValue.copyWith(lastName: value));
+            .updateForm(form.copyWith(lastName: value));
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,
       textInputAction: TextInputAction.next,

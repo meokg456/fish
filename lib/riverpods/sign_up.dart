@@ -5,34 +5,28 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'sign_up.g.dart';
 
+const signUpSideEffectId = 'sign_up';
+
 @riverpod
 class SignUp extends _$SignUp {
   late final AuthenticationRepository _authenticationRepository =
       ref.watch(authenticationRepositoryProvider);
 
   @override
-  Future<SignUpForm> build() async {
+  SignUpForm build() {
     return SignUpForm();
   }
 
   void updateForm(SignUpForm form) {
-    state = AsyncData(form);
+    state = form;
   }
 
-  Future<bool> signUp() async {
-    try {
-      state = const AsyncLoading();
-      await _authenticationRepository.signUp(state.requireValue);
-      state = AsyncData(state.requireValue);
-      return true;
-    } catch (error, stackTrace) {
-      state = AsyncError(error, stackTrace);
-      return false;
-    }
+  Future<void> signUp() async {
+    await _authenticationRepository.signUp(state);
   }
 
   ValidateErrors validateFirstName() {
-    final value = state.value?.firstName ?? '';
+    final value = state.firstName;
     if (value.isEmpty) {
       return ValidateErrors.empty;
     }
@@ -40,7 +34,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateLastName() {
-    final value = state.value?.lastName ?? '';
+    final value = state.lastName;
     if (value.isEmpty) {
       return ValidateErrors.empty;
     }
@@ -48,7 +42,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateUsername() {
-    final value = state.value?.username ?? '';
+    final value = state.username;
     if (value.isEmpty) {
       return ValidateErrors.empty;
     }
@@ -56,7 +50,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validatePassword() {
-    final value = state.value?.password ?? '';
+    final value = state.password;
     if (value.length < 6 || value.length > 50) {
       return ValidateErrors.invalid;
     }
@@ -64,9 +58,8 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateConfirmPassword() {
-    final value = state.value?.confirmPassword ?? '';
-    final password =
-        ref.read(signUpProvider.select((it) => it.value?.password ?? ''));
+    final value = state.confirmPassword;
+    final password = ref.read(signUpProvider.select((it) => it.password));
     if (value != password) {
       return ValidateErrors.notMatch;
     }
@@ -74,7 +67,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateDateOfBirth() {
-    final value = state.value?.dateOfBirth;
+    final value = state.dateOfBirth;
     if (value == null) {
       return ValidateErrors.empty;
     }
@@ -85,7 +78,7 @@ class SignUp extends _$SignUp {
   }
 
   ValidateErrors validateGender() {
-    final value = state.value?.gender;
+    final value = state.gender;
     if (value == null) {
       return ValidateErrors.empty;
     }

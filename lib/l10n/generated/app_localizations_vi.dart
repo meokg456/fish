@@ -30,6 +30,18 @@ class AppLocalizationsVi extends AppLocalizations {
   String get close => 'Đóng';
 
   @override
+  String get home => 'Trang chủ';
+
+  @override
+  String get video => 'Video';
+
+  @override
+  String get chat => 'Tin nhắn';
+
+  @override
+  String get notification => 'Thông báo';
+
+  @override
   String get error => 'Lỗi';
 
   @override

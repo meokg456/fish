@@ -1,3 +1,4 @@
+import 'package:fish/riverpods/side_effect_performer.dart';
 import 'package:fish/riverpods/sign_up.dart';
 import 'package:fish/widgets/dialog/notification_dialog.dart';
 import 'package:fish/widgets/loading/button_progress_indicator.dart';
@@ -26,6 +27,17 @@ class _SignUpButtonState extends ConsumerState<SignUpButton> {
     super.didChangeDependencies();
   }
 
+  @override
+  void initState() {
+    super.initState();
+    ref.listenManual(sideEffectPerformerProvider(signUpSideEffectId),
+        (_, state) {
+      if (state is AsyncData) {
+        showSuccessMessages();
+      }
+    });
+  }
+
   void showSuccessMessages() {
     showDialog(
       context: context,
@@ -42,17 +54,15 @@ class _SignUpButtonState extends ConsumerState<SignUpButton> {
 
   void onTap() {
     if (widget.formKey.currentState?.validate() ?? false) {
-      ref.read(signUpProvider.notifier).signUp().then((success) {
-        if (success) {
-          showSuccessMessages();
-        }
-      });
+      ref
+          .read(sideEffectPerformerProvider(signUpSideEffectId).notifier)
+          .perform(ref.read(signUpProvider.notifier).signUp);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final response = ref.watch(signUpProvider);
+    final response = ref.watch(sideEffectPerformerProvider(signUpSideEffectId));
     return SizedBox(
       height: 36,
       width: 194,

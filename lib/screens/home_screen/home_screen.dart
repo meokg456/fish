@@ -1,9 +1,9 @@
-import 'package:fish/models/post.dart';
+import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/posts.dart';
-import 'package:fish/screens/home_screen/post_card.dart';
-import 'package:fish/utils/utils.dart';
+import 'package:fish/screens/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -13,10 +13,22 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
+  late AppLocalizations localizations;
+  late ThemeData theme;
+
+  @override
+  void didChangeDependencies() {
+    localizations = AppLocalizations.of(context);
+    theme = Theme.of(context);
+    super.didChangeDependencies();
+  }
+
   @override
   void initState() {
     super.initState();
-
+    Permission.photos.request().then((value) {
+      print(value);
+    });
     ref.listenManual(postsProvider, (_, value) {
       if (value.hasError) {}
     });
@@ -24,28 +36,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final AsyncValue<List<Post>> postsValue = ref.watch(postsProvider);
     return Scaffold(
-      body: SafeArea(
-        child: switch (postsValue) {
-          AsyncData(:final value) => ListView.separated(
-              padding: EdgeInsets.symmetric(
-                horizontal: Utils.horizontalPadding(context),
-                vertical: 16,
-              ),
-              itemCount: value.length,
-              itemBuilder: (context, index) => PostCard(
-                model: value[index],
-              ),
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(height: 16);
-              },
-            ),
-          AsyncError() => Container(),
-          _ => const Center(
-              child: CircularProgressIndicator(),
-            ),
-        },
+      body: const SafeArea(
+        child: HomeTab(),
+      ),
+      bottomNavigationBar: NavigationBar(
+        destinations: [
+          NavigationDestination(
+            icon: const Icon(Icons.home),
+            label: localizations.home,
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.ondemand_video),
+            label: localizations.video,
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.chat),
+            label: localizations.chat,
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.notifications_rounded),
+            label: localizations.notification,
+          ),
+        ],
       ),
     );
   }

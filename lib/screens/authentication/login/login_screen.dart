@@ -3,6 +3,7 @@ import 'package:fish/gen/assets.gen.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/app_setting.dart';
 import 'package:fish/riverpods/login.dart';
+import 'package:fish/riverpods/side_effect_performer.dart';
 import 'package:fish/screens/authentication/login/widgets/create_account_button.dart';
 import 'package:fish/screens/authentication/login/widgets/login_button.dart';
 import 'package:fish/screens/authentication/login/widgets/password_text_field.dart';
@@ -33,25 +34,33 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     super.didChangeDependencies();
   }
 
+  @override
+  void initState() {
+    super.initState();
+    ref.listenManual(sideEffectPerformerProvider(loginSideEffectId),
+        (_, state) {
+      if (state is AsyncData) {
+        context.pushReplacement(Routes.home);
+      }
+    });
+  }
+
   void ensureLoginButtonVisible() {
     Scrollable.ensureVisible(buttonKey.currentContext!);
   }
 
   void onSubmit() {
     if (_formKey.currentState?.validate() ?? false) {
-      ref.read(loginProvider.notifier).login().then((success) {
-        if (success) {
-          if (mounted) {
-            context.pushReplacement(Routes.home);
-          }
-        }
-      });
+      ref
+          .read(sideEffectPerformerProvider(loginSideEffectId).notifier)
+          .perform(ref.read(loginProvider.notifier).login);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final appSetting = ref.watch(appSettingProvider);
+    ref.watch(loginProvider);
     final size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: SafeArea(

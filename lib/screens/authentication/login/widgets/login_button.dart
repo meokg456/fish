@@ -1,4 +1,5 @@
 import 'package:fish/riverpods/login.dart';
+import 'package:fish/riverpods/side_effect_performer.dart';
 import 'package:fish/widgets/loading/button_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,7 +27,7 @@ class _LoginButtonState extends ConsumerState<LoginButton> {
 
   @override
   Widget build(BuildContext context) {
-    final response = ref.watch(loginProvider);
+    final response = ref.watch(sideEffectPerformerProvider(loginSideEffectId));
     return SizedBox(
       height: 54,
       width: double.infinity,

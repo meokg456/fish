@@ -1,4 +1,3 @@
-import 'package:fish/data_source/http/dio_client.dart';
 import 'package:fish/repositories/authentication_repository.dart';
 import 'package:fish/riverpods/authentication.dart';
 import 'package:fish/riverpods/enums/validate_errors.dart';
@@ -7,35 +6,29 @@ import 'package:fish/riverpods/forms/login_form.dart';
 
 part 'login.g.dart';
 
+const loginSideEffectId = 'login';
+
 @riverpod
 class Login extends _$Login {
   late final AuthenticationRepository _authenticationRepository =
       ref.watch(authenticationRepositoryProvider);
 
   @override
-  Future<LoginForm> build() async {
+  LoginForm build() {
     return LoginForm();
   }
 
   void updateForm(LoginForm form) {
-    state = AsyncData(form);
+    state = form;
   }
 
-  Future<bool> login() async {
-    try {
-      state = const AsyncLoading();
-      final token = await _authenticationRepository.login(state.requireValue);
-      await ref.read(authenticationProvider.notifier).setToken(token);
-      state = AsyncData(state.requireValue);
-      return true;
-    } catch (error, stackTrace) {
-      state = AsyncError(error, stackTrace);
-      return false;
-    }
+  Future<void> login() async {
+    final token = await _authenticationRepository.login(state);
+    await ref.read(authenticationProvider.notifier).setToken(token);
   }
 
   ValidateErrors validateUsername() {
-    final value = state.value?.username ?? '';
+    final value = state.username;
     if (value.length < 4 || value.length > 20) {
       return ValidateErrors.invalid;
     }
@@ -43,7 +36,7 @@ class Login extends _$Login {
   }
 
   ValidateErrors validatePassword() {
-    final value = state.value?.password ?? '';
+    final value = state.password;
     if (value.length < 6 || value.length > 50) {
       return ValidateErrors.invalid;
     }

@@ -1,24 +1,43 @@
 import 'package:fish/models/post.dart';
-import 'package:fish/services/post/remote_post_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'post_repository.g.dart';
 
 @riverpod
-PostRepository postRepository(PostRepositoryRef ref) =>
-    PostRepositoryImpl(ref.watch(remotePostServiceProvider));
+PostRepository postRepository(PostRepositoryRef ref) => DioPostRepository();
 
 abstract class PostRepository {
   Future<List<Post>> getPosts();
 }
 
-class PostRepositoryImpl implements PostRepository {
-  final RemotePostService _postService;
-
-  PostRepositoryImpl(this._postService);
+class DioPostRepository implements PostRepository {
+  DioPostRepository();
 
   @override
-  Future<List<Post>> getPosts() {
-    return _postService.getPosts();
+  Future<List<Post>> getPosts() async {
+    await Future.delayed(const Duration(seconds: 1));
+    return [
+      Post(
+        author: "Money D. Luffy",
+        avatarUrl:
+            "https://wallpapers.com/images/hd/one-piece-bruised-luffy-fpf-after-fight-k3l17o4moedwwjgo.jpg",
+        postAt: DateTime.now().subtract(const Duration(seconds: 100)),
+        content:
+            "The journey go to around the world. To find the treasure best. One Piece !!!",
+        imageUrl:
+            "https://wallpapers.com/images/hd/one-piece-pictures-bjm9tdff9yzguoup.jpg",
+        likes: 120,
+      ),
+      Post(
+        author: "Dung",
+        avatarUrl:
+            "https://wallpapers.com/images/hd/one-piece-bruised-luffy-fpf-after-fight-k3l17o4moedwwjgo.jpg",
+        postAt: DateTime.now().subtract(const Duration(seconds: 100)),
+        content: "This is new content",
+        imageUrl:
+            "https://wallpapers.com/images/hd/one-piece-pictures-bjm9tdff9yzguoup.jpg",
+        likes: 120,
+      ),
+    ];
   }
 }

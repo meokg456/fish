@@ -31,7 +31,7 @@ class GenderTextField extends ConsumerWidget {
       ),
       child: DropdownButtonFormField<Gender>(
         hint: Text(localizations.gender),
-        value: ref.watch(signUpProvider.select((it) => it.value?.gender)),
+        value: ref.watch(signUpProvider.select((it) => it.gender)),
         icon: const Icon(Icons.male),
         focusColor: Colors.transparent,
         items: Gender.values
@@ -48,7 +48,7 @@ class GenderTextField extends ConsumerWidget {
           final form = ref.read(signUpProvider);
           ref
               .read(signUpProvider.notifier)
-              .updateForm(form.requireValue.copyWith(gender: value));
+              .updateForm(form.copyWith(gender: value));
         },
       ),
     );

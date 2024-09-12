@@ -1,26 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'remote_post_service.dart';
+part of 'token_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$remotePostServiceHash() => r'56bb5d12c71da571fed8c93918f490f32c84e92e';
+String _$tokenRepositoryHash() => r'43c17001d47f393755b41de55dd12400bfbf9e06';
 
-/// See also [remotePostService].
-@ProviderFor(remotePostService)
-final remotePostServiceProvider =
-    AutoDisposeProvider<RemotePostService>.internal(
-  remotePostService,
-  name: r'remotePostServiceProvider',
+/// See also [tokenRepository].
+@ProviderFor(tokenRepository)
+final tokenRepositoryProvider = AutoDisposeProvider<TokenRepository>.internal(
+  tokenRepository,
+  name: r'tokenRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$remotePostServiceHash,
+      : _$tokenRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef RemotePostServiceRef = AutoDisposeProviderRef<RemotePostService>;
+typedef TokenRepositoryRef = AutoDisposeProviderRef<TokenRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

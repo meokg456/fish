@@ -1,3 +1,4 @@
+import 'package:fish/riverpods/sign_up.dart';
 import 'package:fish/screens/authentication/sign_up/widgets/confirm_password_text_field.dart';
 import 'package:fish/screens/authentication/sign_up/widgets/date_of_birth_text_field.dart';
 import 'package:fish/screens/authentication/sign_up/widgets/first_name_text_field.dart';
@@ -6,7 +7,6 @@ import 'package:fish/screens/authentication/sign_up/widgets/last_name_text_field
 import 'package:fish/screens/authentication/sign_up/widgets/password_text_field.dart';
 import 'package:fish/screens/authentication/sign_up/widgets/sign_up_button.dart';
 import 'package:fish/screens/authentication/sign_up/widgets/user_name_text_field.dart';
-import 'package:fish/utils/utils.dart';
 import 'package:fish/widgets/rich_text/app_rich_text.dart';
 import 'package:fish/widgets/rich_text/hyperlink_span.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +35,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(signUpProvider);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -69,7 +70,8 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                                       localizations.signUp,
                                       style: theme.textTheme.headlineLarge
                                           ?.copyWith(
-                                              fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                     const SizedBox(height: 4),
                                     Text(

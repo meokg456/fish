@@ -23,7 +23,7 @@ class ConfirmPasswordTextField extends ConsumerWidget {
         final form = ref.read(signUpProvider);
         ref
             .read(signUpProvider.notifier)
-            .updateForm(form.requireValue.copyWith(confirmPassword: value));
+            .updateForm(form.copyWith(confirmPassword: value));
       },
       obscureText: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,

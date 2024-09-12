@@ -1,8 +1,14 @@
 enum Flavor { dev, prod }
 
 class FlavorValues {
-  FlavorValues({required this.baseUrl, this.version, this.name});
+  FlavorValues({
+    required this.baseUrl,
+    required this.uploadUrl,
+    this.version,
+    this.name,
+  });
   final String baseUrl;
+  final String uploadUrl;
   final String? version;
   final String? name;
 

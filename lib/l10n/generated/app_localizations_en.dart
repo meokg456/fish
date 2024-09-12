@@ -30,6 +30,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get close => 'Close';
 
   @override
+  String get home => 'Home';
+
+  @override
+  String get video => 'Video';
+
+  @override
+  String get chat => 'Chat';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
   String get error => 'Error';
 
   @override

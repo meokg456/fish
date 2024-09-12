@@ -36,10 +36,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           const Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 160),
+              padding: EdgeInsets.only(bottom: 160),
               child: CircularProgressIndicator(),
             ),
-          )
+          ),
         ],
       ),
     );

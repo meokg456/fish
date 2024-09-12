@@ -25,7 +25,7 @@ class UserNameTextField extends ConsumerWidget {
         final form = ref.read(loginProvider);
         ref
             .read(loginProvider.notifier)
-            .updateForm(form.requireValue.copyWith(username: value));
+            .updateForm(form.copyWith(username: value));
       },
       onTap: onTap,
       autovalidateMode: AutovalidateMode.onUserInteraction,
