@@ -36,10 +36,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get video => 'Video';
 
   @override
-  String get chat => 'Tin nhắn';
+  String get messages => 'Messages';
 
   @override
   String get notification => 'Thông báo';
+
+  @override
+  String get setting => 'Cài đặt';
 
   @override
   String get error => 'Lỗi';
@@ -161,4 +164,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get confirmPassword => 'Nhập lại mật khẩu';
+
+  @override
+  String get postHint => 'Bạn đang nghĩ gì?';
 }

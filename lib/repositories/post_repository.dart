@@ -1,4 +1,4 @@
-import 'package:fish/models/post.dart';
+import 'package:fish/models/post_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'post_repository.g.dart';
@@ -7,17 +7,17 @@ part 'post_repository.g.dart';
 PostRepository postRepository(PostRepositoryRef ref) => DioPostRepository();
 
 abstract class PostRepository {
-  Future<List<Post>> getPosts();
+  Future<List<PostModel>> getPosts();
 }
 
 class DioPostRepository implements PostRepository {
   DioPostRepository();
 
   @override
-  Future<List<Post>> getPosts() async {
+  Future<List<PostModel>> getPosts() async {
     await Future.delayed(const Duration(seconds: 1));
     return [
-      Post(
+      PostModel(
         author: "Money D. Luffy",
         avatarUrl:
             "https://wallpapers.com/images/hd/one-piece-bruised-luffy-fpf-after-fight-k3l17o4moedwwjgo.jpg",
@@ -28,7 +28,7 @@ class DioPostRepository implements PostRepository {
             "https://wallpapers.com/images/hd/one-piece-pictures-bjm9tdff9yzguoup.jpg",
         likes: 120,
       ),
-      Post(
+      PostModel(
         author: "Dung",
         avatarUrl:
             "https://wallpapers.com/images/hd/one-piece-bruised-luffy-fpf-after-fight-k3l17o4moedwwjgo.jpg",

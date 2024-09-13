@@ -1,4 +1,4 @@
-import 'package:fish/riverpods/sign_up.dart';
+import 'package:fish/riverpods/authentication/sign_up.dart';
 import 'package:fish/screens/authentication/sign_up/widgets/confirm_password_text_field.dart';
 import 'package:fish/screens/authentication/sign_up/widgets/date_of_birth_text_field.dart';
 import 'package:fish/screens/authentication/sign_up/widgets/first_name_text_field.dart';

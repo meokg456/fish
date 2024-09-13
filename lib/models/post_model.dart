@@ -1,18 +1,19 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'post.freezed.dart';
-part 'post.g.dart';
+part 'post_model.freezed.dart';
+part 'post_model.g.dart';
 
 @freezed
-class Post with _$Post {
-  factory Post({
+class PostModel with _$PostModel {
+  factory PostModel({
     @Default("") String author,
     required String avatarUrl,
     required DateTime postAt,
     @Default("") String content,
     required String imageUrl,
     @Default(0) int likes,
-  }) = _Post;
+  }) = _PostModel;
 
-  factory Post.fromJson(Map<String, Object?> json) => _$PostFromJson(json);
+  factory PostModel.fromJson(Map<String, Object?> json) =>
+      _$PostModelFromJson(json);
 }

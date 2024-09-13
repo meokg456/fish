@@ -36,10 +36,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get video => 'Video';
 
   @override
-  String get chat => 'Chat';
+  String get messages => 'Messages';
 
   @override
   String get notification => 'Notification';
+
+  @override
+  String get setting => 'Setting';
 
   @override
   String get error => 'Error';
@@ -161,4 +164,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirmPassword => 'Confirm password';
+
+  @override
+  String get postHint => 'What\'s on your mind?';
 }

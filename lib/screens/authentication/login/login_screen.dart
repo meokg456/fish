@@ -1,8 +1,8 @@
 import 'package:fish/app/router.dart';
 import 'package:fish/gen/assets.gen.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
-import 'package:fish/riverpods/app_setting.dart';
-import 'package:fish/riverpods/login.dart';
+import 'package:fish/riverpods/app/app_setting.dart';
+import 'package:fish/riverpods/authentication/login.dart';
 import 'package:fish/riverpods/side_effect_performer.dart';
 import 'package:fish/screens/authentication/login/widgets/create_account_button.dart';
 import 'package:fish/screens/authentication/login/widgets/login_button.dart';

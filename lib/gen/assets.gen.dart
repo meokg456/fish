@@ -22,12 +22,16 @@ class $AssetsIconGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/default_avatar.png
+  AssetGenImage get defaultAvatar =>
+      const AssetGenImage('assets/images/default_avatar.png');
+
   /// File path: assets/images/underwater.jpg
   AssetGenImage get underwater =>
       const AssetGenImage('assets/images/underwater.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [underwater];
+  List<AssetGenImage> get values => [defaultAvatar, underwater];
 }
 
 class Assets {

@@ -149,17 +149,23 @@ abstract class AppLocalizations {
   /// **'Video'**
   String get video;
 
-  /// No description provided for @chat.
+  /// No description provided for @messages.
   ///
   /// In en, this message translates to:
-  /// **'Chat'**
-  String get chat;
+  /// **'Messages'**
+  String get messages;
 
   /// No description provided for @notification.
   ///
   /// In en, this message translates to:
   /// **'Notification'**
   String get notification;
+
+  /// No description provided for @setting.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting'**
+  String get setting;
 
   /// No description provided for @error.
   ///
@@ -388,6 +394,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm password'**
   String get confirmPassword;
+
+  /// No description provided for @postHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s on your mind?'**
+  String get postHint;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

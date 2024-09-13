@@ -1,6 +1,6 @@
-import 'package:fish/models/post.dart';
+import 'package:fish/models/post_model.dart';
 import 'package:fish/repositories/post_repository.dart';
-import 'package:fish/riverpods/posts.dart';
+import 'package:fish/riverpods/post/posts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -19,14 +19,14 @@ void main() {
 
   test('Test $postsProvider success has data', () async {
     final response = [
-      Post(
+      PostModel(
         author: 'Author 1',
         content: 'Content 1',
         avatarUrl: '',
         postAt: DateTime.now(),
         imageUrl: '',
       ),
-      Post(
+      PostModel(
         author: 'Author 2',
         content: 'Content 2',
         avatarUrl: '',

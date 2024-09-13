@@ -1,6 +1,8 @@
-import 'package:fish/models/post.dart';
-import 'package:fish/riverpods/posts.dart';
-import 'package:fish/screens/home_screen/tabs/home_tab/post_card.dart';
+import 'package:fish/models/post_model.dart';
+import 'package:fish/riverpods/app/app_setting.dart';
+import 'package:fish/riverpods/post/posts.dart';
+import 'package:fish/screens/home_screen/tabs/home_tab/widgets/create_post.dart';
+import 'package:fish/screens/home_screen/tabs/home_tab/widgets/post_card.dart';
 import 'package:fish/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,28 +15,69 @@ class HomeTab extends ConsumerStatefulWidget {
 }
 
 class _HomeTabState extends ConsumerState<HomeTab> {
+  late ThemeData theme;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    theme = Theme.of(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final AsyncValue<List<Post>> postsValue = ref.watch(postsProvider);
+    final AsyncValue<List<PostModel>> postsValue = ref.watch(postsProvider);
+    final appName =
+        ref.watch(appSettingProvider.select((setting) => setting.appName));
 
-    return switch (postsValue) {
-      AsyncData(:final value) => ListView.separated(
-          padding: EdgeInsets.symmetric(
-            horizontal: Utils.horizontalPadding(context),
-            vertical: 16,
+    final postsWidget = <Widget>[];
+
+    if (postsValue is AsyncData) {
+      final posts = postsValue.requireValue;
+      for (int i = 0; i < posts.length; i++) {
+        postsWidget.add(PostCard(model: posts[i]));
+        postsWidget.add(const SizedBox(height: 8));
+      }
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.account_circle_outlined),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
           ),
-          itemCount: value.length,
-          itemBuilder: (context, index) => PostCard(
-            model: value[index],
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_outlined),
           ),
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(height: 16);
+        ],
+      ),
+      body: ListView(
+        padding: EdgeInsets.symmetric(
+          horizontal: Utils.horizontalPadding(context),
+        ),
+        children: [
+          Text(
+            appName,
+            style: theme.textTheme.headlineSmall
+                ?.copyWith(color: theme.colorScheme.primary),
+          ),
+          const SizedBox(height: 24),
+          const CreatePost(),
+          const SizedBox(height: 8),
+          if (postsValue is AsyncData) ...postsWidget,
+          switch (postsValue) {
+            AsyncLoading() => const Center(
+                child: CircularProgressIndicator(),
+              ),
+            _ => Container(),
           },
-        ),
-      AsyncError() => Container(),
-      _ => const Center(
-          child: CircularProgressIndicator(),
-        ),
-    };
+        ],
+      ),
+    );
   }
 }

@@ -1,11 +1,11 @@
-import 'package:fish/models/post.dart';
+import 'package:fish/models/post_model.dart';
 import 'package:fish/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
   const PostCard({super.key, required this.model});
 
-  final Post model;
+  final PostModel model;
 
   @override
   Widget build(BuildContext context) {

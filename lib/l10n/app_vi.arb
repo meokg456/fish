@@ -10,6 +10,7 @@
   "video": "Video",
   "chat": "Tin nhắn",
   "notification": "Thông báo",
+  "setting": "Cài đặt",
   "error": "Lỗi",
   "createNewAccount": "Tạo tài khoản",
   "password": "Mật khẩu",
@@ -62,5 +63,6 @@
   },
   "dateOfBirth": "Ngày sinh",
   "newPassword": "Mật khẩu mới",
-  "confirmPassword": "Nhập lại mật khẩu"
+  "confirmPassword": "Nhập lại mật khẩu",
+  "postHint": "Bạn đang nghĩ gì?"
 }

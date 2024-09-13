@@ -1,5 +1,5 @@
 import 'package:fish/riverpods/side_effect_performer.dart';
-import 'package:fish/riverpods/sign_up.dart';
+import 'package:fish/riverpods/authentication/sign_up.dart';
 import 'package:fish/widgets/dialog/notification_dialog.dart';
 import 'package:fish/widgets/loading/button_progress_indicator.dart';
 import 'package:flutter/material.dart';

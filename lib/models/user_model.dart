@@ -1,12 +1,12 @@
 import 'package:fish/models/enums/gender.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user.freezed.dart';
-part 'user.g.dart';
+part 'user_model.freezed.dart';
+part 'user_model.g.dart';
 
 @freezed
-class User with _$User {
-  factory User({
+class UserModel with _$UserModel {
+  factory UserModel({
     required int id,
     required String nickName,
     @Default('') String avatarUrl,
@@ -15,7 +15,8 @@ class User with _$User {
     @Default([]) List<int> friends,
     @Default([]) List<int> inviters,
     @Default([]) List<int> request,
-  }) = _User;
+  }) = _UserModel;
 
-  factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
+  factory UserModel.fromJson(Map<String, Object?> json) =>
+      _$UserModelFromJson(json);
 }

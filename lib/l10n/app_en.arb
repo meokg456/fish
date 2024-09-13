@@ -8,8 +8,9 @@
   "close": "Close",
   "home": "Home",
   "video": "Video",
-  "chat": "Chat",
+  "messages": "Messages",
   "notification": "Notification",
+  "setting": "Setting",
   "error": "Error",
   "createNewAccount": "Create new account",
   "password": "Password",
@@ -63,5 +64,6 @@
     }
   },
   "newPassword": "New password",
-  "confirmPassword": "Confirm password"
+  "confirmPassword": "Confirm password",
+  "postHint": "What's on your mind?"
 }

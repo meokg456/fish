@@ -1,6 +1,6 @@
 import 'package:fish/app/router.dart';
-import 'package:fish/riverpods/app_setting.dart';
-import 'package:fish/riverpods/authentication.dart';
+import 'package:fish/riverpods/app/app_setting.dart';
+import 'package:fish/riverpods/authentication/token.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -16,8 +16,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    ref.listenManual(authenticationProvider, (_, authorized) {
-      context.go(authorized.requireValue ? Routes.home : Routes.login);
+    ref.listenManual(tokenProvider, (_, authorized) {
+      context.go(authorized.value != null ? Routes.home : Routes.login);
     });
   }
 

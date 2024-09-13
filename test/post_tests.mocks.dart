@@ -5,7 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:fish/models/post.dart' as _i4;
+import 'package:fish/models/post_model.dart' as _i4;
 import 'package:fish/repositories/post_repository.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -27,13 +27,13 @@ import 'package:mockito/mockito.dart' as _i1;
 /// See the documentation for Mockito's code generation for more information.
 class MockPostRepository extends _i1.Mock implements _i2.PostRepository {
   @override
-  _i3.Future<List<_i4.Post>> getPosts() => (super.noSuchMethod(
+  _i3.Future<List<_i4.PostModel>> getPosts() => (super.noSuchMethod(
         Invocation.method(
           #getPosts,
           [],
         ),
-        returnValue: _i3.Future<List<_i4.Post>>.value(<_i4.Post>[]),
+        returnValue: _i3.Future<List<_i4.PostModel>>.value(<_i4.PostModel>[]),
         returnValueForMissingStub:
-            _i3.Future<List<_i4.Post>>.value(<_i4.Post>[]),
-      ) as _i3.Future<List<_i4.Post>>);
+            _i3.Future<List<_i4.PostModel>>.value(<_i4.PostModel>[]),
+      ) as _i3.Future<List<_i4.PostModel>>);
 }

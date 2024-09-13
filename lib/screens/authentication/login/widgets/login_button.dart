@@ -1,4 +1,4 @@
-import 'package:fish/riverpods/login.dart';
+import 'package:fish/riverpods/authentication/login.dart';
 import 'package:fish/riverpods/side_effect_performer.dart';
 import 'package:fish/widgets/loading/button_progress_indicator.dart';
 import 'package:flutter/material.dart';
