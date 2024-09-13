@@ -65,5 +65,13 @@
   },
   "newPassword": "New password",
   "confirmPassword": "Confirm password",
-  "postHint": "What's on your mind?"
+  "postHint": "What's on your mind?",
+  "welcomeUser": "Welcome back! {userName}",
+  "@welcomeUser": {
+    "placeholders": {
+      "userName": {
+        "type": "String"
+      }
+    }
+  }
 }

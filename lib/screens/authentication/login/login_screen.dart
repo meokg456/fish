@@ -60,7 +60,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final appSetting = ref.watch(appSettingProvider);
-    ref.watch(loginProvider);
     final size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: SafeArea(

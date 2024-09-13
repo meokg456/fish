@@ -7,11 +7,10 @@ part 'user_model.g.dart';
 @freezed
 class UserModel with _$UserModel {
   factory UserModel({
-    required int id,
     required String nickName,
     @Default('') String avatarUrl,
-    required DateTime dateOrBirth,
-    required Gender gender,
+    required DateTime dateOfBirth,
+    @JsonKey(name: 'sex', fromJson: genderFromJson) required Gender gender,
     @Default([]) List<int> friends,
     @Default([]) List<int> inviters,
     @Default([]) List<int> request,

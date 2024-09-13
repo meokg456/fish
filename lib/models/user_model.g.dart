@@ -8,11 +8,10 @@ part of 'user_model.dart';
 
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
-      id: (json['id'] as num).toInt(),
       nickName: json['nickName'] as String,
       avatarUrl: json['avatarUrl'] as String? ?? '',
-      dateOrBirth: DateTime.parse(json['dateOrBirth'] as String),
-      gender: $enumDecode(_$GenderEnumMap, json['gender']),
+      dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
+      gender: genderFromJson(json['sex'] as String),
       friends: (json['friends'] as List<dynamic>?)
               ?.map((e) => (e as num).toInt())
               .toList() ??
@@ -29,11 +28,10 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'nickName': instance.nickName,
       'avatarUrl': instance.avatarUrl,
-      'dateOrBirth': instance.dateOrBirth.toIso8601String(),
-      'gender': _$GenderEnumMap[instance.gender]!,
+      'dateOfBirth': instance.dateOfBirth.toIso8601String(),
+      'sex': _$GenderEnumMap[instance.gender]!,
       'friends': instance.friends,
       'inviters': instance.inviters,
       'request': instance.request,

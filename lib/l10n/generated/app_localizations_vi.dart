@@ -167,4 +167,9 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get postHint => 'Bạn đang nghĩ gì?';
+
+  @override
+  String welcomeUser(String userName) {
+    return 'Chào mừng trở lại! $userName';
+  }
 }

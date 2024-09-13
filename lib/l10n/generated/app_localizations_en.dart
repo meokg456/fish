@@ -167,4 +167,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get postHint => 'What\'s on your mind?';
+
+  @override
+  String welcomeUser(String userName) {
+    return 'Welcome back! $userName';
+  }
 }

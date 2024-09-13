@@ -6,7 +6,7 @@ part of 'navigation_index.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$navigationIndexHash() => r'928efeed7106e0b31b29921d92b5018315bc7d2b';
+String _$navigationIndexHash() => r'6ef7d77f1d0d39a44ab4708136db5bcc980c1acf';
 
 /// Copied from Dart SDK
 class _SystemHash {

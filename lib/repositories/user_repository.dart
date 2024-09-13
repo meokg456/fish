@@ -14,7 +14,7 @@ UserRepository userRepository(
     );
 
 abstract class UserRepository {
-  Future<UserModel> getUserInfo(String userId);
+  Future<UserModel> getUserInfo();
 }
 
 class DioUserRepository implements UserRepository {
@@ -23,8 +23,8 @@ class DioUserRepository implements UserRepository {
   DioUserRepository(this._dio);
 
   @override
-  Future<UserModel> getUserInfo(String userId) async {
-    final response = await _dio.get('/user-manager/user-info/$userId');
+  Future<UserModel> getUserInfo() async {
+    final response = await _dio.get('/user-manager/user-info');
     final body = response.data as Map<String, dynamic>;
     final user = UserModel.fromJson(body['data']);
     return user;

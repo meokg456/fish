@@ -400,6 +400,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'What\'s on your mind?'**
   String get postHint;
+
+  /// No description provided for @welcomeUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back! {userName}'**
+  String welcomeUser(String userName);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

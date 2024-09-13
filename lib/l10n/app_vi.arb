@@ -64,5 +64,13 @@
   "dateOfBirth": "Ngày sinh",
   "newPassword": "Mật khẩu mới",
   "confirmPassword": "Nhập lại mật khẩu",
-  "postHint": "Bạn đang nghĩ gì?"
+  "postHint": "Bạn đang nghĩ gì?",
+  "welcomeUser": "Chào mừng trở lại! {userName}",
+  "@welcomeUser": {
+    "placeholders": {
+      "userName": {
+        "type": "String"
+      }
+    }
+  }
 }

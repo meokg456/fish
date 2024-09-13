@@ -20,10 +20,10 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  int get id => throw _privateConstructorUsedError;
   String get nickName => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
-  DateTime get dateOrBirth => throw _privateConstructorUsedError;
+  DateTime get dateOfBirth => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sex', fromJson: genderFromJson)
   Gender get gender => throw _privateConstructorUsedError;
   List<int> get friends => throw _privateConstructorUsedError;
   List<int> get inviters => throw _privateConstructorUsedError;
@@ -45,11 +45,10 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {int id,
-      String nickName,
+      {String nickName,
       String avatarUrl,
-      DateTime dateOrBirth,
-      Gender gender,
+      DateTime dateOfBirth,
+      @JsonKey(name: 'sex', fromJson: genderFromJson) Gender gender,
       List<int> friends,
       List<int> inviters,
       List<int> request});
@@ -70,20 +69,15 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? nickName = null,
     Object? avatarUrl = null,
-    Object? dateOrBirth = null,
+    Object? dateOfBirth = null,
     Object? gender = null,
     Object? friends = null,
     Object? inviters = null,
     Object? request = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       nickName: null == nickName
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
@@ -92,9 +86,9 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      dateOrBirth: null == dateOrBirth
-          ? _value.dateOrBirth
-          : dateOrBirth // ignore: cast_nullable_to_non_nullable
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime,
       gender: null == gender
           ? _value.gender
@@ -125,11 +119,10 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      String nickName,
+      {String nickName,
       String avatarUrl,
-      DateTime dateOrBirth,
-      Gender gender,
+      DateTime dateOfBirth,
+      @JsonKey(name: 'sex', fromJson: genderFromJson) Gender gender,
       List<int> friends,
       List<int> inviters,
       List<int> request});
@@ -148,20 +141,15 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? nickName = null,
     Object? avatarUrl = null,
-    Object? dateOrBirth = null,
+    Object? dateOfBirth = null,
     Object? gender = null,
     Object? friends = null,
     Object? inviters = null,
     Object? request = null,
   }) {
     return _then(_$UserModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       nickName: null == nickName
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
@@ -170,9 +158,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      dateOrBirth: null == dateOrBirth
-          ? _value.dateOrBirth
-          : dateOrBirth // ignore: cast_nullable_to_non_nullable
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime,
       gender: null == gender
           ? _value.gender
@@ -198,11 +186,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
   _$UserModelImpl(
-      {required this.id,
-      required this.nickName,
+      {required this.nickName,
       this.avatarUrl = '',
-      required this.dateOrBirth,
-      required this.gender,
+      required this.dateOfBirth,
+      @JsonKey(name: 'sex', fromJson: genderFromJson) required this.gender,
       final List<int> friends = const [],
       final List<int> inviters = const [],
       final List<int> request = const []})
@@ -214,15 +201,14 @@ class _$UserModelImpl implements _UserModel {
       _$$UserModelImplFromJson(json);
 
   @override
-  final int id;
-  @override
   final String nickName;
   @override
   @JsonKey()
   final String avatarUrl;
   @override
-  final DateTime dateOrBirth;
+  final DateTime dateOfBirth;
   @override
+  @JsonKey(name: 'sex', fromJson: genderFromJson)
   final Gender gender;
   final List<int> _friends;
   @override
@@ -253,7 +239,7 @@ class _$UserModelImpl implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, nickName: $nickName, avatarUrl: $avatarUrl, dateOrBirth: $dateOrBirth, gender: $gender, friends: $friends, inviters: $inviters, request: $request)';
+    return 'UserModel(nickName: $nickName, avatarUrl: $avatarUrl, dateOfBirth: $dateOfBirth, gender: $gender, friends: $friends, inviters: $inviters, request: $request)';
   }
 
   @override
@@ -261,13 +247,12 @@ class _$UserModelImpl implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.nickName, nickName) ||
                 other.nickName == nickName) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
-            (identical(other.dateOrBirth, dateOrBirth) ||
-                other.dateOrBirth == dateOrBirth) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             const DeepCollectionEquality().equals(other._friends, _friends) &&
             const DeepCollectionEquality().equals(other._inviters, _inviters) &&
@@ -278,10 +263,9 @@ class _$UserModelImpl implements _UserModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
       nickName,
       avatarUrl,
-      dateOrBirth,
+      dateOfBirth,
       gender,
       const DeepCollectionEquality().hash(_friends),
       const DeepCollectionEquality().hash(_inviters),
@@ -305,10 +289,10 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   factory _UserModel(
-      {required final int id,
-      required final String nickName,
+      {required final String nickName,
       final String avatarUrl,
-      required final DateTime dateOrBirth,
+      required final DateTime dateOfBirth,
+      @JsonKey(name: 'sex', fromJson: genderFromJson)
       required final Gender gender,
       final List<int> friends,
       final List<int> inviters,
@@ -318,14 +302,13 @@ abstract class _UserModel implements UserModel {
       _$UserModelImpl.fromJson;
 
   @override
-  int get id;
-  @override
   String get nickName;
   @override
   String get avatarUrl;
   @override
-  DateTime get dateOrBirth;
+  DateTime get dateOfBirth;
   @override
+  @JsonKey(name: 'sex', fromJson: genderFromJson)
   Gender get gender;
   @override
   List<int> get friends;

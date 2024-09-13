@@ -1,5 +1,6 @@
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/app/navigation_index.dart';
+import 'package:fish/riverpods/user/user.dart';
 import 'package:fish/screens/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,6 +23,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     localizations = AppLocalizations.of(context);
     theme = Theme.of(context);
     super.didChangeDependencies();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ref.listenManual(userProvider, (_, userModel) {
+      if (userModel is AsyncData) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              localizations.welcomeUser(userModel.requireValue.nickName),
+            ),
+          ),
+        );
+      }
+    });
   }
 
   @override
