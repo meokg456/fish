@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/file/picked_files.dart';
 import 'package:fish/screens/create_post/widgets/uploading_image.dart';
@@ -32,7 +34,9 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
     final imagePicker = ImagePicker();
     if (isGrant) {
       final files = await imagePicker.pickMultiImage();
-      await Future.delayed(const Duration(milliseconds: 1000));
+      await Future.wait(
+        files.map((file) => precacheImage(FileImage(File(file.path)), context)),
+      );
 
       ref
           .read(pickedFilesProvider.notifier)
