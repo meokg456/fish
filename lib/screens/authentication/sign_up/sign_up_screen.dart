@@ -35,6 +35,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(signUpProvider);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

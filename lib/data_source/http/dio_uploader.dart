@@ -14,9 +14,6 @@ class DioUploaderClient extends _$DioUploaderClient {
     final dio = Dio();
     dio.options.baseUrl = FlavorConfig.instance.values.uploadUrl;
     dio.interceptors.add(DioInterceptor());
-    dio.options.headers = {
-      HttpHeaders.contentTypeHeader: ContentType.json.value,
-    };
     return dio;
   }
 

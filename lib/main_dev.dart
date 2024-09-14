@@ -16,8 +16,8 @@ void main() async {
   String uploadHost = 'http://localhost:9200';
 
   if (!kIsWeb && Platform.isAndroid) {
-    host = 'http://10.0.2.2:8080';
-    uploadHost = 'http://10.0.2.2:9200';
+    host = 'http://10.0.3.2:8080';
+    uploadHost = 'http://10.0.3.2:9200';
   }
 
   FlavorConfig(

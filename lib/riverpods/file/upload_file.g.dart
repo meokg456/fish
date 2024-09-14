@@ -6,7 +6,7 @@ part of 'upload_file.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$uploadFileHash() => r'734247ee5524f9a46a979d392a18fbc03a63a928';
+String _$uploadFileHash() => r'57c586c744862e61851aeabf8e51978c4bc11830';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$UploadFile
-    extends BuildlessAutoDisposeStreamNotifier<Progress> {
+    extends BuildlessAutoDisposeStreamNotifier<RequestProgressModel> {
   late final String filePath;
 
-  Stream<Progress> build(
+  Stream<RequestProgressModel> build(
     String filePath,
   );
 }
@@ -43,7 +43,7 @@ abstract class _$UploadFile
 const uploadFileProvider = UploadFileFamily();
 
 /// See also [UploadFile].
-class UploadFileFamily extends Family<AsyncValue<Progress>> {
+class UploadFileFamily extends Family<AsyncValue<RequestProgressModel>> {
   /// See also [UploadFile].
   const UploadFileFamily();
 
@@ -81,8 +81,8 @@ class UploadFileFamily extends Family<AsyncValue<Progress>> {
 }
 
 /// See also [UploadFile].
-class UploadFileProvider
-    extends AutoDisposeStreamNotifierProviderImpl<UploadFile, Progress> {
+class UploadFileProvider extends AutoDisposeStreamNotifierProviderImpl<
+    UploadFile, RequestProgressModel> {
   /// See also [UploadFile].
   UploadFileProvider(
     String filePath,
@@ -113,7 +113,7 @@ class UploadFileProvider
   final String filePath;
 
   @override
-  Stream<Progress> runNotifierBuild(
+  Stream<RequestProgressModel> runNotifierBuild(
     covariant UploadFile notifier,
   ) {
     return notifier.build(
@@ -138,7 +138,7 @@ class UploadFileProvider
   }
 
   @override
-  AutoDisposeStreamNotifierProviderElement<UploadFile, Progress>
+  AutoDisposeStreamNotifierProviderElement<UploadFile, RequestProgressModel>
       createElement() {
     return _UploadFileProviderElement(this);
   }
@@ -157,14 +157,15 @@ class UploadFileProvider
   }
 }
 
-mixin UploadFileRef on AutoDisposeStreamNotifierProviderRef<Progress> {
+mixin UploadFileRef
+    on AutoDisposeStreamNotifierProviderRef<RequestProgressModel> {
   /// The parameter `filePath` of this provider.
   String get filePath;
 }
 
 class _UploadFileProviderElement
-    extends AutoDisposeStreamNotifierProviderElement<UploadFile, Progress>
-    with UploadFileRef {
+    extends AutoDisposeStreamNotifierProviderElement<UploadFile,
+        RequestProgressModel> with UploadFileRef {
   _UploadFileProviderElement(super.provider);
 
   @override

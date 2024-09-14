@@ -1,7 +1,12 @@
+import 'dart:isolate';
+
+import 'package:fish/riverpods/file/upload_file.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoggingObserver extends ProviderObserver {
+  final excludeProvider = [UploadFileProvider];
+
   @override
   void didAddProvider(
     ProviderBase<Object?> provider,
@@ -26,6 +31,9 @@ class LoggingObserver extends ProviderObserver {
     Object? newValue,
     ProviderContainer container,
   ) {
+    if (excludeProvider.contains(provider.runtimeType)) {
+      return;
+    }
     debugPrint('Provider $provider updated');
     debugPrint('Provider $provider previousValue: $previousValue');
     debugPrint('Provider $provider newValue: $newValue');
