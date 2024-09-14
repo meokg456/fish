@@ -1,11 +1,10 @@
-import 'dart:isolate';
-
 import 'package:fish/riverpods/file/upload_file.dart';
+import 'package:fish/riverpods/file/upload_file_progress.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoggingObserver extends ProviderObserver {
-  final excludeProvider = [UploadFileProvider];
+  final excludeProvider = [uploadFileProgressProvider.runtimeType];
 
   @override
   void didAddProvider(

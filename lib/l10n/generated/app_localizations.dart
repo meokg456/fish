@@ -406,6 +406,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Welcome back! {userName}'**
   String welcomeUser(String userName);
+
+  /// No description provided for @createPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Create post'**
+  String get createPost;
+
+  /// No description provided for @post.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get post;
+
+  /// No description provided for @photoVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo/Video'**
+  String get photoVideo;
+
+  /// No description provided for @public.
+  ///
+  /// In en, this message translates to:
+  /// **'Public'**
+  String get public;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

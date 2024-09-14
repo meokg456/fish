@@ -72,5 +72,9 @@
         "type": "String"
       }
     }
-  }
+  },
+  "createPost": "Tạo bài viết",
+  "post": "Đăng",
+  "photoVideo": "Ảnh/Video",
+  "public": "Công khai"
 }

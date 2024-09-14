@@ -1,17 +1,24 @@
+import 'package:dio/dio.dart';
+import 'package:fish/data_source/http/dio_client.dart';
 import 'package:fish/models/post_model.dart';
+import 'package:fish/riverpods/forms/post_form.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'post_repository.g.dart';
 
 @riverpod
-PostRepository postRepository(PostRepositoryRef ref) => DioPostRepository();
+PostRepository postRepository(PostRepositoryRef ref) => DioPostRepository(
+      ref.watch(dioClientProvider),
+    );
 
 abstract class PostRepository {
   Future<List<PostModel>> getPosts();
+  Future<void> createPost(PostForm form);
 }
 
 class DioPostRepository implements PostRepository {
-  DioPostRepository();
+  final Dio _dio;
+  DioPostRepository(this._dio);
 
   @override
   Future<List<PostModel>> getPosts() async {
@@ -39,5 +46,11 @@ class DioPostRepository implements PostRepository {
         likes: 120,
       ),
     ];
+  }
+
+  @override
+  Future<void> createPost(PostForm form) async {
+    final data = form.toJson();
+    await _dio.post('/social-service/new-post', data: data);
   }
 }

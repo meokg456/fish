@@ -1,13 +1,14 @@
-import 'dart:io';
-
+import 'package:fish/gen/assets.gen.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
-import 'package:fish/riverpods/file/picked_files.dart';
+import 'package:fish/riverpods/file/picked_file.dart';
+import 'package:fish/riverpods/post/create_post.dart';
+import 'package:fish/riverpods/user/user.dart';
+import 'package:fish/screens/create_post/widgets/post_button.dart';
+import 'package:fish/screens/create_post/widgets/upload_image_menu_button.dart';
 import 'package:fish/screens/create_post/widgets/uploading_image.dart';
-import 'package:fish/utils/permission_handler.dart';
+import 'package:fish/screens/create_post/widgets/content_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class CreatePostScreen extends ConsumerStatefulWidget {
   const CreatePostScreen({super.key});
@@ -27,45 +28,89 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
     super.didChangeDependencies();
   }
 
-  Future<void> onTap() async {
-    final isGrant = await PermissionHandler.request(
-      Permission.photos,
-    );
-    final imagePicker = ImagePicker();
-    if (isGrant) {
-      final files = await imagePicker.pickMultiImage();
-      await Future.wait(
-        files.map((file) => precacheImage(FileImage(File(file.path)), context)),
-      );
-
-      ref
-          .read(pickedFilesProvider.notifier)
-          .addFiles(files.map((file) => file.path).toList());
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final pickedFiles = ref.watch(pickedFilesProvider);
-    ;
+    ref.watch(createPostProvider);
+    final file = ref.watch(pickedFileProvider);
+    final user = ref.watch(userProvider);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: const CloseButton(),
+        title: Text(
+          localizations.createPost,
+          style: theme.textTheme.headlineSmall
+              ?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        actions: const [PostButton()],
+      ),
       body: SingleChildScrollView(
-          child: Column(
-        children: [
-          Wrap(
-            children: pickedFiles
-                .map(
-                  (file) => UploadingImage(file),
-                )
-                .toList(),
-          ),
-          FilledButton(
-            onPressed: onTap,
-            child: Text('Upload image'),
-          ),
-        ],
-      )),
+        child: Column(
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                radius: 24,
+                backgroundImage:
+                    AssetImage(Assets.images.defaultAvatar.keyName),
+              ),
+              title: Text(
+                user.requireValue.nickName,
+                style: theme.textTheme.titleMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(localizations.public),
+            ),
+            const ContentTextField(),
+            const SizedBox(height: 32),
+            if (file != null) UploadingImage(file),
+          ],
+        ),
+      ),
+      bottomSheet: LayoutBuilder(
+        builder: (context, constraint) {
+          final minSize = 96 / constraint.maxHeight;
+          return DraggableScrollableSheet(
+            minChildSize: minSize,
+            maxChildSize: 0.9,
+            initialChildSize: 0.4,
+            snap: true,
+            snapSizes: [minSize, 0.4, 0.9],
+            expand: false,
+            builder: (context, scrollController) {
+              return Container(
+                decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceContainerLow,
+                    boxShadow: [
+                      BoxShadow(
+                        color: theme.colorScheme.shadow.withOpacity(0.32),
+                        blurRadius: 8,
+                      ),
+                    ],
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(28))),
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  controller: scrollController,
+                  children: [
+                    Align(
+                      child: Container(
+                        height: 4,
+                        width: 32,
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.outline,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    const UploadImageMenuButton(),
+                  ],
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

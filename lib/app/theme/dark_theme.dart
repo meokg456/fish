@@ -1,18 +1,16 @@
 import 'package:fish/app/theme/app_custom_theme.dart';
 import 'package:flutter/material.dart';
 
-var darkTheme = ThemeData(
-  brightness: Brightness.dark,
-  colorScheme: ColorScheme.fromSeed(
+ThemeData setupDarkTheme() {
+  final colorScheme =
+      ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: seedColor);
+  return ThemeData(
     brightness: Brightness.dark,
-    seedColor: seedColor,
-  ),
-  buttonTheme: ButtonThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: seedColor,
-      brightness: Brightness.dark,
+    colorScheme: colorScheme,
+    buttonTheme: ButtonThemeData(
+      colorScheme: colorScheme,
     ),
-  ),
-  textTheme: textTheme,
-  inputDecorationTheme: inputDecorationTheme,
-);
+    textTheme: textTheme,
+    inputDecorationTheme: inputDecorationTheme,
+  );
+}

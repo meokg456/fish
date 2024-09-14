@@ -172,4 +172,16 @@ class AppLocalizationsVi extends AppLocalizations {
   String welcomeUser(String userName) {
     return 'Chào mừng trở lại! $userName';
   }
+
+  @override
+  String get createPost => 'Tạo bài viết';
+
+  @override
+  String get post => 'Đăng';
+
+  @override
+  String get photoVideo => 'Ảnh/Video';
+
+  @override
+  String get public => 'Công khai';
 }

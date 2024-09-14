@@ -9,7 +9,7 @@ class User extends _$User {
   late final UserRepository _userRepository = ref.watch(userRepositoryProvider);
 
   @override
-  Future<UserModel> build() async {
-    return await _userRepository.getUserInfo();
+  Future<UserModel> build() {
+    return _userRepository.getUserInfo();
   }
 }

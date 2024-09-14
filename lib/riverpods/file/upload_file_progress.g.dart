@@ -1,25 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_repository.dart';
+part of 'upload_file_progress.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postRepositoryHash() => r'cb4b973438295dfc54ba847bf2c512f5cb0a013c';
+String _$uploadFileProgressHash() =>
+    r'762e4c0013987a536cdcc89692e1b00d684fba7a';
 
-/// See also [postRepository].
-@ProviderFor(postRepository)
-final postRepositoryProvider = AutoDisposeProvider<PostRepository>.internal(
-  postRepository,
-  name: r'postRepositoryProvider',
+/// See also [UploadFileProgress].
+@ProviderFor(UploadFileProgress)
+final uploadFileProgressProvider = AutoDisposeStreamNotifierProvider<
+    UploadFileProgress, RequestProgressModel>.internal(
+  UploadFileProgress.new,
+  name: r'uploadFileProgressProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$postRepositoryHash,
+      : _$uploadFileProgressHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef PostRepositoryRef = AutoDisposeProviderRef<PostRepository>;
+typedef _$UploadFileProgress = AutoDisposeStreamNotifier<RequestProgressModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

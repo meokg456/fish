@@ -172,4 +172,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String welcomeUser(String userName) {
     return 'Welcome back! $userName';
   }
+
+  @override
+  String get createPost => 'Create post';
+
+  @override
+  String get post => 'Share';
+
+  @override
+  String get photoVideo => 'Photo/Video';
+
+  @override
+  String get public => 'Public';
 }

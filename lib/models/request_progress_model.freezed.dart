@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'upload_file_model.dart';
+part of 'request_progress_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RequestProgressModel {
   int get current => throw _privateConstructorUsedError;
   int get total => throw _privateConstructorUsedError;
-  dynamic get data => throw _privateConstructorUsedError;
 
   /// Create a copy of RequestProgressModel
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +32,7 @@ abstract class $RequestProgressModelCopyWith<$Res> {
           $Res Function(RequestProgressModel) then) =
       _$RequestProgressModelCopyWithImpl<$Res, RequestProgressModel>;
   @useResult
-  $Res call({int current, int total, dynamic data});
+  $Res call({int current, int total});
 }
 
 /// @nodoc
@@ -54,7 +53,6 @@ class _$RequestProgressModelCopyWithImpl<$Res,
   $Res call({
     Object? current = null,
     Object? total = null,
-    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       current: null == current
@@ -65,10 +63,6 @@ class _$RequestProgressModelCopyWithImpl<$Res,
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ) as $Val);
   }
 }
@@ -81,7 +75,7 @@ abstract class _$$RequestProgressModelImplCopyWith<$Res>
       __$$RequestProgressModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int current, int total, dynamic data});
+  $Res call({int current, int total});
 }
 
 /// @nodoc
@@ -99,7 +93,6 @@ class __$$RequestProgressModelImplCopyWithImpl<$Res>
   $Res call({
     Object? current = null,
     Object? total = null,
-    Object? data = freezed,
   }) {
     return _then(_$RequestProgressModelImpl(
       current: null == current
@@ -110,10 +103,6 @@ class __$$RequestProgressModelImplCopyWithImpl<$Res>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ));
   }
 }
@@ -121,7 +110,7 @@ class __$$RequestProgressModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RequestProgressModelImpl implements _RequestProgressModel {
-  _$RequestProgressModelImpl({this.current = 0, this.total = 0, this.data});
+  _$RequestProgressModelImpl({this.current = 0, this.total = 0});
 
   @override
   @JsonKey()
@@ -129,12 +118,10 @@ class _$RequestProgressModelImpl implements _RequestProgressModel {
   @override
   @JsonKey()
   final int total;
-  @override
-  final dynamic data;
 
   @override
   String toString() {
-    return 'RequestProgressModel(current: $current, total: $total, data: $data)';
+    return 'RequestProgressModel(current: $current, total: $total)';
   }
 
   @override
@@ -143,13 +130,11 @@ class _$RequestProgressModelImpl implements _RequestProgressModel {
         (other.runtimeType == runtimeType &&
             other is _$RequestProgressModelImpl &&
             (identical(other.current, current) || other.current == current) &&
-            (identical(other.total, total) || other.total == total) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.total, total) || other.total == total));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, current, total, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, current, total);
 
   /// Create a copy of RequestProgressModel
   /// with the given fields replaced by the non-null parameter values.
@@ -163,17 +148,13 @@ class _$RequestProgressModelImpl implements _RequestProgressModel {
 }
 
 abstract class _RequestProgressModel implements RequestProgressModel {
-  factory _RequestProgressModel(
-      {final int current,
-      final int total,
-      final dynamic data}) = _$RequestProgressModelImpl;
+  factory _RequestProgressModel({final int current, final int total}) =
+      _$RequestProgressModelImpl;
 
   @override
   int get current;
   @override
   int get total;
-  @override
-  dynamic get data;
 
   /// Create a copy of RequestProgressModel
   /// with the given fields replaced by the non-null parameter values.

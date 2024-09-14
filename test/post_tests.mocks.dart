@@ -7,6 +7,7 @@ import 'dart:async' as _i3;
 
 import 'package:fish/models/post_model.dart' as _i4;
 import 'package:fish/repositories/post_repository.dart' as _i2;
+import 'package:fish/riverpods/forms/post_form.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -36,4 +37,14 @@ class MockPostRepository extends _i1.Mock implements _i2.PostRepository {
         returnValueForMissingStub:
             _i3.Future<List<_i4.PostModel>>.value(<_i4.PostModel>[]),
       ) as _i3.Future<List<_i4.PostModel>>);
+
+  @override
+  _i3.Future<void> createPost(_i5.PostForm? form) => (super.noSuchMethod(
+        Invocation.method(
+          #createPost,
+          [form],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 }

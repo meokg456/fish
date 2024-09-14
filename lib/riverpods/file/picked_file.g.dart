@@ -1,24 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'picked_file.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userHash() => r'f0c162c38d3e671830af42faab877c7a66f4fdc2';
+String _$pickedFileHash() => r'6ec7a613116a7a792e9fa3ef49f701b9bc418209';
 
-/// See also [User].
-@ProviderFor(User)
-final userProvider = AutoDisposeAsyncNotifierProvider<User, UserModel>.internal(
-  User.new,
-  name: r'userProvider',
+/// See also [PickedFile].
+@ProviderFor(PickedFile)
+final pickedFileProvider =
+    AutoDisposeNotifierProvider<PickedFile, String?>.internal(
+  PickedFile.new,
+  name: r'pickedFileProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$userHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$pickedFileHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$User = AutoDisposeAsyncNotifier<UserModel>;
+typedef _$PickedFile = AutoDisposeNotifier<String?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

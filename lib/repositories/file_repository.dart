@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:isolate';
 import 'package:fish/data_source/http/dio_uploader.dart';
-import 'package:fish/models/upload_file_model.dart';
+import 'package:fish/models/request_progress_model.dart';
 import 'package:mime/mime.dart';
 
 import 'package:dio/dio.dart';
@@ -19,7 +19,8 @@ FileRepository fileRepository(
     );
 
 abstract class FileRepository {
-  Stream<RequestProgressModel> uploadFile(String filePath);
+  Future<String> uploadFile(String filePath);
+  Stream<RequestProgressModel> getUploadFileProgress();
 }
 
 class DioFileRepository implements FileRepository {
@@ -27,12 +28,12 @@ class DioFileRepository implements FileRepository {
 
   DioFileRepository(this._dio);
 
-  Future<void> _uploadInBackground(
-    String filePath,
-    StreamController<RequestProgressModel> streamController,
-  ) async {
+  final streamController = StreamController<RequestProgressModel>();
+
+  Future<String> _uploadInBackground(String filePath) async {
     final receivePort = ReceivePort();
     await Isolate.spawn(_uploadFile, receivePort.sendPort);
+    final completer = Completer<String>();
 
     receivePort.listen((data) {
       if (data is SendPort) {
@@ -42,10 +43,14 @@ class DioFileRepository implements FileRepository {
       if (data is RequestProgressModel) {
         streamController.add(data);
       }
+      if (data is String) {
+        completer.complete(data);
+      }
       if (data is Exception) {
         streamController.addError(data);
       }
     });
+    return await completer.future;
   }
 
   Future<void> _uploadFile(SendPort sendPort) async {
@@ -66,20 +71,19 @@ class DioFileRepository implements FileRepository {
           sendPort.send(RequestProgressModel(current: sent, total: total));
         },
       );
-      sendPort.send(
-        RequestProgressModel(current: 1, total: 1, data: response.data),
-      );
+      sendPort.send(response.data['data']['url']);
     } catch (error) {
       sendPort.send(error);
     }
   }
 
   @override
-  Stream<RequestProgressModel> uploadFile(String filePath) {
-    final streamController = StreamController<RequestProgressModel>();
+  Future<String> uploadFile(String filePath) {
+    return _uploadInBackground(filePath);
+  }
 
-    _uploadInBackground(filePath, streamController);
-
+  @override
+  Stream<RequestProgressModel> getUploadFileProgress() {
     return streamController.stream;
   }
 }

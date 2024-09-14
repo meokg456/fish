@@ -7,9 +7,21 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 class FlutterSocialApp extends StatelessWidget {
   const FlutterSocialApp({super.key});
+  ThemeData customizeTheme(ThemeData theme) {
+    return theme.copyWith(
+      inputDecorationTheme: theme.inputDecorationTheme.copyWith(
+        hintStyle: theme.textTheme.bodyLarge?.copyWith(
+          color: theme.textTheme.bodyLarge?.color?.withOpacity(0.5),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final lightTheme = customizeTheme(setupLightTheme());
+    final darkTheme = customizeTheme(setupDarkTheme());
+
     return MaterialApp.router(
       title: 'Fish',
       localizationsDelegates: const [

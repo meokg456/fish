@@ -73,5 +73,9 @@
         "type": "String"
       }
     }
-  }
+  },
+  "createPost": "Create post",
+  "post": "Share",
+  "photoVideo": "Photo/Video",
+  "public": "Public"
 }
