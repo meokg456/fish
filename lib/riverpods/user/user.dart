@@ -1,4 +1,4 @@
-import 'package:fish/models/user_model.dart';
+import 'package:fish/models/domain/user_model.dart';
 import 'package:fish/repositories/user_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

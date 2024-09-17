@@ -1,4 +1,4 @@
-import 'package:fish/models/post_model.dart';
+import 'package:fish/models/domain/post_model.dart';
 import 'package:fish/repositories/post_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -9,7 +9,7 @@ class Posts extends _$Posts {
   late final PostRepository _postRepository = ref.watch(postRepositoryProvider);
 
   @override
-  Future<List<PostModel>> build() {
-    return _postRepository.getPosts();
+  Future<List<PostModel>> build(int page) {
+    return _postRepository.getPosts(page);
   }
 }

@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:fish/app/flavor_config.dart';
 import 'package:fish/data_source/http/dio_client.dart';
-import 'package:fish/models/post_model.dart';
+import 'package:fish/models/domain/post_model.dart';
+import 'package:fish/models/pagination_model.dart';
 import 'package:fish/riverpods/forms/post_form.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -15,7 +16,7 @@ PostRepository postRepository(PostRepositoryRef ref) => DioPostRepository(
     );
 
 abstract class PostRepository {
-  Future<List<PostModel>> getPosts();
+  Future<List<PostModel>> getPosts(int page);
   Future<void> createPost(PostForm form);
 }
 
@@ -24,8 +25,8 @@ class DioPostRepository implements PostRepository {
   DioPostRepository(this._dio);
 
   @override
-  Future<List<PostModel>> getPosts() async {
-    final response = await _dio.get('/social-service/my-post-list');
+  Future<List<PostModel>> getPosts(int page) async {
+    final response = await _dio.get('/social-service/post-list?page=$page');
     final postData = response.data['list'] as List<dynamic>;
     final postModels =
         postData.map((post) => PostModel.fromJson(post)).toList();

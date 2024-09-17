@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:fish/gen/assets.gen.dart';
-import 'package:fish/models/post_model.dart';
+import 'package:fish/models/domain/post_model.dart';
 import 'package:fish/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';

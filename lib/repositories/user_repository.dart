@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:fish/data_source/http/dio_client.dart';
-import 'package:fish/models/user_model.dart';
+import 'package:fish/models/domain/user_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_repository.g.dart';

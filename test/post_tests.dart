@@ -1,4 +1,4 @@
-import 'package:fish/models/post_model.dart';
+import 'package:fish/models/domain/post_model.dart';
 import 'package:fish/repositories/post_repository.dart';
 import 'package:fish/riverpods/post/posts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,11 +37,11 @@ void main() {
       ),
     ];
 
-    when(mockRepository.getPosts()).thenAnswer((_) async => response);
+    when(mockRepository.getPosts(1)).thenAnswer((_) async => response);
 
     addTearDown(container.dispose);
     await expectLater(
-      container.read(postsProvider.future),
+      container.read(postsProvider(1).future),
       completion(response),
     );
   });
