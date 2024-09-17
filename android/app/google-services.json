@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "938096570655",
+    "project_id": "fish-31d73",
+    "storage_bucket": "fish-31d73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938096570655:android:f8468409c266017578402a",
+        "android_client_info": {
+          "package_name": "com.swordfish.fish"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuPnjRUSbabPqV9dYH_VhapIWn_hY_9iM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
