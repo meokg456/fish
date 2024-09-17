@@ -12,8 +12,8 @@ Future<void> main() async {
   FlavorConfig(
     flavor: Flavor.dev,
     values: FlavorValues(
-      baseUrl: 'http://localhost:8080',
-      uploadUrl: 'http://localhost:9200',
+      baseUrl: 'http://192.168.1.100:8080',
+      uploadUrl: 'http://192.168.1.100:9200',
     ),
   );
   // ignore: missing_provider_scope
