@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -31,8 +31,8 @@ jobs:
       - name: Build android
         run: flutter build apk --target lib/main_dev.dart
 
-      - name: Build ios
-        run: flutter build ios --release --no-codesign --target lib/main_dev.dart
+#      - name: Build ios
+#        run: flutter build ios --release --no-codesign --target lib/main_dev.dart
 
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
