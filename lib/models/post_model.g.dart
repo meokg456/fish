@@ -8,20 +8,22 @@ part of 'post_model.dart';
 
 _$PostModelImpl _$$PostModelImplFromJson(Map<String, dynamic> json) =>
     _$PostModelImpl(
-      author: json['author'] as String? ?? "",
-      avatarUrl: json['avatarUrl'] as String,
-      postAt: DateTime.parse(json['postAt'] as String),
+      id: (json['postId'] as num).toInt(),
+      author: json['authorName'] as String? ?? "",
+      avatarUrl: json['authorAvatar'] as String,
+      postAt: DateTime.parse(json['createTime'] as String),
       content: json['content'] as String? ?? "",
-      imageUrl: json['imageUrl'] as String,
-      likes: (json['likes'] as num?)?.toInt() ?? 0,
+      mediaUrl: json['mediaLink'] as String,
+      numLikes: (json['numLikes'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$PostModelImplToJson(_$PostModelImpl instance) =>
     <String, dynamic>{
-      'author': instance.author,
-      'avatarUrl': instance.avatarUrl,
-      'postAt': instance.postAt.toIso8601String(),
+      'postId': instance.id,
+      'authorName': instance.author,
+      'authorAvatar': instance.avatarUrl,
+      'createTime': instance.postAt.toIso8601String(),
       'content': instance.content,
-      'imageUrl': instance.imageUrl,
-      'likes': instance.likes,
+      'mediaLink': instance.mediaUrl,
+      'numLikes': instance.numLikes,
     };

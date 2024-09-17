@@ -157,6 +157,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               Text(
                                 localizations.doNotHaveAccount,
                                 style: theme.textTheme.titleMedium,
+                                softWrap: true,
                               ),
                               const CreateAccountButton(),
                             ],

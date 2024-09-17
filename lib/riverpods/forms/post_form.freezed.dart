@@ -21,7 +21,7 @@ PostForm _$PostFormFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PostForm {
   String get content => throw _privateConstructorUsedError;
-  String get mediaLink => throw _privateConstructorUsedError;
+  String? get mediaLink => throw _privateConstructorUsedError;
 
   /// Serializes this PostForm to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $PostFormCopyWith<$Res> {
   factory $PostFormCopyWith(PostForm value, $Res Function(PostForm) then) =
       _$PostFormCopyWithImpl<$Res, PostForm>;
   @useResult
-  $Res call({String content, String mediaLink});
+  $Res call({String content, String? mediaLink});
 }
 
 /// @nodoc
@@ -57,17 +57,17 @@ class _$PostFormCopyWithImpl<$Res, $Val extends PostForm>
   @override
   $Res call({
     Object? content = null,
-    Object? mediaLink = null,
+    Object? mediaLink = freezed,
   }) {
     return _then(_value.copyWith(
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      mediaLink: null == mediaLink
+      mediaLink: freezed == mediaLink
           ? _value.mediaLink
           : mediaLink // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -80,7 +80,7 @@ abstract class _$$PostFormImplCopyWith<$Res>
       __$$PostFormImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, String mediaLink});
+  $Res call({String content, String? mediaLink});
 }
 
 /// @nodoc
@@ -97,17 +97,17 @@ class __$$PostFormImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? content = null,
-    Object? mediaLink = null,
+    Object? mediaLink = freezed,
   }) {
     return _then(_$PostFormImpl(
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      mediaLink: null == mediaLink
+      mediaLink: freezed == mediaLink
           ? _value.mediaLink
           : mediaLink // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -115,7 +115,7 @@ class __$$PostFormImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PostFormImpl implements _PostForm {
-  _$PostFormImpl({this.content = "", this.mediaLink = ""});
+  _$PostFormImpl({this.content = "", this.mediaLink});
 
   factory _$PostFormImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostFormImplFromJson(json);
@@ -124,8 +124,7 @@ class _$PostFormImpl implements _PostForm {
   @JsonKey()
   final String content;
   @override
-  @JsonKey()
-  final String mediaLink;
+  final String? mediaLink;
 
   @override
   String toString() {
@@ -163,7 +162,7 @@ class _$PostFormImpl implements _PostForm {
 }
 
 abstract class _PostForm implements PostForm {
-  factory _PostForm({final String content, final String mediaLink}) =
+  factory _PostForm({final String content, final String? mediaLink}) =
       _$PostFormImpl;
 
   factory _PostForm.fromJson(Map<String, dynamic> json) =
@@ -172,7 +171,7 @@ abstract class _PostForm implements PostForm {
   @override
   String get content;
   @override
-  String get mediaLink;
+  String? get mediaLink;
 
   /// Create a copy of PostForm
   /// with the given fields replaced by the non-null parameter values.

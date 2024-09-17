@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fish/riverpods/file/picked_file.dart';
 import 'package:fish/riverpods/file/upload_file.dart';
 import 'package:fish/riverpods/file/upload_file_progress.dart';
 import 'package:fish/riverpods/post/create_post.dart';
@@ -38,10 +39,17 @@ class _UploadingImageState extends ConsumerState<UploadingImage> {
     });
   }
 
+  void onRemove() {
+    final form = ref.read(createPostProvider);
+    ref
+        .read(createPostProvider.notifier)
+        .updateForm(form.copyWith(mediaLink: null));
+    ref.read(pickedFileProvider.notifier).clean();
+  }
+
   @override
   Widget build(BuildContext context) {
     final progress = ref.watch(uploadFileProgressProvider);
-    print(progress);
     if (!progress.hasValue) {
       return Container();
     }
@@ -65,6 +73,19 @@ class _UploadingImageState extends ConsumerState<UploadingImage> {
                 ),
               )
             : Container(),
+        Positioned(
+          top: 8,
+          right: 4,
+          child: IconButton(
+            onPressed: onRemove,
+            style: IconButton.styleFrom(
+              backgroundColor:
+                  theme.colorScheme.surfaceContainerHighest.withOpacity(0.24),
+              foregroundColor: theme.colorScheme.onSurface,
+            ),
+            icon: const Icon(Icons.close),
+          ),
+        )
       ],
     );
   }

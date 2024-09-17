@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:fish/app/flavor_config.dart';
 import 'package:fish/data_source/http/dio_client.dart';
 import 'package:fish/models/post_model.dart';
 import 'package:fish/riverpods/forms/post_form.dart';
@@ -22,30 +25,22 @@ class DioPostRepository implements PostRepository {
 
   @override
   Future<List<PostModel>> getPosts() async {
-    await Future.delayed(const Duration(seconds: 1));
-    return [
-      PostModel(
-        author: "Money D. Luffy",
-        avatarUrl:
-            "https://wallpapers.com/images/hd/one-piece-bruised-luffy-fpf-after-fight-k3l17o4moedwwjgo.jpg",
-        postAt: DateTime.now().subtract(const Duration(seconds: 100)),
-        content:
-            "The journey go to around the world. To find the treasure best. One Piece !!!",
-        imageUrl:
-            "https://wallpapers.com/images/hd/one-piece-pictures-bjm9tdff9yzguoup.jpg",
-        likes: 120,
-      ),
-      PostModel(
-        author: "Dung",
-        avatarUrl:
-            "https://wallpapers.com/images/hd/one-piece-bruised-luffy-fpf-after-fight-k3l17o4moedwwjgo.jpg",
-        postAt: DateTime.now().subtract(const Duration(seconds: 100)),
-        content: "This is new content",
-        imageUrl:
-            "https://wallpapers.com/images/hd/one-piece-pictures-bjm9tdff9yzguoup.jpg",
-        likes: 120,
-      ),
-    ];
+    final response = await _dio.get('/social-service/my-post-list');
+    final postData = response.data['list'] as List<dynamic>;
+    final postModels =
+        postData.map((post) => PostModel.fromJson(post)).toList();
+    for (int i = 0; i < postModels.length; i++) {
+      final postModel = postModels[i];
+      if (Platform.isAndroid) {
+        postModels[i] = postModel.copyWith(
+          mediaUrl: postModel.mediaUrl.replaceAll(
+            'http://localhost:9200',
+            FlavorConfig.instance.values.uploadUrl,
+          ),
+        );
+      }
+    }
+    return postModels;
   }
 
   @override

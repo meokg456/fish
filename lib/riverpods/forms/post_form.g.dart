@@ -9,7 +9,7 @@ part of 'post_form.dart';
 _$PostFormImpl _$$PostFormImplFromJson(Map<String, dynamic> json) =>
     _$PostFormImpl(
       content: json['content'] as String? ?? "",
-      mediaLink: json['mediaLink'] as String? ?? "",
+      mediaLink: json['mediaLink'] as String?,
     );
 
 Map<String, dynamic> _$$PostFormImplToJson(_$PostFormImpl instance) =>

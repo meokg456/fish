@@ -56,27 +56,31 @@ class _HomeTabState extends ConsumerState<HomeTab> {
           ),
         ],
       ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(
-          horizontal: Utils.horizontalPadding(context),
-        ),
-        children: [
-          Text(
-            appName,
-            style: theme.textTheme.headlineSmall
-                ?.copyWith(color: theme.colorScheme.primary),
+      body: RefreshIndicator(
+        onRefresh: () => ref.refresh(postsProvider.future),
+        child: ListView(
+          padding: EdgeInsets.symmetric(
+            horizontal: Utils.horizontalPadding(context),
           ),
-          const SizedBox(height: 24),
-          const CreatePost(),
-          const SizedBox(height: 8),
-          if (postsValue is AsyncData) ...postsWidget,
-          switch (postsValue) {
-            AsyncLoading() => const Center(
-                child: CircularProgressIndicator(),
+          children: [
+            Text(
+              appName,
+              style: theme.textTheme.headlineSmall
+                  ?.copyWith(color: theme.colorScheme.primary),
+            ),
+            const SizedBox(height: 24),
+            const CreatePost(),
+            const SizedBox(height: 8),
+            if (postsValue is AsyncData) ...postsWidget,
+            if (postsValue is AsyncLoading)
+              const SizedBox(
+                height: 96,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
               ),
-            _ => Container(),
-          },
-        ],
+          ],
+        ),
       ),
     );
   }

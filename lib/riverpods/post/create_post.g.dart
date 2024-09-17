@@ -6,7 +6,7 @@ part of 'create_post.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createPostHash() => r'7e52be83844f8ae7b0798fa3a5dac4c3009a6584';
+String _$createPostHash() => r'c95cebdd7a6a87235c105d5d806340837f6c57b1';
 
 /// See also [CreatePost].
 @ProviderFor(CreatePost)

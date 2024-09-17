@@ -6,12 +6,13 @@ part 'post_model.g.dart';
 @freezed
 class PostModel with _$PostModel {
   factory PostModel({
-    @Default("") String author,
-    required String avatarUrl,
-    required DateTime postAt,
+    @JsonKey(name: 'postId') required int id,
+    @JsonKey(name: 'authorName') @Default("") String author,
+    @JsonKey(name: 'authorAvatar') required String avatarUrl,
+    @JsonKey(name: 'createTime') required DateTime postAt,
     @Default("") String content,
-    required String imageUrl,
-    @Default(0) int likes,
+    @JsonKey(name: 'mediaLink') required String mediaUrl,
+    @Default(0) int numLikes,
   }) = _PostModel;
 
   factory PostModel.fromJson(Map<String, Object?> json) =>

@@ -12,4 +12,8 @@ class PickedFile extends _$PickedFile {
   void addFile(String filePath) {
     state = filePath;
   }
+
+  void clean() {
+    state = null;
+  }
 }

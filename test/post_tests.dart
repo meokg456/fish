@@ -20,18 +20,20 @@ void main() {
   test('Test $postsProvider success has data', () async {
     final response = [
       PostModel(
+        id: 1,
         author: 'Author 1',
         content: 'Content 1',
         avatarUrl: '',
         postAt: DateTime.now(),
-        imageUrl: '',
+        mediaUrl: '',
       ),
       PostModel(
+        id: 2,
         author: 'Author 2',
         content: 'Content 2',
         avatarUrl: '',
         postAt: DateTime.now(),
-        imageUrl: '',
+        mediaUrl: '',
       ),
     ];
 

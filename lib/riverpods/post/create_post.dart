@@ -1,6 +1,7 @@
 import 'package:fish/repositories/post_repository.dart';
 import 'package:fish/riverpods/enums/validate_errors.dart';
 import 'package:fish/riverpods/forms/post_form.dart';
+import 'package:fish/riverpods/post/posts.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'create_post.g.dart';
@@ -22,11 +23,11 @@ class CreatePost extends _$CreatePost {
 
   Future<void> createPost() async {
     await _postRepository.createPost(state);
+    ref.invalidate(postsProvider);
   }
 
-  ValidateErrors validateContent() {
-    final value = state.content;
-    if (value.length < 4 || value.length > 20) {
+  ValidateErrors validatePost() {
+    if (state.content.isEmpty && state.mediaLink == null) {
       return ValidateErrors.empty;
     }
     return ValidateErrors.none;
