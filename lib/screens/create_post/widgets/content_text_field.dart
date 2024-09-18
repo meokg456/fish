@@ -9,9 +9,8 @@ class ContentTextField extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localizations = AppLocalizations.of(context);
-    return Container(
+    return SizedBox(
       height: 96,
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: TextField(
         onChanged: (value) {
           final form = ref.read(createPostProvider);

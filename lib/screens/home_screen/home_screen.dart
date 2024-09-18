@@ -1,10 +1,14 @@
+import 'dart:math';
+
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/app/navigation_index.dart';
 import 'package:fish/riverpods/user/user.dart';
 import 'package:fish/screens/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:fish/screens/home_screen/tabs/setting_tab/setting_tab.dart';
+import 'package:fish/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key, this.initialIndex = 0});
@@ -55,29 +59,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           const SettingTab(),
         ][selectedIndex],
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: selectedIndex,
-        onDestinationSelected: ref
-            .read(navigationIndexProvider(widget.initialIndex).notifier)
-            .updateIndex,
-        destinations: [
-          NavigationDestination(
-            icon: const Icon(Icons.home),
-            label: localizations.home,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.ondemand_video),
-            label: localizations.video,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.chat),
-            label: localizations.messages,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.settings),
-            label: localizations.setting,
-          ),
-        ],
+      bottomNavigationBar: Container(
+        color: theme.colorScheme.surfaceContainer,
+        padding: EdgeInsets.symmetric(
+          horizontal: Utils.horizontalPaddingForAppBar(context),
+        ),
+        child: NavigationBar(
+          selectedIndex: selectedIndex,
+          onDestinationSelected: ref
+              .read(navigationIndexProvider(widget.initialIndex).notifier)
+              .updateIndex,
+          destinations: [
+            NavigationDestination(
+              icon: const Icon(Icons.home),
+              label: localizations.home,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.ondemand_video),
+              label: localizations.video,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.chat),
+              label: localizations.messages,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.settings),
+              label: localizations.setting,
+            ),
+          ],
+        ),
       ),
     );
   }

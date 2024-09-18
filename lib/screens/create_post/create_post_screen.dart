@@ -9,6 +9,7 @@ import 'package:fish/screens/create_post/widgets/uploading_image.dart';
 import 'package:fish/screens/create_post/widgets/content_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class CreatePostScreen extends ConsumerStatefulWidget {
   const CreatePostScreen({super.key});
@@ -55,10 +56,18 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
           return false;
         },
         child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(
+            horizontal: getValueForScreenType(
+              context: context,
+              mobile: 16,
+              tablet: (MediaQuery.sizeOf(context).width - 640) / 2,
+            ),
+          ),
           physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
               ListTile(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 0),
                 leading: CircleAvatar(
                   radius: 24,
                   backgroundImage:

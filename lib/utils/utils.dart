@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -26,12 +28,18 @@ class Utils {
   }
 
   static double horizontalPadding(BuildContext context) {
-    final screenSize = MediaQuery.sizeOf(context);
     return getValueForScreenType<double>(
       context: context,
       mobile: 16,
-      tablet: 118,
-      desktop: screenSize.width * 0.25,
+      tablet: max(0, (MediaQuery.sizeOf(context).width - 640)) / 2,
+    );
+  }
+
+  static double horizontalPaddingForAppBar(BuildContext context) {
+    return getValueForScreenType<double>(
+      context: context,
+      mobile: 0,
+      tablet: max(0, (MediaQuery.sizeOf(context).width - 640)) / 2,
     );
   }
 }
