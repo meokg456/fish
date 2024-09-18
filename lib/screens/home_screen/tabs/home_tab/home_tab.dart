@@ -23,10 +23,6 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     theme = Theme.of(context);
   }
 
-  void onLiked(int page, int index) {
-    ref.read(postsProvider(page).notifier).like(index);
-  }
-
   @override
   Widget build(BuildContext context) {
     final pagination = ref.watch(postPaginationProvider);
@@ -38,8 +34,8 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         for (int i = 0; i < posts.length; i++) {
           postsWidget.add(
             PostCard(
-              model: posts[i],
-              onLiked: () => onLiked(page, i),
+              page: page,
+              index: i,
             ),
           );
           postsWidget.add(const SizedBox(height: 8));

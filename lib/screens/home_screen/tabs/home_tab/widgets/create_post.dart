@@ -17,17 +17,20 @@ class CreatePost extends StatelessWidget {
     final theme = Theme.of(context);
     return Card(
       margin: EdgeInsets.zero,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 24,
-              backgroundImage: AssetImage(Assets.images.defaultAvatar.keyName),
-            ),
-            Expanded(
-              child: InkWell(
-                onTap: () => onTap(context),
+      child: InkWell(
+        onTap: () => onTap(context),
+        borderRadius: BorderRadius.circular(8),
+        radius: 8,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 24,
+                backgroundImage:
+                    AssetImage(Assets.images.defaultAvatar.keyName),
+              ),
+              Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: Text(
@@ -36,8 +39,8 @@ class CreatePost extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
