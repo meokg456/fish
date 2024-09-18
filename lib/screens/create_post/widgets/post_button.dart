@@ -1,4 +1,3 @@
-import 'package:fish/app/router.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/enums/validate_errors.dart';
 import 'package:fish/riverpods/post/create_post.dart';

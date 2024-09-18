@@ -93,15 +93,16 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
             builder: (context, scrollController) {
               return Container(
                 decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceContainerLow,
-                    boxShadow: [
-                      BoxShadow(
-                        color: theme.colorScheme.shadow.withOpacity(0.32),
-                        blurRadius: 8,
-                      ),
-                    ],
-                    borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(28))),
+                  color: theme.colorScheme.surfaceContainerLow,
+                  boxShadow: [
+                    BoxShadow(
+                      color: theme.colorScheme.shadow.withOpacity(0.32),
+                      blurRadius: 8,
+                    ),
+                  ],
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(28)),
+                ),
                 child: ListView(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   controller: scrollController,

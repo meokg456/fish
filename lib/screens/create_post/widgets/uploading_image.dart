@@ -85,7 +85,7 @@ class _UploadingImageState extends ConsumerState<UploadingImage> {
             ),
             icon: const Icon(Icons.close),
           ),
-        )
+        ),
       ],
     );
   }

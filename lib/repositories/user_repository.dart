@@ -32,5 +32,8 @@ class DioUserRepository implements UserRepository {
   }
 
   @override
-  Future<void> updateUserAvatar(String url) {}
+  Future<void> updateUserAvatar(String url) {
+    // TODO: implement updateUserAvatar
+    throw UnimplementedError();
+  }
 }

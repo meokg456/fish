@@ -1,5 +1,4 @@
 import 'package:fish/gen/assets.gen.dart';
-import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/user/user.dart';
 import 'package:fish/utils/permission_handler.dart';
 import 'package:flutter/material.dart';
