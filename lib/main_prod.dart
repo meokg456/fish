@@ -12,8 +12,8 @@ Future<void> main() async {
   FlavorConfig(
     flavor: Flavor.dev,
     values: FlavorValues(
-      baseUrl: 'http://192.168.1.100:8080',
-      uploadUrl: 'http://192.168.1.100:9200',
+      baseUrl: 'http://fish.zapto.org:8080',
+      uploadUrl: 'http://fish.zapto.org:9200',
     ),
   );
   // ignore: missing_provider_scope

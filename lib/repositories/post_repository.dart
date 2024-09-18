@@ -6,6 +6,7 @@ import 'package:fish/data_source/http/dio_client.dart';
 import 'package:fish/models/domain/post_model.dart';
 import 'package:fish/models/pagination_model.dart';
 import 'package:fish/riverpods/forms/post_form.dart';
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'post_repository.g.dart';
@@ -32,7 +33,7 @@ class DioPostRepository implements PostRepository {
         postData.map((post) => PostModel.fromJson(post)).toList();
     for (int i = 0; i < postModels.length; i++) {
       final postModel = postModels[i];
-      if (Platform.isAndroid) {
+      if (!kIsWeb && Platform.isAndroid) {
         postModels[i] = postModel.copyWith(
           mediaUrl: postModel.mediaUrl.replaceAll(
             'http://localhost:9200',
