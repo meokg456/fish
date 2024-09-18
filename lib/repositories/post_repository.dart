@@ -33,14 +33,12 @@ class DioPostRepository implements PostRepository {
         postData.map((post) => PostModel.fromJson(post)).toList();
     for (int i = 0; i < postModels.length; i++) {
       final postModel = postModels[i];
-      if (!kIsWeb && Platform.isAndroid) {
-        postModels[i] = postModel.copyWith(
-          mediaUrl: postModel.mediaUrl.replaceAll(
-            'http://localhost:9200',
-            FlavorConfig.instance.values.uploadUrl,
-          ),
-        );
-      }
+      postModels[i] = postModel.copyWith(
+        mediaUrl: postModel.mediaUrl.replaceAll(
+          'http://localhost:9200',
+          FlavorConfig.instance.values.uploadUrl,
+        ),
+      );
     }
     return postModels;
   }
