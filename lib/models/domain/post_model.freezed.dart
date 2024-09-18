@@ -32,6 +32,7 @@ mixin _$PostModel {
   @JsonKey(name: 'mediaLink')
   String get mediaUrl => throw _privateConstructorUsedError;
   int get numLikes => throw _privateConstructorUsedError;
+  bool get isLiked => throw _privateConstructorUsedError;
 
   /// Serializes this PostModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,7 +56,8 @@ abstract class $PostModelCopyWith<$Res> {
       @JsonKey(name: 'createTime') DateTime postAt,
       String content,
       @JsonKey(name: 'mediaLink') String mediaUrl,
-      int numLikes});
+      int numLikes,
+      bool isLiked});
 }
 
 /// @nodoc
@@ -80,6 +82,7 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
     Object? content = null,
     Object? mediaUrl = null,
     Object? numLikes = null,
+    Object? isLiked = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -110,6 +113,10 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
           ? _value.numLikes
           : numLikes // ignore: cast_nullable_to_non_nullable
               as int,
+      isLiked: null == isLiked
+          ? _value.isLiked
+          : isLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -129,7 +136,8 @@ abstract class _$$PostModelImplCopyWith<$Res>
       @JsonKey(name: 'createTime') DateTime postAt,
       String content,
       @JsonKey(name: 'mediaLink') String mediaUrl,
-      int numLikes});
+      int numLikes,
+      bool isLiked});
 }
 
 /// @nodoc
@@ -152,6 +160,7 @@ class __$$PostModelImplCopyWithImpl<$Res>
     Object? content = null,
     Object? mediaUrl = null,
     Object? numLikes = null,
+    Object? isLiked = null,
   }) {
     return _then(_$PostModelImpl(
       id: null == id
@@ -182,6 +191,10 @@ class __$$PostModelImplCopyWithImpl<$Res>
           ? _value.numLikes
           : numLikes // ignore: cast_nullable_to_non_nullable
               as int,
+      isLiked: null == isLiked
+          ? _value.isLiked
+          : isLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -196,7 +209,8 @@ class _$PostModelImpl implements _PostModel {
       @JsonKey(name: 'createTime') required this.postAt,
       this.content = "",
       @JsonKey(name: 'mediaLink') required this.mediaUrl,
-      this.numLikes = 0});
+      this.numLikes = 0,
+      this.isLiked = false});
 
   factory _$PostModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostModelImplFromJson(json);
@@ -222,10 +236,13 @@ class _$PostModelImpl implements _PostModel {
   @override
   @JsonKey()
   final int numLikes;
+  @override
+  @JsonKey()
+  final bool isLiked;
 
   @override
   String toString() {
-    return 'PostModel(id: $id, author: $author, avatarUrl: $avatarUrl, postAt: $postAt, content: $content, mediaUrl: $mediaUrl, numLikes: $numLikes)';
+    return 'PostModel(id: $id, author: $author, avatarUrl: $avatarUrl, postAt: $postAt, content: $content, mediaUrl: $mediaUrl, numLikes: $numLikes, isLiked: $isLiked)';
   }
 
   @override
@@ -242,13 +259,14 @@ class _$PostModelImpl implements _PostModel {
             (identical(other.mediaUrl, mediaUrl) ||
                 other.mediaUrl == mediaUrl) &&
             (identical(other.numLikes, numLikes) ||
-                other.numLikes == numLikes));
+                other.numLikes == numLikes) &&
+            (identical(other.isLiked, isLiked) || other.isLiked == isLiked));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, author, avatarUrl, postAt, content, mediaUrl, numLikes);
+  int get hashCode => Object.hash(runtimeType, id, author, avatarUrl, postAt,
+      content, mediaUrl, numLikes, isLiked);
 
   /// Create a copy of PostModel
   /// with the given fields replaced by the non-null parameter values.
@@ -274,7 +292,8 @@ abstract class _PostModel implements PostModel {
       @JsonKey(name: 'createTime') required final DateTime postAt,
       final String content,
       @JsonKey(name: 'mediaLink') required final String mediaUrl,
-      final int numLikes}) = _$PostModelImpl;
+      final int numLikes,
+      final bool isLiked}) = _$PostModelImpl;
 
   factory _PostModel.fromJson(Map<String, dynamic> json) =
       _$PostModelImpl.fromJson;
@@ -298,6 +317,8 @@ abstract class _PostModel implements PostModel {
   String get mediaUrl;
   @override
   int get numLikes;
+  @override
+  bool get isLiked;
 
   /// Create a copy of PostModel
   /// with the given fields replaced by the non-null parameter values.

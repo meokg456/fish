@@ -15,6 +15,7 @@ PostRepository postRepository(PostRepositoryRef ref) => DioPostRepository(
 abstract class PostRepository {
   Future<List<PostModel>> getPosts(int page);
   Future<void> createPost(PostForm form);
+  Future<bool> liked(int postId);
 }
 
 class DioPostRepository implements PostRepository {
@@ -43,5 +44,16 @@ class DioPostRepository implements PostRepository {
   Future<void> createPost(PostForm form) async {
     final data = form.toJson();
     await _dio.post('/social-service/new-post', data: data);
+  }
+
+  @override
+  Future<bool> liked(int postId) async {
+    final response = await _dio.post(
+      '/social-service/like-post',
+      data: {
+        'postId': postId,
+      },
+    );
+    return response.data['data']['isLiked'];
   }
 }

@@ -184,4 +184,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get public => 'Public';
+
+  @override
+  String get like => 'Like';
+
+  @override
+  String get comment => 'Comment';
+
+  @override
+  String get share => 'Share';
 }

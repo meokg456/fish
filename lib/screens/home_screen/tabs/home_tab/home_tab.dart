@@ -23,16 +23,25 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     theme = Theme.of(context);
   }
 
+  void onLiked(int page, int index) {
+    ref.read(postsProvider(page).notifier).like(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     final pagination = ref.watch(postPaginationProvider);
     final postsWidget = <Widget>[];
-    for (int i = 0; i < pagination.current; i++) {
-      final postsValue = ref.watch(postsProvider(i + 1));
+    for (int page = 1; page <= pagination.current; page++) {
+      final postsValue = ref.watch(postsProvider(page));
       if (postsValue is AsyncData) {
         final posts = postsValue.requireValue;
         for (int i = 0; i < posts.length; i++) {
-          postsWidget.add(PostCard(model: posts[i]));
+          postsWidget.add(
+            PostCard(
+              model: posts[i],
+              onLiked: () => onLiked(page, i),
+            ),
+          );
           postsWidget.add(const SizedBox(height: 8));
         }
       }

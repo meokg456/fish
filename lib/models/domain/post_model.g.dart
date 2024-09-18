@@ -15,6 +15,7 @@ _$PostModelImpl _$$PostModelImplFromJson(Map<String, dynamic> json) =>
       content: json['content'] as String? ?? "",
       mediaUrl: json['mediaLink'] as String,
       numLikes: (json['numLikes'] as num?)?.toInt() ?? 0,
+      isLiked: json['isLiked'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$PostModelImplToJson(_$PostModelImpl instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$PostModelImplToJson(_$PostModelImpl instance) =>
       'content': instance.content,
       'mediaLink': instance.mediaUrl,
       'numLikes': instance.numLikes,
+      'isLiked': instance.isLiked,
     };

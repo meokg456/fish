@@ -12,4 +12,15 @@ class Posts extends _$Posts {
   Future<List<PostModel>> build(int page) {
     return _postRepository.getPosts(page);
   }
+
+  Future<void> like(int index) async {
+    final posts = state.requireValue;
+    final isLiked = await _postRepository.liked(posts[index].id);
+    final post = posts[index];
+    posts[index] = post.copyWith(
+      isLiked: isLiked,
+      numLikes: post.numLikes + (isLiked ? 1 : -1),
+    );
+    state = AsyncData(posts);
+  }
 }

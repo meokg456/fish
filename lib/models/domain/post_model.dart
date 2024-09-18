@@ -13,6 +13,7 @@ class PostModel with _$PostModel {
     @Default("") String content,
     @JsonKey(name: 'mediaLink') required String mediaUrl,
     @Default(0) int numLikes,
+    @Default(false) bool isLiked,
   }) = _PostModel;
 
   factory PostModel.fromJson(Map<String, Object?> json) =>

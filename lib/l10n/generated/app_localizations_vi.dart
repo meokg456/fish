@@ -184,4 +184,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get public => 'Công khai';
+
+  @override
+  String get like => 'Thích';
+
+  @override
+  String get comment => 'Bình luận';
+
+  @override
+  String get share => 'Chia sẻ';
 }

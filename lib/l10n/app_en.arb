@@ -77,5 +77,8 @@
   "createPost": "Create post",
   "post": "Share",
   "photoVideo": "Photo/Video",
-  "public": "Public"
+  "public": "Public",
+  "like": "Like",
+  "comment": "Comment",
+  "share": "Share"
 }

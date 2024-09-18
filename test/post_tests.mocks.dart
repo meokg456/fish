@@ -47,4 +47,14 @@ class MockPostRepository extends _i1.Mock implements _i2.PostRepository {
         returnValue: _i3.Future<void>.value(),
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
+
+  @override
+  _i3.Future<bool> liked(int? postId) => (super.noSuchMethod(
+        Invocation.method(
+          #liked,
+          [postId],
+        ),
+        returnValue: _i3.Future<bool>.value(false),
+        returnValueForMissingStub: _i3.Future<bool>.value(false),
+      ) as _i3.Future<bool>);
 }

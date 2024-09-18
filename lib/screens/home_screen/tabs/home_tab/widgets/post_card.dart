@@ -1,15 +1,17 @@
 import 'dart:async';
 
 import 'package:fish/gen/assets.gen.dart';
+import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/models/domain/post_model.dart';
 import 'package:fish/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class PostCard extends StatefulWidget {
-  const PostCard({super.key, required this.model});
+  const PostCard({super.key, required this.model, this.onLiked});
 
   final PostModel model;
+  final void Function()? onLiked;
 
   @override
   State<PostCard> createState() => _PostCardState();
@@ -23,7 +25,8 @@ class _PostCardState extends State<PostCard>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final textTheme = Theme.of(context).textTheme;
+    final theme = Theme.of(context);
+    final localizations = AppLocalizations.of(context);
     return VisibilityDetector(
       key: Key(widget.model.id.toString()),
       onVisibilityChanged: (VisibilityInfo info) {
@@ -56,14 +59,14 @@ class _PostCardState extends State<PostCard>
               ),
               title: Text(
                 widget.model.author,
-                style: textTheme.titleMedium
+                style: theme.textTheme.titleMedium
                     ?.copyWith(fontWeight: FontWeight.bold),
               ),
               subtitle: Row(
                 children: [
                   Text(
                     Utils.timeSpendFromCreated(widget.model.postAt),
-                    style: textTheme.titleSmall,
+                    style: theme.textTheme.titleSmall,
                   ),
                   const SizedBox(width: 4),
                   const Icon(Icons.public, size: 20),
@@ -72,7 +75,8 @@ class _PostCardState extends State<PostCard>
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text(widget.model.content, style: textTheme.bodyLarge),
+              child:
+                  Text(widget.model.content, style: theme.textTheme.bodyLarge),
             ),
             const SizedBox(height: 8),
             Image.network(widget.model.mediaUrl),
@@ -90,11 +94,18 @@ class _PostCardState extends State<PostCard>
               children: [
                 Expanded(
                   child: TextButton.icon(
-                    onPressed: () {
-                      // Handle button press
-                    },
-                    icon: const Icon(Icons.favorite_border, size: 24),
-                    label: const Text('Like', style: TextStyle(fontSize: 15)),
+                    onPressed: widget.onLiked,
+                    icon: Icon(
+                      widget.model.isLiked
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                    ),
+                    label: Text(localizations.like),
+                    style: TextButton.styleFrom(
+                      foregroundColor: widget.model.isLiked
+                          ? theme.colorScheme.primary
+                          : theme.colorScheme.secondary,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -102,9 +113,11 @@ class _PostCardState extends State<PostCard>
                     onPressed: () {
                       // Handle button press
                     },
-                    icon: const Icon(Icons.mode_comment_outlined, size: 24),
-                    label:
-                        const Text('Comment', style: TextStyle(fontSize: 15)),
+                    icon: const Icon(Icons.mode_comment_outlined),
+                    label: Text(localizations.comment),
+                    style: TextButton.styleFrom(
+                      foregroundColor: theme.colorScheme.secondary,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -113,12 +126,14 @@ class _PostCardState extends State<PostCard>
                       // Handle button press
                     },
                     icon: const Icon(Icons.share_outlined, size: 24),
-                    label: const Text('Share', style: TextStyle(fontSize: 15)),
+                    label: Text(localizations.share),
+                    style: TextButton.styleFrom(
+                      foregroundColor: theme.colorScheme.secondary,
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 16),
           ],
         ),
       ),

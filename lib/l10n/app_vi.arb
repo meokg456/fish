@@ -76,5 +76,8 @@
   "createPost": "Tạo bài viết",
   "post": "Đăng",
   "photoVideo": "Ảnh/Video",
-  "public": "Công khai"
+  "public": "Công khai",
+  "like": "Thích",
+  "comment": "Bình luận",
+  "share": "Chia sẻ"
 }
