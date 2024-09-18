@@ -2,6 +2,7 @@ import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/app/navigation_index.dart';
 import 'package:fish/riverpods/user/user.dart';
 import 'package:fish/screens/home_screen/tabs/home_tab/home_tab.dart';
+import 'package:fish/screens/home_screen/tabs/setting_tab/setting_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -51,7 +52,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           const HomeTab(),
           Container(),
           Container(),
-          Container(),
+          const SettingTab(),
         ][selectedIndex],
       ),
       bottomNavigationBar: NavigationBar(

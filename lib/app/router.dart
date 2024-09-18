@@ -10,6 +10,7 @@ class Routes {
   static String login = '/login';
   static String home = '/';
   static String video = '/video';
+  static String setting = '/setting';
   static String signUp = '/sign_up';
   static String createPost = '/create_post';
 }
@@ -34,6 +35,12 @@ final router = GoRouter(
       path: Routes.video,
       builder: (context, state) => const HomeScreen(
         initialIndex: 1,
+      ),
+    ),
+    GoRoute(
+      path: Routes.setting,
+      builder: (context, state) => const HomeScreen(
+        initialIndex: 3,
       ),
     ),
     GoRoute(

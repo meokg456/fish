@@ -15,6 +15,7 @@ UserRepository userRepository(
 
 abstract class UserRepository {
   Future<UserModel> getUserInfo();
+  Future<void> updateUserAvatar(String url);
 }
 
 class DioUserRepository implements UserRepository {
@@ -29,4 +30,7 @@ class DioUserRepository implements UserRepository {
     final user = UserModel.fromJson(body['data']);
     return user;
   }
+
+  @override
+  Future<void> updateUserAvatar(String url) {}
 }

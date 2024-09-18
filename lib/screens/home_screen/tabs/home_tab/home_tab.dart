@@ -6,6 +6,7 @@ import 'package:fish/screens/home_screen/tabs/home_tab/widgets/post_card.dart';
 import 'package:fish/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeTab extends ConsumerStatefulWidget {
   const HomeTab({super.key});
@@ -76,6 +77,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         child: RefreshIndicator(
           onRefresh: () async => ref.invalidate(postPaginationProvider),
           child: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
             padding: EdgeInsets.symmetric(
               horizontal: Utils.horizontalPadding(context),
             ),
