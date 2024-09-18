@@ -20,6 +20,7 @@ class CreatePostScreen extends ConsumerStatefulWidget {
 class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
   late AppLocalizations localizations;
   late ThemeData theme;
+  final draggableSheetController = DraggableScrollableController();
 
   @override
   void didChangeDependencies() {
@@ -44,32 +45,45 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
         centerTitle: true,
         actions: const [PostButton()],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ListTile(
-              leading: CircleAvatar(
-                radius: 24,
-                backgroundImage:
-                    AssetImage(Assets.images.defaultAvatar.keyName),
+      body: NotificationListener<ScrollNotification>(
+        onNotification: (notification) {
+          draggableSheetController.animateTo(
+            0,
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.linear,
+          );
+          return false;
+        },
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              ListTile(
+                leading: CircleAvatar(
+                  radius: 24,
+                  backgroundImage:
+                      AssetImage(Assets.images.defaultAvatar.keyName),
+                ),
+                title: Text(
+                  user.requireValue.nickName,
+                  style: theme.textTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(localizations.public),
               ),
-              title: Text(
-                user.requireValue.nickName,
-                style: theme.textTheme.titleMedium
-                    ?.copyWith(fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text(localizations.public),
-            ),
-            const ContentTextField(),
-            const SizedBox(height: 32),
-            if (file != null) UploadingImage(file),
-          ],
+              const ContentTextField(),
+              const SizedBox(height: 32),
+              if (file != null) UploadingImage(file),
+              const SizedBox(height: 112),
+            ],
+          ),
         ),
       ),
       bottomSheet: LayoutBuilder(
         builder: (context, constraint) {
           final minSize = 96 / constraint.maxHeight;
           return DraggableScrollableSheet(
+            controller: draggableSheetController,
             minChildSize: minSize,
             maxChildSize: 0.9,
             initialChildSize: 0.4,
