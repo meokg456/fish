@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'posts.dart';
+part of 'post_detail.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postsHash() => r'2021f832c1dd6c9534b72cdce6941d08e203e654';
+String _$postDetailHash() => r'dc1a3bce2e47683d27754fe271760f812d037154';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,39 +29,39 @@ class _SystemHash {
   }
 }
 
-abstract class _$Posts
-    extends BuildlessAutoDisposeAsyncNotifier<List<PostModel>> {
-  late final int page;
+abstract class _$PostDetail
+    extends BuildlessAutoDisposeAsyncNotifier<PostModel> {
+  late final int id;
 
-  FutureOr<List<PostModel>> build(
-    int page,
+  FutureOr<PostModel> build(
+    int id,
   );
 }
 
-/// See also [Posts].
-@ProviderFor(Posts)
-const postsProvider = PostsFamily();
+/// See also [PostDetail].
+@ProviderFor(PostDetail)
+const postDetailProvider = PostDetailFamily();
 
-/// See also [Posts].
-class PostsFamily extends Family<AsyncValue<List<PostModel>>> {
-  /// See also [Posts].
-  const PostsFamily();
+/// See also [PostDetail].
+class PostDetailFamily extends Family<AsyncValue<PostModel>> {
+  /// See also [PostDetail].
+  const PostDetailFamily();
 
-  /// See also [Posts].
-  PostsProvider call(
-    int page,
+  /// See also [PostDetail].
+  PostDetailProvider call(
+    int id,
   ) {
-    return PostsProvider(
-      page,
+    return PostDetailProvider(
+      id,
     );
   }
 
   @override
-  PostsProvider getProviderOverride(
-    covariant PostsProvider provider,
+  PostDetailProvider getProviderOverride(
+    covariant PostDetailProvider provider,
   ) {
     return call(
-      provider.page,
+      provider.id,
     );
   }
 
@@ -77,97 +77,98 @@ class PostsFamily extends Family<AsyncValue<List<PostModel>>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'postsProvider';
+  String? get name => r'postDetailProvider';
 }
 
-/// See also [Posts].
-class PostsProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<Posts, List<PostModel>> {
-  /// See also [Posts].
-  PostsProvider(
-    int page,
+/// See also [PostDetail].
+class PostDetailProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<PostDetail, PostModel> {
+  /// See also [PostDetail].
+  PostDetailProvider(
+    int id,
   ) : this._internal(
-          () => Posts()..page = page,
-          from: postsProvider,
-          name: r'postsProvider',
+          () => PostDetail()..id = id,
+          from: postDetailProvider,
+          name: r'postDetailProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$postsHash,
-          dependencies: PostsFamily._dependencies,
-          allTransitiveDependencies: PostsFamily._allTransitiveDependencies,
-          page: page,
+                  : _$postDetailHash,
+          dependencies: PostDetailFamily._dependencies,
+          allTransitiveDependencies:
+              PostDetailFamily._allTransitiveDependencies,
+          id: id,
         );
 
-  PostsProvider._internal(
+  PostDetailProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.page,
+    required this.id,
   }) : super.internal();
 
-  final int page;
+  final int id;
 
   @override
-  FutureOr<List<PostModel>> runNotifierBuild(
-    covariant Posts notifier,
+  FutureOr<PostModel> runNotifierBuild(
+    covariant PostDetail notifier,
   ) {
     return notifier.build(
-      page,
+      id,
     );
   }
 
   @override
-  Override overrideWith(Posts Function() create) {
+  Override overrideWith(PostDetail Function() create) {
     return ProviderOverride(
       origin: this,
-      override: PostsProvider._internal(
-        () => create()..page = page,
+      override: PostDetailProvider._internal(
+        () => create()..id = id,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        page: page,
+        id: id,
       ),
     );
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<Posts, List<PostModel>>
+  AutoDisposeAsyncNotifierProviderElement<PostDetail, PostModel>
       createElement() {
-    return _PostsProviderElement(this);
+    return _PostDetailProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is PostsProvider && other.page == page;
+    return other is PostDetailProvider && other.id == id;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, page.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
-mixin PostsRef on AutoDisposeAsyncNotifierProviderRef<List<PostModel>> {
-  /// The parameter `page` of this provider.
-  int get page;
+mixin PostDetailRef on AutoDisposeAsyncNotifierProviderRef<PostModel> {
+  /// The parameter `id` of this provider.
+  int get id;
 }
 
-class _PostsProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<Posts, List<PostModel>>
-    with PostsRef {
-  _PostsProviderElement(super.provider);
+class _PostDetailProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<PostDetail, PostModel>
+    with PostDetailRef {
+  _PostDetailProviderElement(super.provider);
 
   @override
-  int get page => (origin as PostsProvider).page;
+  int get id => (origin as PostDetailProvider).id;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

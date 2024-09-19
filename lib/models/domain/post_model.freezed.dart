@@ -29,8 +29,8 @@ mixin _$PostModel {
   @JsonKey(name: 'createTime')
   DateTime get postAt => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  @JsonKey(name: 'mediaLink')
-  String get mediaUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mediaLink', fromJson: mediaUrlFromJson)
+  String? get mediaUrl => throw _privateConstructorUsedError;
   int get numLikes => throw _privateConstructorUsedError;
   bool get isLiked => throw _privateConstructorUsedError;
 
@@ -55,7 +55,7 @@ abstract class $PostModelCopyWith<$Res> {
       @JsonKey(name: 'authorAvatar') String avatarUrl,
       @JsonKey(name: 'createTime') DateTime postAt,
       String content,
-      @JsonKey(name: 'mediaLink') String mediaUrl,
+      @JsonKey(name: 'mediaLink', fromJson: mediaUrlFromJson) String? mediaUrl,
       int numLikes,
       bool isLiked});
 }
@@ -80,7 +80,7 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
     Object? avatarUrl = null,
     Object? postAt = null,
     Object? content = null,
-    Object? mediaUrl = null,
+    Object? mediaUrl = freezed,
     Object? numLikes = null,
     Object? isLiked = null,
   }) {
@@ -105,10 +105,10 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      mediaUrl: null == mediaUrl
+      mediaUrl: freezed == mediaUrl
           ? _value.mediaUrl
           : mediaUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       numLikes: null == numLikes
           ? _value.numLikes
           : numLikes // ignore: cast_nullable_to_non_nullable
@@ -135,7 +135,7 @@ abstract class _$$PostModelImplCopyWith<$Res>
       @JsonKey(name: 'authorAvatar') String avatarUrl,
       @JsonKey(name: 'createTime') DateTime postAt,
       String content,
-      @JsonKey(name: 'mediaLink') String mediaUrl,
+      @JsonKey(name: 'mediaLink', fromJson: mediaUrlFromJson) String? mediaUrl,
       int numLikes,
       bool isLiked});
 }
@@ -158,7 +158,7 @@ class __$$PostModelImplCopyWithImpl<$Res>
     Object? avatarUrl = null,
     Object? postAt = null,
     Object? content = null,
-    Object? mediaUrl = null,
+    Object? mediaUrl = freezed,
     Object? numLikes = null,
     Object? isLiked = null,
   }) {
@@ -183,10 +183,10 @@ class __$$PostModelImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      mediaUrl: null == mediaUrl
+      mediaUrl: freezed == mediaUrl
           ? _value.mediaUrl
           : mediaUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       numLikes: null == numLikes
           ? _value.numLikes
           : numLikes // ignore: cast_nullable_to_non_nullable
@@ -208,7 +208,7 @@ class _$PostModelImpl implements _PostModel {
       @JsonKey(name: 'authorAvatar') required this.avatarUrl,
       @JsonKey(name: 'createTime') required this.postAt,
       this.content = "",
-      @JsonKey(name: 'mediaLink') required this.mediaUrl,
+      @JsonKey(name: 'mediaLink', fromJson: mediaUrlFromJson) this.mediaUrl,
       this.numLikes = 0,
       this.isLiked = false});
 
@@ -231,8 +231,8 @@ class _$PostModelImpl implements _PostModel {
   @JsonKey()
   final String content;
   @override
-  @JsonKey(name: 'mediaLink')
-  final String mediaUrl;
+  @JsonKey(name: 'mediaLink', fromJson: mediaUrlFromJson)
+  final String? mediaUrl;
   @override
   @JsonKey()
   final int numLikes;
@@ -291,7 +291,8 @@ abstract class _PostModel implements PostModel {
       @JsonKey(name: 'authorAvatar') required final String avatarUrl,
       @JsonKey(name: 'createTime') required final DateTime postAt,
       final String content,
-      @JsonKey(name: 'mediaLink') required final String mediaUrl,
+      @JsonKey(name: 'mediaLink', fromJson: mediaUrlFromJson)
+      final String? mediaUrl,
       final int numLikes,
       final bool isLiked}) = _$PostModelImpl;
 
@@ -313,8 +314,8 @@ abstract class _PostModel implements PostModel {
   @override
   String get content;
   @override
-  @JsonKey(name: 'mediaLink')
-  String get mediaUrl;
+  @JsonKey(name: 'mediaLink', fromJson: mediaUrlFromJson)
+  String? get mediaUrl;
   @override
   int get numLikes;
   @override

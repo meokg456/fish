@@ -13,7 +13,7 @@ _$PostModelImpl _$$PostModelImplFromJson(Map<String, dynamic> json) =>
       avatarUrl: json['authorAvatar'] as String,
       postAt: DateTime.parse(json['createTime'] as String),
       content: json['content'] as String? ?? "",
-      mediaUrl: json['mediaLink'] as String,
+      mediaUrl: mediaUrlFromJson(json['mediaLink'] as String?),
       numLikes: (json['numLikes'] as num?)?.toInt() ?? 0,
       isLiked: json['isLiked'] as bool? ?? false,
     );

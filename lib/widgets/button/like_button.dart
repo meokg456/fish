@@ -1,27 +1,23 @@
 import 'package:fish/l10n/generated/app_localizations.dart';
-import 'package:fish/riverpods/post/posts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LikeButton extends ConsumerWidget {
-  const LikeButton(this.page, this.index, {super.key});
+  const LikeButton({
+    super.key,
+    this.isLiked = false,
+    this.onLiked,
+  });
 
-  final int page;
-  final int index;
-
-  void onLiked(WidgetRef ref) {
-    ref.read(postsProvider(page).notifier).like(index);
-  }
+  final bool isLiked;
+  final void Function()? onLiked;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isLiked = ref.watch(
-      postsProvider(page).select((posts) => posts.requireValue[index].isLiked),
-    );
     final theme = Theme.of(context);
     final localizations = AppLocalizations.of(context);
     return TextButton.icon(
-      onPressed: () => onLiked(ref),
+      onPressed: onLiked,
       icon: Icon(
         isLiked ? Icons.favorite : Icons.favorite_border,
       ),

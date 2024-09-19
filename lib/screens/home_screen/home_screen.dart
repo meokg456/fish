@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/app/navigation_index.dart';
 import 'package:fish/riverpods/user/user.dart';
@@ -8,7 +6,6 @@ import 'package:fish/screens/home_screen/tabs/setting_tab/setting_tab.dart';
 import 'package:fish/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key, this.initialIndex = 0});

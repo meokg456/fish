@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:fish/app/flavor_config.dart';
 import 'package:fish/data_source/http/dio_client.dart';
 import 'package:fish/models/domain/post_model.dart';
 import 'package:fish/riverpods/forms/post_form.dart';
@@ -16,6 +15,7 @@ abstract class PostRepository {
   Future<List<PostModel>> getPosts(int page);
   Future<void> createPost(PostForm form);
   Future<bool> liked(int postId);
+  Future<PostModel> getPost(int id);
 }
 
 class DioPostRepository implements PostRepository {
@@ -28,15 +28,6 @@ class DioPostRepository implements PostRepository {
     final postData = response.data['list'] as List<dynamic>;
     final postModels =
         postData.map((post) => PostModel.fromJson(post)).toList();
-    for (int i = 0; i < postModels.length; i++) {
-      final postModel = postModels[i];
-      postModels[i] = postModel.copyWith(
-        mediaUrl: postModel.mediaUrl.replaceAll(
-          'http://localhost:9200',
-          FlavorConfig.instance.values.uploadUrl,
-        ),
-      );
-    }
     return postModels;
   }
 
@@ -55,5 +46,11 @@ class DioPostRepository implements PostRepository {
       },
     );
     return response.data['data']['isLiked'];
+  }
+
+  @override
+  Future<PostModel> getPost(int id) async {
+    final response = await _dio.get("/social-service/post/$id");
+    return PostModel.fromJson(response.data['data']);
   }
 }

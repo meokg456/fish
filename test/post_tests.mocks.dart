@@ -3,10 +3,10 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:fish/models/domain/post_model.dart' as _i4;
-import 'package:fish/repositories/post_repository.dart' as _i2;
+import 'package:fish/models/domain/post_model.dart' as _i2;
+import 'package:fish/repositories/post_repository.dart' as _i3;
 import 'package:fish/riverpods/forms/post_form.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -23,38 +23,71 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakePostModel_0 extends _i1.SmartFake implements _i2.PostModel {
+  _FakePostModel_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [PostRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockPostRepository extends _i1.Mock implements _i2.PostRepository {
+class MockPostRepository extends _i1.Mock implements _i3.PostRepository {
   @override
-  _i3.Future<List<_i4.PostModel>> getPosts(int? page) => (super.noSuchMethod(
+  _i4.Future<List<_i2.PostModel>> getPosts(int? page) => (super.noSuchMethod(
         Invocation.method(
           #getPosts,
           [page],
         ),
-        returnValue: _i3.Future<List<_i4.PostModel>>.value(<_i4.PostModel>[]),
+        returnValue: _i4.Future<List<_i2.PostModel>>.value(<_i2.PostModel>[]),
         returnValueForMissingStub:
-            _i3.Future<List<_i4.PostModel>>.value(<_i4.PostModel>[]),
-      ) as _i3.Future<List<_i4.PostModel>>);
+            _i4.Future<List<_i2.PostModel>>.value(<_i2.PostModel>[]),
+      ) as _i4.Future<List<_i2.PostModel>>);
 
   @override
-  _i3.Future<void> createPost(_i5.PostForm? form) => (super.noSuchMethod(
+  _i4.Future<void> createPost(_i5.PostForm? form) => (super.noSuchMethod(
         Invocation.method(
           #createPost,
           [form],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i3.Future<bool> liked(int? postId) => (super.noSuchMethod(
+  _i4.Future<bool> liked(int? postId) => (super.noSuchMethod(
         Invocation.method(
           #liked,
           [postId],
         ),
-        returnValue: _i3.Future<bool>.value(false),
-        returnValueForMissingStub: _i3.Future<bool>.value(false),
-      ) as _i3.Future<bool>);
+        returnValue: _i4.Future<bool>.value(false),
+        returnValueForMissingStub: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  _i4.Future<_i2.PostModel> getPost(int? id) => (super.noSuchMethod(
+        Invocation.method(
+          #getPost,
+          [id],
+        ),
+        returnValue: _i4.Future<_i2.PostModel>.value(_FakePostModel_0(
+          this,
+          Invocation.method(
+            #getPost,
+            [id],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.PostModel>.value(_FakePostModel_0(
+          this,
+          Invocation.method(
+            #getPost,
+            [id],
+          ),
+        )),
+      ) as _i4.Future<_i2.PostModel>);
 }

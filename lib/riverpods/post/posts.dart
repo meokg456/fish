@@ -23,4 +23,10 @@ class Posts extends _$Posts {
     );
     state = AsyncData(posts);
   }
+
+  void updatePost(PostModel post, int index) {
+    final posts = state.requireValue;
+    posts[index] = post;
+    state = AsyncData(posts);
+  }
 }
