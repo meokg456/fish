@@ -79,5 +79,6 @@
   "public": "Công khai",
   "like": "Thích",
   "comment": "Bình luận",
-  "share": "Chia sẻ"
+  "share": "Chia sẻ",
+  "commentHint": "Viết bình luận..."
 }

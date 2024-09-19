@@ -80,5 +80,6 @@
   "public": "Public",
   "like": "Like",
   "comment": "Comment",
-  "share": "Share"
+  "share": "Share",
+  "commentHint": "Write a comment..."
 }

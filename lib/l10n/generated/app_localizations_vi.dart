@@ -193,4 +193,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get share => 'Chia sẻ';
+
+  @override
+  String get commentHint => 'Viết bình luận...';
 }
