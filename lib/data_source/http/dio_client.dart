@@ -16,6 +16,8 @@ class DioClient extends _$DioClient {
     dio.options.headers = {
       HttpHeaders.contentTypeHeader: ContentType.json.value,
     };
+    dio.options.connectTimeout = const Duration(seconds: 5);
+    dio.options.receiveTimeout = const Duration(seconds: 3);
     dio.interceptors.add(DioInterceptor());
     return dio;
   }

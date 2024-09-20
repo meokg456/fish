@@ -196,4 +196,16 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get commentHint => 'Viết bình luận...';
+
+  @override
+  String get confirm => 'Xác nhận';
+
+  @override
+  String get cancel => 'Hủy';
+
+  @override
+  String get logout => 'Đăng xuất';
+
+  @override
+  String get logoutConfirmation => 'Bạn có chắc chắn muốn đăng xuất?';
 }

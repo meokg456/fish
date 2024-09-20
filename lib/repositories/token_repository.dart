@@ -15,6 +15,7 @@ TokenRepository tokenRepository(
 abstract class TokenRepository {
   Future<String?> loadToken();
   Future<void> saveToken(String token);
+  Future<void> clearToken();
 }
 
 class SharedPreferencesTokenRepository implements TokenRepository {
@@ -31,5 +32,10 @@ class SharedPreferencesTokenRepository implements TokenRepository {
   @override
   Future<void> saveToken(String token) {
     return _sharedPreferences.setString(_tokenKey, token);
+  }
+
+  @override
+  Future<void> clearToken() {
+    return _sharedPreferences.remove(_tokenKey);
   }
 }

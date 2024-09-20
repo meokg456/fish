@@ -6,7 +6,7 @@ part of 'navigation_index.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$navigationIndexHash() => r'6ef7d77f1d0d39a44ab4708136db5bcc980c1acf';
+String _$navigationIndexHash() => r'360c5d10daee3ed3afca19b86fe443b54daee939';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-abstract class _$NavigationIndex extends BuildlessNotifier<int> {
+abstract class _$NavigationIndex extends BuildlessAutoDisposeNotifier<int> {
   late final int initialIndex;
 
   int build(
@@ -81,7 +81,7 @@ class NavigationIndexFamily extends Family<int> {
 
 /// See also [NavigationIndex].
 class NavigationIndexProvider
-    extends NotifierProviderImpl<NavigationIndex, int> {
+    extends AutoDisposeNotifierProviderImpl<NavigationIndex, int> {
   /// See also [NavigationIndex].
   NavigationIndexProvider(
     int initialIndex,
@@ -137,7 +137,7 @@ class NavigationIndexProvider
   }
 
   @override
-  NotifierProviderElement<NavigationIndex, int> createElement() {
+  AutoDisposeNotifierProviderElement<NavigationIndex, int> createElement() {
     return _NavigationIndexProviderElement(this);
   }
 
@@ -156,13 +156,13 @@ class NavigationIndexProvider
   }
 }
 
-mixin NavigationIndexRef on NotifierProviderRef<int> {
+mixin NavigationIndexRef on AutoDisposeNotifierProviderRef<int> {
   /// The parameter `initialIndex` of this provider.
   int get initialIndex;
 }
 
 class _NavigationIndexProviderElement
-    extends NotifierProviderElement<NavigationIndex, int>
+    extends AutoDisposeNotifierProviderElement<NavigationIndex, int>
     with NavigationIndexRef {
   _NavigationIndexProviderElement(super.provider);
 

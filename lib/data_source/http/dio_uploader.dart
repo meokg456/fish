@@ -13,6 +13,7 @@ class DioUploaderClient extends _$DioUploaderClient {
   Dio build() {
     final dio = Dio();
     dio.options.baseUrl = FlavorConfig.instance.values.uploadUrl;
+    dio.options.connectTimeout = const Duration(seconds: 5);
     dio.interceptors.add(DioInterceptor());
     return dio;
   }

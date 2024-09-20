@@ -196,4 +196,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commentHint => 'Write a comment...';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get logoutConfirmation => 'Are you sure you want to logout?';
 }

@@ -81,5 +81,9 @@
   "like": "Like",
   "comment": "Comment",
   "share": "Share",
-  "commentHint": "Write a comment..."
+  "commentHint": "Write a comment...",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "logout": "Logout",
+  "logoutConfirmation": "Are you sure you want to logout?"
 }

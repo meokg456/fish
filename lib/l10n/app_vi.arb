@@ -80,5 +80,9 @@
   "like": "Thích",
   "comment": "Bình luận",
   "share": "Chia sẻ",
-  "commentHint": "Viết bình luận..."
+  "commentHint": "Viết bình luận...",
+  "confirm": "Xác nhận",
+  "cancel": "Hủy",
+  "logout": "Đăng xuất",
+  "logoutConfirmation": "Bạn có chắc chắn muốn đăng xuất?"
 }

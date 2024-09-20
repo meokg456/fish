@@ -21,6 +21,7 @@ class Comment extends _$Comment {
   }
 
   Future<void> comment() async {
+    state = state.copyWith(content: state.content.trim());
     await _commentRepository.comment(state);
     final user = ref.read(userProvider).requireValue;
     ref.read(commentsProvider(state.postId).notifier).addComment(

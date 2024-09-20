@@ -26,4 +26,11 @@ class Token extends _$Token {
     ref.read(dioUploaderClientProvider.notifier).setToken(token);
     state = AsyncData(token);
   }
+
+  Future<void> clearToken() async {
+    await _tokenRepository.clearToken();
+    ref.read(dioClientProvider.notifier).removeToken();
+    ref.read(dioUploaderClientProvider.notifier).removeToken();
+    state = const AsyncData(null);
+  }
 }
