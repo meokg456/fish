@@ -22,6 +22,7 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 mixin _$PostModel {
   @JsonKey(name: 'postId')
   int get id => throw _privateConstructorUsedError;
+  int get authorId => throw _privateConstructorUsedError;
   @JsonKey(name: 'authorName')
   String get author => throw _privateConstructorUsedError;
   @JsonKey(name: 'authorAvatar')
@@ -51,6 +52,7 @@ abstract class $PostModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'postId') int id,
+      int authorId,
       @JsonKey(name: 'authorName') String author,
       @JsonKey(name: 'authorAvatar') String avatarUrl,
       @JsonKey(name: 'createTime') DateTime postAt,
@@ -76,6 +78,7 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
   @override
   $Res call({
     Object? id = null,
+    Object? authorId = null,
     Object? author = null,
     Object? avatarUrl = null,
     Object? postAt = null,
@@ -88,6 +91,10 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      authorId: null == authorId
+          ? _value.authorId
+          : authorId // ignore: cast_nullable_to_non_nullable
               as int,
       author: null == author
           ? _value.author
@@ -131,6 +138,7 @@ abstract class _$$PostModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'postId') int id,
+      int authorId,
       @JsonKey(name: 'authorName') String author,
       @JsonKey(name: 'authorAvatar') String avatarUrl,
       @JsonKey(name: 'createTime') DateTime postAt,
@@ -154,6 +162,7 @@ class __$$PostModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? authorId = null,
     Object? author = null,
     Object? avatarUrl = null,
     Object? postAt = null,
@@ -166,6 +175,10 @@ class __$$PostModelImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      authorId: null == authorId
+          ? _value.authorId
+          : authorId // ignore: cast_nullable_to_non_nullable
               as int,
       author: null == author
           ? _value.author
@@ -204,6 +217,7 @@ class __$$PostModelImplCopyWithImpl<$Res>
 class _$PostModelImpl implements _PostModel {
   _$PostModelImpl(
       {@JsonKey(name: 'postId') required this.id,
+      required this.authorId,
       @JsonKey(name: 'authorName') this.author = "",
       @JsonKey(name: 'authorAvatar') required this.avatarUrl,
       @JsonKey(name: 'createTime') required this.postAt,
@@ -218,6 +232,8 @@ class _$PostModelImpl implements _PostModel {
   @override
   @JsonKey(name: 'postId')
   final int id;
+  @override
+  final int authorId;
   @override
   @JsonKey(name: 'authorName')
   final String author;
@@ -242,7 +258,7 @@ class _$PostModelImpl implements _PostModel {
 
   @override
   String toString() {
-    return 'PostModel(id: $id, author: $author, avatarUrl: $avatarUrl, postAt: $postAt, content: $content, mediaUrl: $mediaUrl, numLikes: $numLikes, isLiked: $isLiked)';
+    return 'PostModel(id: $id, authorId: $authorId, author: $author, avatarUrl: $avatarUrl, postAt: $postAt, content: $content, mediaUrl: $mediaUrl, numLikes: $numLikes, isLiked: $isLiked)';
   }
 
   @override
@@ -251,6 +267,8 @@ class _$PostModelImpl implements _PostModel {
         (other.runtimeType == runtimeType &&
             other is _$PostModelImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.authorId, authorId) ||
+                other.authorId == authorId) &&
             (identical(other.author, author) || other.author == author) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
@@ -265,8 +283,8 @@ class _$PostModelImpl implements _PostModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, author, avatarUrl, postAt,
-      content, mediaUrl, numLikes, isLiked);
+  int get hashCode => Object.hash(runtimeType, id, authorId, author, avatarUrl,
+      postAt, content, mediaUrl, numLikes, isLiked);
 
   /// Create a copy of PostModel
   /// with the given fields replaced by the non-null parameter values.
@@ -287,6 +305,7 @@ class _$PostModelImpl implements _PostModel {
 abstract class _PostModel implements PostModel {
   factory _PostModel(
       {@JsonKey(name: 'postId') required final int id,
+      required final int authorId,
       @JsonKey(name: 'authorName') final String author,
       @JsonKey(name: 'authorAvatar') required final String avatarUrl,
       @JsonKey(name: 'createTime') required final DateTime postAt,
@@ -302,6 +321,8 @@ abstract class _PostModel implements PostModel {
   @override
   @JsonKey(name: 'postId')
   int get id;
+  @override
+  int get authorId;
   @override
   @JsonKey(name: 'authorName')
   String get author;

@@ -208,4 +208,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get logoutConfirmation => 'Bạn có chắc chắn muốn đăng xuất?';
+
+  @override
+  String get detail => 'Chi tiết';
+
+  @override
+  String get yourPosts => 'Bài viết của bạn';
+
+  @override
+  String get addFriend => 'Thêm bạn';
 }

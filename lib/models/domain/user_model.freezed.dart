@@ -20,6 +20,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
+  @JsonKey(name: 'userId')
+  int get id => throw _privateConstructorUsedError;
   String get nickName => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
   DateTime get dateOfBirth => throw _privateConstructorUsedError;
@@ -45,7 +47,8 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String nickName,
+      {@JsonKey(name: 'userId') int id,
+      String nickName,
       String avatarUrl,
       DateTime dateOfBirth,
       @JsonKey(name: 'sex', fromJson: genderFromJson) Gender gender,
@@ -69,6 +72,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? nickName = null,
     Object? avatarUrl = null,
     Object? dateOfBirth = null,
@@ -78,6 +82,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? request = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       nickName: null == nickName
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
@@ -119,7 +127,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String nickName,
+      {@JsonKey(name: 'userId') int id,
+      String nickName,
       String avatarUrl,
       DateTime dateOfBirth,
       @JsonKey(name: 'sex', fromJson: genderFromJson) Gender gender,
@@ -141,6 +150,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? nickName = null,
     Object? avatarUrl = null,
     Object? dateOfBirth = null,
@@ -150,6 +160,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? request = null,
   }) {
     return _then(_$UserModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       nickName: null == nickName
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
@@ -186,7 +200,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
   _$UserModelImpl(
-      {required this.nickName,
+      {@JsonKey(name: 'userId') required this.id,
+      required this.nickName,
       this.avatarUrl = '',
       required this.dateOfBirth,
       @JsonKey(name: 'sex', fromJson: genderFromJson) required this.gender,
@@ -200,6 +215,9 @@ class _$UserModelImpl implements _UserModel {
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
+  @override
+  @JsonKey(name: 'userId')
+  final int id;
   @override
   final String nickName;
   @override
@@ -239,7 +257,7 @@ class _$UserModelImpl implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(nickName: $nickName, avatarUrl: $avatarUrl, dateOfBirth: $dateOfBirth, gender: $gender, friends: $friends, inviters: $inviters, request: $request)';
+    return 'UserModel(id: $id, nickName: $nickName, avatarUrl: $avatarUrl, dateOfBirth: $dateOfBirth, gender: $gender, friends: $friends, inviters: $inviters, request: $request)';
   }
 
   @override
@@ -247,6 +265,7 @@ class _$UserModelImpl implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.nickName, nickName) ||
                 other.nickName == nickName) &&
             (identical(other.avatarUrl, avatarUrl) ||
@@ -263,6 +282,7 @@ class _$UserModelImpl implements _UserModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       nickName,
       avatarUrl,
       dateOfBirth,
@@ -289,7 +309,8 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   factory _UserModel(
-      {required final String nickName,
+      {@JsonKey(name: 'userId') required final int id,
+      required final String nickName,
       final String avatarUrl,
       required final DateTime dateOfBirth,
       @JsonKey(name: 'sex', fromJson: genderFromJson)
@@ -301,6 +322,9 @@ abstract class _UserModel implements UserModel {
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
+  @override
+  @JsonKey(name: 'userId')
+  int get id;
   @override
   String get nickName;
   @override

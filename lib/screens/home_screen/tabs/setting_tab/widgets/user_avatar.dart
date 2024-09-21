@@ -7,8 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class UserAvatar extends ConsumerWidget {
-  const UserAvatar({super.key});
+class AvatarSetting extends ConsumerWidget {
+  const AvatarSetting({super.key});
 
   Future<void> onPickAvatarImage(WidgetRef ref) async {
     final isGrant = await PermissionHandler.request(

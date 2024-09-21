@@ -3,6 +3,7 @@ import 'package:fish/screens/authentication/sign_up/sign_up_screen.dart';
 import 'package:fish/screens/create_post/create_post_screen.dart';
 import 'package:fish/screens/home_screen/home_screen.dart';
 import 'package:fish/screens/post_detail/post_detail_screen.dart';
+import 'package:fish/screens/profile/profile_screen.dart';
 import 'package:fish/screens/splash_screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,6 +16,8 @@ class Routes {
   static String signUp = '/sign_up';
   static String createPost = '/create_post';
   static String postDetail({int? id}) => id == null ? '/post/:id' : '/post/$id';
+  static String profile({int? id}) =>
+      id == null ? '/profile/:id' : '/profile/$id';
 }
 
 final router = GoRouter(
@@ -53,6 +56,11 @@ final router = GoRouter(
       path: Routes.postDetail(),
       builder: (context, state) =>
           PostDetailScreen(int.parse(state.pathParameters['id'] ?? '')),
+    ),
+    GoRoute(
+      path: Routes.profile(),
+      builder: (context, state) =>
+          ProfileScreen(int.parse(state.pathParameters['id'] ?? '')),
     ),
   ],
 );

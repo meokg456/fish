@@ -1,4 +1,3 @@
-import 'package:fish/gen/assets.gen.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/comment/comment.dart';
 import 'package:fish/riverpods/comment/comments.dart';
@@ -8,7 +7,8 @@ import 'package:fish/screens/post_detail/widgets/comment_text_field.dart';
 import 'package:fish/screens/post_detail/widgets/comment_widget.dart';
 import 'package:fish/widgets/button/like_button.dart';
 import 'package:fish/utils/utils.dart';
-import 'package:flutter/gestures.dart';
+import 'package:fish/widgets/user/user_avatar.dart';
+import 'package:fish/widgets/user/user_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -88,21 +88,13 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
               titleSpacing: 0,
               title: ListTile(
                 contentPadding: EdgeInsets.zero,
-                leading: Container(
-                  padding: const EdgeInsets.all(2),
-                  width: 50,
-                  height: 50,
-                  child: CircleAvatar(
-                    backgroundImage: value.avatarUrl.isEmpty
-                        ? AssetImage(Assets.images.defaultAvatar.keyName)
-                        : NetworkImage(value.avatarUrl),
-                    radius: 50,
-                  ),
+                leading: UserAvatar(
+                  userId: value.authorId,
+                  avatarUrl: value.avatarUrl,
                 ),
-                title: Text(
-                  value.author,
-                  style: theme.textTheme.titleMedium
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                title: UserName(
+                  userId: value.authorId,
+                  name: value.author,
                 ),
                 subtitle: Row(
                   children: [

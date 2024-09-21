@@ -3,8 +3,11 @@ import 'dart:async';
 import 'package:fish/gen/assets.gen.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/models/domain/post_model.dart';
+import 'package:fish/models/domain/user_model.dart';
 import 'package:fish/widgets/button/like_button.dart';
 import 'package:fish/utils/utils.dart';
+import 'package:fish/widgets/user/user_avatar.dart';
+import 'package:fish/widgets/user/user_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -57,21 +60,13 @@ class _PostCardState extends ConsumerState<PostCard>
             children: [
               ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-                leading: Container(
-                  padding: const EdgeInsets.all(2),
-                  width: 50,
-                  height: 50,
-                  child: CircleAvatar(
-                    backgroundImage: widget.post.avatarUrl.isEmpty
-                        ? AssetImage(Assets.images.defaultAvatar.keyName)
-                        : NetworkImage(widget.post.avatarUrl),
-                    radius: 50,
-                  ),
+                leading: UserAvatar(
+                  userId: widget.post.authorId,
+                  avatarUrl: widget.post.avatarUrl,
                 ),
-                title: Text(
-                  widget.post.author,
-                  style: theme.textTheme.titleMedium
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                title: UserName(
+                  userId: widget.post.authorId,
+                  name: widget.post.author,
                 ),
                 subtitle: Row(
                   children: [

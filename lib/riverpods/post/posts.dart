@@ -9,7 +9,10 @@ class Posts extends _$Posts {
   late final PostRepository _postRepository = ref.watch(postRepositoryProvider);
 
   @override
-  Future<List<PostModel>> build(int page) {
+  Future<List<PostModel>> build(int page, [int? userId]) {
+    if (userId != null) {
+      return _postRepository.getUserPosts(userId);
+    }
     return _postRepository.getPosts(page);
   }
 

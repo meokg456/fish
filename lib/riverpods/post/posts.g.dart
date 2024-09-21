@@ -6,7 +6,7 @@ part of 'posts.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postsHash() => r'2021f832c1dd6c9534b72cdce6941d08e203e654';
+String _$postsHash() => r'309202b32f2a7d26f0240befc139d3d42cb72cd7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,10 +32,12 @@ class _SystemHash {
 abstract class _$Posts
     extends BuildlessAutoDisposeAsyncNotifier<List<PostModel>> {
   late final int page;
+  late final int? userId;
 
   FutureOr<List<PostModel>> build(
-    int page,
-  );
+    int page, [
+    int? userId,
+  ]);
 }
 
 /// See also [Posts].
@@ -49,10 +51,12 @@ class PostsFamily extends Family<AsyncValue<List<PostModel>>> {
 
   /// See also [Posts].
   PostsProvider call(
-    int page,
-  ) {
+    int page, [
+    int? userId,
+  ]) {
     return PostsProvider(
       page,
+      userId,
     );
   }
 
@@ -62,6 +66,7 @@ class PostsFamily extends Family<AsyncValue<List<PostModel>>> {
   ) {
     return call(
       provider.page,
+      provider.userId,
     );
   }
 
@@ -85,9 +90,12 @@ class PostsProvider
     extends AutoDisposeAsyncNotifierProviderImpl<Posts, List<PostModel>> {
   /// See also [Posts].
   PostsProvider(
-    int page,
-  ) : this._internal(
-          () => Posts()..page = page,
+    int page, [
+    int? userId,
+  ]) : this._internal(
+          () => Posts()
+            ..page = page
+            ..userId = userId,
           from: postsProvider,
           name: r'postsProvider',
           debugGetCreateSourceHash:
@@ -97,6 +105,7 @@ class PostsProvider
           dependencies: PostsFamily._dependencies,
           allTransitiveDependencies: PostsFamily._allTransitiveDependencies,
           page: page,
+          userId: userId,
         );
 
   PostsProvider._internal(
@@ -107,9 +116,11 @@ class PostsProvider
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.page,
+    required this.userId,
   }) : super.internal();
 
   final int page;
+  final int? userId;
 
   @override
   FutureOr<List<PostModel>> runNotifierBuild(
@@ -117,6 +128,7 @@ class PostsProvider
   ) {
     return notifier.build(
       page,
+      userId,
     );
   }
 
@@ -125,13 +137,16 @@ class PostsProvider
     return ProviderOverride(
       origin: this,
       override: PostsProvider._internal(
-        () => create()..page = page,
+        () => create()
+          ..page = page
+          ..userId = userId,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         page: page,
+        userId: userId,
       ),
     );
   }
@@ -144,13 +159,16 @@ class PostsProvider
 
   @override
   bool operator ==(Object other) {
-    return other is PostsProvider && other.page == page;
+    return other is PostsProvider &&
+        other.page == page &&
+        other.userId == userId;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, page.hashCode);
+    hash = _SystemHash.combine(hash, userId.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -159,6 +177,9 @@ class PostsProvider
 mixin PostsRef on AutoDisposeAsyncNotifierProviderRef<List<PostModel>> {
   /// The parameter `page` of this provider.
   int get page;
+
+  /// The parameter `userId` of this provider.
+  int? get userId;
 }
 
 class _PostsProviderElement
@@ -168,6 +189,8 @@ class _PostsProviderElement
 
   @override
   int get page => (origin as PostsProvider).page;
+  @override
+  int? get userId => (origin as PostsProvider).userId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

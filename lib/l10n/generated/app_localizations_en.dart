@@ -208,4 +208,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logoutConfirmation => 'Are you sure you want to logout?';
+
+  @override
+  String get detail => 'Detail';
+
+  @override
+  String get yourPosts => 'Your posts';
+
+  @override
+  String get addFriend => 'Add friend';
 }

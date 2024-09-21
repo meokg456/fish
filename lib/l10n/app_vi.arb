@@ -84,5 +84,8 @@
   "confirm": "Xác nhận",
   "cancel": "Hủy",
   "logout": "Đăng xuất",
-  "logoutConfirmation": "Bạn có chắc chắn muốn đăng xuất?"
+  "logoutConfirmation": "Bạn có chắc chắn muốn đăng xuất?",
+  "detail": "Chi tiết",
+  "yourPosts": "Bài viết của bạn",
+  "addFriend": "Thêm bạn"
 }

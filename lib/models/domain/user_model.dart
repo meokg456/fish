@@ -7,6 +7,7 @@ part 'user_model.g.dart';
 @freezed
 class UserModel with _$UserModel {
   factory UserModel({
+    @JsonKey(name: 'userId') required int id,
     required String nickName,
     @Default('') String avatarUrl,
     required DateTime dateOfBirth,

@@ -9,6 +9,7 @@ part of 'post_model.dart';
 _$PostModelImpl _$$PostModelImplFromJson(Map<String, dynamic> json) =>
     _$PostModelImpl(
       id: (json['postId'] as num).toInt(),
+      authorId: (json['authorId'] as num).toInt(),
       author: json['authorName'] as String? ?? "",
       avatarUrl: json['authorAvatar'] as String,
       postAt: DateTime.parse(json['createTime'] as String),
@@ -21,6 +22,7 @@ _$PostModelImpl _$$PostModelImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$PostModelImplToJson(_$PostModelImpl instance) =>
     <String, dynamic>{
       'postId': instance.id,
+      'authorId': instance.authorId,
       'authorName': instance.author,
       'authorAvatar': instance.avatarUrl,
       'createTime': instance.postAt.toIso8601String(),

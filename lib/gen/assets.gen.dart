@@ -30,8 +30,12 @@ class $AssetsImagesGen {
   AssetGenImage get underwater =>
       const AssetGenImage('assets/images/underwater.jpg');
 
+  /// File path: assets/images/user_background.jpg
+  AssetGenImage get userBackground =>
+      const AssetGenImage('assets/images/user_background.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [defaultAvatar, underwater];
+  List<AssetGenImage> get values => [defaultAvatar, underwater, userBackground];
 }
 
 class Assets {

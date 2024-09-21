@@ -15,6 +15,7 @@ String? mediaUrlFromJson(String? json) {
 class PostModel with _$PostModel {
   factory PostModel({
     @JsonKey(name: 'postId') required int id,
+    required int authorId,
     @JsonKey(name: 'authorName') @Default("") String author,
     @JsonKey(name: 'authorAvatar') required String avatarUrl,
     @JsonKey(name: 'createTime') required DateTime postAt,

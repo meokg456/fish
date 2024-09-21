@@ -68,7 +68,7 @@ class _SettingTabState extends ConsumerState<SettingTab> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              UserAvatar(),
+              AvatarSetting(),
             ],
           ),
         ),

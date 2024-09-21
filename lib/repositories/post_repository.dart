@@ -13,6 +13,7 @@ PostRepository postRepository(PostRepositoryRef ref) => DioPostRepository(
 
 abstract class PostRepository {
   Future<List<PostModel>> getPosts(int page);
+  Future<List<PostModel>> getUserPosts(int userId);
   Future<void> createPost(PostForm form);
   Future<bool> liked(int postId);
   Future<PostModel> getPost(int id);
@@ -52,5 +53,14 @@ class DioPostRepository implements PostRepository {
   Future<PostModel> getPost(int id) async {
     final response = await _dio.get("/social-service/post/$id");
     return PostModel.fromJson(response.data['data']);
+  }
+
+  @override
+  Future<List<PostModel>> getUserPosts(int userId) async {
+    final response = await _dio.get('/social-service/my-post-list/$userId');
+    final postData = response.data['list'] as List<dynamic>;
+    final postModels =
+        postData.map((post) => PostModel.fromJson(post)).toList();
+    return postModels;
   }
 }

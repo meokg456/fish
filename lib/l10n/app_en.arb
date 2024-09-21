@@ -85,5 +85,8 @@
   "confirm": "Confirm",
   "cancel": "Cancel",
   "logout": "Logout",
-  "logoutConfirmation": "Are you sure you want to logout?"
+  "logoutConfirmation": "Are you sure you want to logout?",
+  "detail": "Detail",
+  "yourPosts": "Your posts",
+  "addFriend": "Add friend"
 }

@@ -49,6 +49,18 @@ class MockPostRepository extends _i1.Mock implements _i3.PostRepository {
       ) as _i4.Future<List<_i2.PostModel>>);
 
   @override
+  _i4.Future<List<_i2.PostModel>> getUserPosts(int? userId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserPosts,
+          [userId],
+        ),
+        returnValue: _i4.Future<List<_i2.PostModel>>.value(<_i2.PostModel>[]),
+        returnValueForMissingStub:
+            _i4.Future<List<_i2.PostModel>>.value(<_i2.PostModel>[]),
+      ) as _i4.Future<List<_i2.PostModel>>);
+
+  @override
   _i4.Future<void> createPost(_i5.PostForm? form) => (super.noSuchMethod(
         Invocation.method(
           #createPost,
