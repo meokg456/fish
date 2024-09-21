@@ -1,6 +1,7 @@
 import 'package:fish/app/router.dart';
 import 'package:fish/models/domain/post_model.dart';
 import 'package:fish/riverpods/app/app_setting.dart';
+import 'package:fish/riverpods/post/post_data.dart';
 import 'package:fish/riverpods/post/post_pagination.dart';
 import 'package:fish/riverpods/post/posts.dart';
 import 'package:fish/screens/home_screen/tabs/home_tab/widgets/create_post.dart';
@@ -26,30 +27,30 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     theme = Theme.of(context);
   }
 
-  void onTap(int page, int index) {
-    final id = ref.read(postsProvider(page)).requireValue[index].id;
+  void onTap(int id) {
     context.push(Routes.postDetail(id: id));
   }
 
-  void onLiked(int page, int index) {
-    ref.read(postsProvider(page).notifier).like(index);
+  void onLiked(int id) {
+    ref.read(postDataProvider.notifier).like(id);
   }
 
   @override
   Widget build(BuildContext context) {
     final pagination = ref.watch(postPaginationProvider);
     final postsWidget = <Widget>[];
+    final postData = ref.watch(postDataProvider);
     for (int page = 1; page <= pagination.current; page++) {
       final postsValue = ref.watch(postsProvider(page));
       if (postsValue is AsyncData) {
-        final posts = postsValue.requireValue;
-        for (int i = 0; i < posts.length; i++) {
-          final post = posts[i];
+        final postIds = postsValue.requireValue;
+        for (final postId in postIds) {
+          final post = postData[postId]!;
           postsWidget.add(
             PostCard(
               post,
-              onTap: () => onTap(page, i),
-              onLiked: () => onLiked(page, i),
+              onTap: () => onTap(postId),
+              onLiked: () => onLiked(postId),
             ),
           );
           postsWidget.add(const SizedBox(height: 8));

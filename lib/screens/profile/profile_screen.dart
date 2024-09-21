@@ -3,6 +3,7 @@ import 'package:fish/gen/assets.gen.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/models/domain/post_model.dart';
 import 'package:fish/models/enums/gender.dart';
+import 'package:fish/riverpods/post/post_data.dart';
 import 'package:fish/riverpods/post/posts.dart';
 import 'package:fish/riverpods/user/user_profile.dart';
 import 'package:fish/screens/home_screen/tabs/home_tab/widgets/post_card.dart';
@@ -31,31 +32,31 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     super.didChangeDependencies();
   }
 
-  void onTap(int index) {
-    final id = ref.read(postsProvider(0, widget.userId)).requireValue[index].id;
+  void onTap(int id) {
     context.push(Routes.postDetail(id: id));
   }
 
-  void onLiked(int index) {
-    ref.read(postsProvider(0, widget.userId).notifier).like(index);
+  void onLiked(int id) {
+    ref.read(postDataProvider.notifier).like(id);
   }
 
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(userProfileProvider(widget.userId));
+    final postData = ref.watch(postDataProvider);
     final postsWidget = <Widget>[];
     final postsValue = ref.watch(postsProvider(0, widget.userId));
     if (postsValue is AsyncData) {
-      final posts = postsValue.requireValue;
-      for (int i = 0; i < posts.length; i++) {
-        final post = posts[i];
+      final postIds = postsValue.requireValue;
+      for (final postId in postIds) {
+        final post = postData[postId]!;
         postsWidget.add(
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: PostCard(
               post,
-              onTap: () => onTap(i),
-              onLiked: () => onLiked(i),
+              onTap: () => onTap(postId),
+              onLiked: () => onLiked(postId),
             ),
           ),
         );
@@ -85,7 +86,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             centerTitle: true,
           ),
           body: ListView(
-            cacheExtent: 10000,
+            cacheExtent: 1000,
             children: [
               Stack(
                 children: [

@@ -15,7 +15,7 @@ abstract class PostRepository {
   Future<List<PostModel>> getPosts(int page);
   Future<List<PostModel>> getUserPosts(int userId);
   Future<void> createPost(PostForm form);
-  Future<bool> liked(int postId);
+  Future<bool> like(int postId);
   Future<PostModel> getPost(int id);
 }
 
@@ -39,7 +39,7 @@ class DioPostRepository implements PostRepository {
   }
 
   @override
-  Future<bool> liked(int postId) async {
+  Future<bool> like(int postId) async {
     final response = await _dio.post(
       '/social-service/like-post',
       data: {

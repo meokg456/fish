@@ -1,6 +1,7 @@
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/comment/comment.dart';
 import 'package:fish/riverpods/comment/comments.dart';
+import 'package:fish/riverpods/post/post_data.dart';
 import 'package:fish/riverpods/post/post_detail.dart';
 import 'package:fish/riverpods/side_effect_performer.dart';
 import 'package:fish/screens/post_detail/widgets/comment_text_field.dart';
@@ -12,7 +13,6 @@ import 'package:fish/widgets/user/user_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class PostDetailScreen extends ConsumerStatefulWidget {
   const PostDetailScreen(this.postId, {super.key});
@@ -54,7 +54,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   }
 
   void onLiked() {
-    ref.read(postDetailProvider(widget.postId).notifier).like();
+    ref.read(postDataProvider.notifier).like(widget.postId);
   }
 
   void onComment() {
@@ -63,7 +63,8 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final post = ref.watch(postDetailProvider(widget.postId));
+    final status = ref.watch(postDetailProvider(widget.postId));
+    final post = ref.watch(postDataProvider)[widget.postId]!;
     final comments = ref.watch(commentsProvider(widget.postId));
     final List<Widget> commentWidgets = switch (comments) {
       AsyncData(:final value) =>
@@ -72,29 +73,29 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
           const SizedBox(
             height: 96,
             child: Center(child: CircularProgressIndicator()),
-          )
+          ),
         ],
       _ => [],
     };
 
-    return switch (post) {
-      AsyncData(:final value) => Scaffold(
+    return switch (status) {
+      AsyncData() => Scaffold(
           appBar: AppBar(
             titleSpacing: 0,
             title: ListTile(
               contentPadding: EdgeInsets.zero,
               leading: UserAvatar(
-                userId: value.authorId,
-                avatarUrl: value.avatarUrl,
+                userId: post.authorId,
+                avatarUrl: post.avatarUrl,
               ),
               title: UserName(
-                userId: value.authorId,
-                name: value.author,
+                userId: post.authorId,
+                name: post.author,
               ),
               subtitle: Row(
                 children: [
                   Text(
-                    Utils.timeSpendFromCreated(value.postAt),
+                    Utils.timeSpendFromCreated(post.postAt),
                     style: theme.textTheme.titleSmall,
                   ),
                   const SizedBox(width: 4),
@@ -108,22 +109,23 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
               Expanded(
                 child: ListView(
                   controller: scrollController,
+                  cacheExtent: 1000,
                   children: [
-                    value.content.isNotEmpty
+                    post.content.isNotEmpty
                         ? Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 16,
                               horizontal: Utils.horizontalPadding(context),
                             ),
-                            child: Text(value.content),
+                            child: Text(post.content),
                           )
                         : const SizedBox(height: 16),
-                    if (value.mediaUrl != null) Image.network(value.mediaUrl!),
+                    if (post.mediaUrl != null) Image.network(post.mediaUrl!),
                     Row(
                       children: [
                         Expanded(
                           child: LikeButton(
-                            isLiked: value.isLiked,
+                            isLiked: post.isLiked,
                             onLiked: onLiked,
                           ),
                         ),
@@ -148,7 +150,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                         children: [
                           const Icon(Icons.favorite, color: Colors.red),
                           const SizedBox(width: 4),
-                          Text(value.numLikes.toString()),
+                          Text(post.numLikes.toString()),
                         ],
                       ),
                     ),
@@ -157,7 +159,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                 ),
               ),
               CommentTextField(
-                value.id,
+                post.id,
                 focusNode: commentFocusNode,
               ),
             ],

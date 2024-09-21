@@ -6,7 +6,7 @@ part of 'posts.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postsHash() => r'a22d6a440f1ce514636d30a8bbb2cd73b1fe6f3c';
+String _$postsHash() => r'9ab236666880ea843176c6240b0ae6eaa275bc17';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,12 +29,11 @@ class _SystemHash {
   }
 }
 
-abstract class _$Posts
-    extends BuildlessAutoDisposeAsyncNotifier<List<PostModel>> {
+abstract class _$Posts extends BuildlessAutoDisposeAsyncNotifier<List<int>> {
   late final int page;
   late final int? userId;
 
-  FutureOr<List<PostModel>> build(
+  FutureOr<List<int>> build(
     int page, [
     int? userId,
   ]);
@@ -45,7 +44,7 @@ abstract class _$Posts
 const postsProvider = PostsFamily();
 
 /// See also [Posts].
-class PostsFamily extends Family<AsyncValue<List<PostModel>>> {
+class PostsFamily extends Family<AsyncValue<List<int>>> {
   /// See also [Posts].
   const PostsFamily();
 
@@ -87,7 +86,7 @@ class PostsFamily extends Family<AsyncValue<List<PostModel>>> {
 
 /// See also [Posts].
 class PostsProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<Posts, List<PostModel>> {
+    extends AutoDisposeAsyncNotifierProviderImpl<Posts, List<int>> {
   /// See also [Posts].
   PostsProvider(
     int page, [
@@ -123,7 +122,7 @@ class PostsProvider
   final int? userId;
 
   @override
-  FutureOr<List<PostModel>> runNotifierBuild(
+  FutureOr<List<int>> runNotifierBuild(
     covariant Posts notifier,
   ) {
     return notifier.build(
@@ -152,8 +151,7 @@ class PostsProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<Posts, List<PostModel>>
-      createElement() {
+  AutoDisposeAsyncNotifierProviderElement<Posts, List<int>> createElement() {
     return _PostsProviderElement(this);
   }
 
@@ -174,7 +172,7 @@ class PostsProvider
   }
 }
 
-mixin PostsRef on AutoDisposeAsyncNotifierProviderRef<List<PostModel>> {
+mixin PostsRef on AutoDisposeAsyncNotifierProviderRef<List<int>> {
   /// The parameter `page` of this provider.
   int get page;
 
@@ -183,7 +181,7 @@ mixin PostsRef on AutoDisposeAsyncNotifierProviderRef<List<PostModel>> {
 }
 
 class _PostsProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<Posts, List<PostModel>>
+    extends AutoDisposeAsyncNotifierProviderElement<Posts, List<int>>
     with PostsRef {
   _PostsProviderElement(super.provider);
 
