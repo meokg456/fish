@@ -33,13 +33,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
   void onTap(int index) {
     final id = ref.read(postsProvider(0, widget.userId)).requireValue[index].id;
-    context.push(Routes.postDetail(id: id)).then((value) {
-      if (value is PostModel) {
-        ref
-            .read(postsProvider(0, widget.userId).notifier)
-            .updatePost(value, index);
-      }
-    });
+    context.push(Routes.postDetail(id: id));
   }
 
   void onLiked(int index) {

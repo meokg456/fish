@@ -78,96 +78,89 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
     };
 
     return switch (post) {
-      AsyncData(:final value) => PopScope(
-          canPop: false,
-          onPopInvokedWithResult: (didPop, result) {
-            context.pop(value);
-          },
-          child: Scaffold(
-            appBar: AppBar(
-              titleSpacing: 0,
-              title: ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: UserAvatar(
-                  userId: value.authorId,
-                  avatarUrl: value.avatarUrl,
-                ),
-                title: UserName(
-                  userId: value.authorId,
-                  name: value.author,
-                ),
-                subtitle: Row(
+      AsyncData(:final value) => Scaffold(
+          appBar: AppBar(
+            titleSpacing: 0,
+            title: ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: UserAvatar(
+                userId: value.authorId,
+                avatarUrl: value.avatarUrl,
+              ),
+              title: UserName(
+                userId: value.authorId,
+                name: value.author,
+              ),
+              subtitle: Row(
+                children: [
+                  Text(
+                    Utils.timeSpendFromCreated(value.postAt),
+                    style: theme.textTheme.titleSmall,
+                  ),
+                  const SizedBox(width: 4),
+                  const Icon(Icons.public, size: 20),
+                ],
+              ),
+            ),
+          ),
+          body: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  controller: scrollController,
                   children: [
-                    Text(
-                      Utils.timeSpendFromCreated(value.postAt),
-                      style: theme.textTheme.titleSmall,
+                    value.content.isNotEmpty
+                        ? Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 16,
+                              horizontal: Utils.horizontalPadding(context),
+                            ),
+                            child: Text(value.content),
+                          )
+                        : const SizedBox(height: 16),
+                    if (value.mediaUrl != null) Image.network(value.mediaUrl!),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: LikeButton(
+                            isLiked: value.isLiked,
+                            onLiked: onLiked,
+                          ),
+                        ),
+                        Expanded(
+                          child: TextButton.icon(
+                            onPressed: onComment,
+                            icon: const Icon(Icons.mode_comment_outlined),
+                            label: Text(localizations.comment),
+                            style: TextButton.styleFrom(
+                              foregroundColor: theme.colorScheme.secondary,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 4),
-                    const Icon(Icons.public, size: 20),
+                    const SizedBox(height: 8),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.favorite, color: Colors.red),
+                          const SizedBox(width: 4),
+                          Text(value.numLikes.toString()),
+                        ],
+                      ),
+                    ),
+                    ...commentWidgets,
                   ],
                 ),
               ),
-            ),
-            body: Column(
-              children: [
-                Expanded(
-                  child: ListView(
-                    controller: scrollController,
-                    children: [
-                      value.content.isNotEmpty
-                          ? Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: 16,
-                                horizontal: Utils.horizontalPadding(context),
-                              ),
-                              child: Text(value.content),
-                            )
-                          : const SizedBox(height: 16),
-                      if (value.mediaUrl != null)
-                        Image.network(value.mediaUrl!),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: LikeButton(
-                              isLiked: value.isLiked,
-                              onLiked: onLiked,
-                            ),
-                          ),
-                          Expanded(
-                            child: TextButton.icon(
-                              onPressed: onComment,
-                              icon: const Icon(Icons.mode_comment_outlined),
-                              label: Text(localizations.comment),
-                              style: TextButton.styleFrom(
-                                foregroundColor: theme.colorScheme.secondary,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.favorite, color: Colors.red),
-                            const SizedBox(width: 4),
-                            Text(value.numLikes.toString()),
-                          ],
-                        ),
-                      ),
-                      ...commentWidgets,
-                    ],
-                  ),
-                ),
-                CommentTextField(
-                  value.id,
-                  focusNode: commentFocusNode,
-                ),
-              ],
-            ),
+              CommentTextField(
+                value.id,
+                focusNode: commentFocusNode,
+              ),
+            ],
           ),
         ),
       _ => Scaffold(

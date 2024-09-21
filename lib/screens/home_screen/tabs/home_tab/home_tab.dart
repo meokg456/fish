@@ -28,11 +28,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
 
   void onTap(int page, int index) {
     final id = ref.read(postsProvider(page)).requireValue[index].id;
-    context.push(Routes.postDetail(id: id)).then((value) {
-      if (value is PostModel) {
-        ref.read(postsProvider(page).notifier).updatePost(value, index);
-      }
-    });
+    context.push(Routes.postDetail(id: id));
   }
 
   void onLiked(int page, int index) {
