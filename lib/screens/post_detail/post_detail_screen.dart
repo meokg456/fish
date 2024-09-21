@@ -167,6 +167,11 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
         ),
       _ => Scaffold(
           appBar: AppBar(),
+          body: status.isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : null,
         ),
     };
   }

@@ -4,6 +4,7 @@ import 'package:fish/riverpods/app/app_setting.dart';
 import 'package:fish/riverpods/post/post_data.dart';
 import 'package:fish/riverpods/post/post_pagination.dart';
 import 'package:fish/riverpods/post/posts.dart';
+import 'package:fish/riverpods/user/user.dart';
 import 'package:fish/screens/home_screen/tabs/home_tab/widgets/create_post.dart';
 import 'package:fish/screens/home_screen/tabs/home_tab/widgets/post_card.dart';
 import 'package:fish/utils/utils.dart';
@@ -37,6 +38,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
 
   @override
   Widget build(BuildContext context) {
+    final user = ref.watch(userProvider);
     final pagination = ref.watch(postPaginationProvider);
     final postsWidget = <Widget>[];
     final postData = ref.watch(postDataProvider);
@@ -74,7 +76,11 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: user.hasValue
+              ? () {
+                  context.push(Routes.profile(id: user.requireValue.id));
+                }
+              : null,
           icon: const Icon(Icons.account_circle_outlined),
         ),
         actions: [

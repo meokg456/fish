@@ -191,6 +191,11 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         ),
       _ => Scaffold(
           appBar: AppBar(),
+          body: user.isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : null,
         ),
     };
   }
