@@ -24,7 +24,7 @@ class DioCommentRepository implements CommentRepository {
   @override
   Future<List<CommentModel>> getCommentsByPostId(int postId) async {
     final response = await _dio.get("/social-service/comments/$postId");
-    final comments = response.data['data'] as List<dynamic>;
+    final comments = response.data['list'] as List<dynamic>;
     return comments.map((comment) => CommentModel.fromJson(comment)).toList();
   }
 
