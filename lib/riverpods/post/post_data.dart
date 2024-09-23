@@ -15,6 +15,9 @@ class PostData extends _$PostData {
 
   Future<void> like(int postId) async {
     final isLiked = await _postRepository.like(postId);
+    if (!state.containsKey(postId)) {
+      return;
+    }
     final post = state[postId]!;
     final updatedPost = post.copyWith(
       isLiked: isLiked,

@@ -54,7 +54,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   }
 
   void onLiked() {
-    ref.read(postDataProvider.notifier).like(widget.postId);
+    ref.read(postDetailProvider(widget.postId).notifier).like();
   }
 
   void onComment() {
@@ -64,7 +64,6 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final status = ref.watch(postDetailProvider(widget.postId));
-    final post = ref.watch(postDataProvider)[widget.postId]!;
     final comments = ref.watch(commentsProvider(widget.postId));
     final List<Widget> commentWidgets = switch (comments) {
       AsyncData(:final value) =>
@@ -79,23 +78,23 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
     };
 
     return switch (status) {
-      AsyncData() => Scaffold(
+      AsyncData(:final value) => Scaffold(
           appBar: AppBar(
             titleSpacing: 0,
             title: ListTile(
               contentPadding: EdgeInsets.zero,
               leading: UserAvatar(
-                userId: post.authorId,
-                avatarUrl: post.avatarUrl,
+                userId: value.authorId,
+                avatarUrl: value.avatarUrl,
               ),
               title: UserName(
-                userId: post.authorId,
-                name: post.author,
+                userId: value.authorId,
+                name: value.author,
               ),
               subtitle: Row(
                 children: [
                   Text(
-                    Utils.timeSpendFromCreated(post.postAt),
+                    Utils.timeSpendFromCreated(value.postAt),
                     style: theme.textTheme.titleSmall,
                   ),
                   const SizedBox(width: 4),
@@ -111,21 +110,21 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                   controller: scrollController,
                   cacheExtent: 1000,
                   children: [
-                    post.content.isNotEmpty
+                    value.content.isNotEmpty
                         ? Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 16,
                               horizontal: Utils.horizontalPadding(context),
                             ),
-                            child: Text(post.content),
+                            child: Text(value.content),
                           )
                         : const SizedBox(height: 16),
-                    if (post.mediaUrl != null) Image.network(post.mediaUrl!),
+                    if (value.mediaUrl != null) Image.network(value.mediaUrl!),
                     Row(
                       children: [
                         Expanded(
                           child: LikeButton(
-                            isLiked: post.isLiked,
+                            isLiked: value.isLiked,
                             onLiked: onLiked,
                           ),
                         ),
@@ -150,7 +149,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                         children: [
                           const Icon(Icons.favorite, color: Colors.red),
                           const SizedBox(width: 4),
-                          Text(post.numLikes.toString()),
+                          Text(value.numLikes.toString()),
                         ],
                       ),
                     ),
@@ -159,7 +158,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                 ),
               ),
               CommentTextField(
-                post.id,
+                value.id,
                 focusNode: commentFocusNode,
               ),
             ],

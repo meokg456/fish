@@ -15,4 +15,9 @@ class PostDetail extends _$PostDetail {
     ref.read(postDataProvider.notifier).updatePost(post);
     return post;
   }
+
+  Future<void> like() async {
+    await ref.read(postDataProvider.notifier).like(id);
+    ref.invalidateSelf();
+  }
 }

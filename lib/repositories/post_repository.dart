@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fish/data_source/http/dio_client.dart';
 import 'package:fish/models/domain/post_model.dart';
+import 'package:fish/models/enums/post_type.dart';
 import 'package:fish/riverpods/forms/post_form.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -25,7 +26,11 @@ class DioPostRepository implements PostRepository {
 
   @override
   Future<List<PostModel>> getPosts(int page) async {
-    final response = await _dio.get('/social-service/post-list?page=$page');
+    const postType = PostType.image;
+    print(postType.name);
+    final response = await _dio.get(
+      '/social-service/post-list?type=${postType.name.toUpperCase()}&page=$page',
+    );
     final postData = response.data['list'] as List<dynamic>;
     final postModels =
         postData.map((post) => PostModel.fromJson(post)).toList();
