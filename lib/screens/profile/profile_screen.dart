@@ -1,10 +1,10 @@
 import 'package:fish/app/router.dart';
 import 'package:fish/gen/assets.gen.dart';
 import 'package:fish/l10n/generated/app_localizations.dart';
-import 'package:fish/models/domain/post_model.dart';
 import 'package:fish/models/enums/gender.dart';
 import 'package:fish/riverpods/post/post_data.dart';
 import 'package:fish/riverpods/post/posts.dart';
+import 'package:fish/riverpods/user/user.dart';
 import 'package:fish/riverpods/user/user_profile.dart';
 import 'package:fish/screens/home_screen/tabs/home_tab/widgets/post_card.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +43,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(userProfileProvider(widget.userId));
+    final thisUser = ref.watch(userProvider);
     final postData = ref.watch(postDataProvider);
     final postsWidget = <Widget>[];
     final postsValue = ref.watch(postsProvider(0, widget.userId));
@@ -124,14 +125,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       ?.copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
-              const SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: FilledButton(
-                  onPressed: () {},
-                  child: Text(localizations.addFriend),
+              if (thisUser.requireValue.id != value.id) ...[
+                const SizedBox(height: 24),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: FilledButton(
+                    onPressed: () {},
+                    child: Text(localizations.addFriend),
+                  ),
                 ),
-              ),
+              ],
               const SizedBox(height: 24),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),

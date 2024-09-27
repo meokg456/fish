@@ -10,14 +10,9 @@ class PostDetail extends _$PostDetail {
   late final PostRepository _postRepository = ref.watch(postRepositoryProvider);
 
   @override
-  Future<PostModel> build(int id) async {
+  Future<int> build(int id) async {
     final post = await _postRepository.getPost(id);
     ref.read(postDataProvider.notifier).updatePost(post);
-    return post;
-  }
-
-  Future<void> like() async {
-    await ref.read(postDataProvider.notifier).like(id);
-    ref.invalidateSelf();
+    return post.id;
   }
 }

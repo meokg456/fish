@@ -6,7 +6,7 @@ part of 'post_detail.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postDetailHash() => r'cee881cf5c8449a1ccb3a476e5045ae9bb28e0cc';
+String _$postDetailHash() => r'59644da85f2c0038ad0ce8798a3e6d0671e768fd';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,11 +29,10 @@ class _SystemHash {
   }
 }
 
-abstract class _$PostDetail
-    extends BuildlessAutoDisposeAsyncNotifier<PostModel> {
+abstract class _$PostDetail extends BuildlessAutoDisposeAsyncNotifier<int> {
   late final int id;
 
-  FutureOr<PostModel> build(
+  FutureOr<int> build(
     int id,
   );
 }
@@ -43,7 +42,7 @@ abstract class _$PostDetail
 const postDetailProvider = PostDetailFamily();
 
 /// See also [PostDetail].
-class PostDetailFamily extends Family<AsyncValue<PostModel>> {
+class PostDetailFamily extends Family<AsyncValue<int>> {
   /// See also [PostDetail].
   const PostDetailFamily();
 
@@ -82,7 +81,7 @@ class PostDetailFamily extends Family<AsyncValue<PostModel>> {
 
 /// See also [PostDetail].
 class PostDetailProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<PostDetail, PostModel> {
+    extends AutoDisposeAsyncNotifierProviderImpl<PostDetail, int> {
   /// See also [PostDetail].
   PostDetailProvider(
     int id,
@@ -113,7 +112,7 @@ class PostDetailProvider
   final int id;
 
   @override
-  FutureOr<PostModel> runNotifierBuild(
+  FutureOr<int> runNotifierBuild(
     covariant PostDetail notifier,
   ) {
     return notifier.build(
@@ -138,8 +137,7 @@ class PostDetailProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<PostDetail, PostModel>
-      createElement() {
+  AutoDisposeAsyncNotifierProviderElement<PostDetail, int> createElement() {
     return _PostDetailProviderElement(this);
   }
 
@@ -157,13 +155,13 @@ class PostDetailProvider
   }
 }
 
-mixin PostDetailRef on AutoDisposeAsyncNotifierProviderRef<PostModel> {
+mixin PostDetailRef on AutoDisposeAsyncNotifierProviderRef<int> {
   /// The parameter `id` of this provider.
   int get id;
 }
 
 class _PostDetailProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<PostDetail, PostModel>
+    extends AutoDisposeAsyncNotifierProviderElement<PostDetail, int>
     with PostDetailRef {
   _PostDetailProviderElement(super.provider);
 

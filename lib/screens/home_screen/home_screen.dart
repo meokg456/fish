@@ -1,6 +1,7 @@
 import 'package:fish/l10n/generated/app_localizations.dart';
 import 'package:fish/riverpods/app/navigation_index.dart';
 import 'package:fish/riverpods/user/user.dart';
+import 'package:fish/screens/home_screen/tabs/friend_tab/friend_tab.dart';
 import 'package:fish/screens/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:fish/screens/home_screen/tabs/setting_tab/setting_tab.dart';
 import 'package:fish/utils/utils.dart';
@@ -52,7 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: [
           const HomeTab(),
           Container(),
-          Container(),
+          const FriendTab(),
           const SettingTab(),
         ][selectedIndex],
       ),
@@ -76,8 +77,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               label: localizations.video,
             ),
             NavigationDestination(
-              icon: const Icon(Icons.chat),
-              label: localizations.messages,
+              icon: const Icon(Icons.people),
+              label: localizations.friend,
             ),
             NavigationDestination(
               icon: const Icon(Icons.settings),

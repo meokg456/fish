@@ -88,5 +88,6 @@
   "logoutConfirmation": "Are you sure you want to logout?",
   "detail": "Detail",
   "yourPosts": "Your posts",
-  "addFriend": "Add friend"
+  "addFriend": "Add friend",
+  "friend": "Friend"
 }

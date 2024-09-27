@@ -217,4 +217,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get addFriend => 'Thêm bạn';
+
+  @override
+  String get friend => 'Bạn bè';
 }

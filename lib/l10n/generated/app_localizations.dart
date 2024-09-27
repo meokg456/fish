@@ -496,6 +496,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add friend'**
   String get addFriend;
+
+  /// No description provided for @friend.
+  ///
+  /// In en, this message translates to:
+  /// **'Friend'**
+  String get friend;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

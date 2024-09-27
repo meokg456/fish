@@ -54,7 +54,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   }
 
   void onLiked() {
-    ref.read(postDetailProvider(widget.postId).notifier).like();
+    ref.read(postDataProvider.notifier).like(widget.postId);
   }
 
   void onComment() {
@@ -63,8 +63,9 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final status = ref.watch(postDetailProvider(widget.postId));
+    final id = ref.watch(postDetailProvider(widget.postId));
     final comments = ref.watch(commentsProvider(widget.postId));
+    final postData = ref.watch(postDataProvider);
     final List<Widget> commentWidgets = switch (comments) {
       AsyncData(:final value) =>
         value.map((comment) => CommentWidget(comment)).toList(),
@@ -77,101 +78,103 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
       _ => [],
     };
 
-    return switch (status) {
-      AsyncData(:final value) => Scaffold(
-          appBar: AppBar(
-            titleSpacing: 0,
-            title: ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: UserAvatar(
-                userId: value.authorId,
-                avatarUrl: value.avatarUrl,
-              ),
-              title: UserName(
-                userId: value.authorId,
-                name: value.author,
-              ),
-              subtitle: Row(
+    if (id is AsyncData) {
+      final value = postData[id.requireValue]!;
+      return Scaffold(
+        appBar: AppBar(
+          titleSpacing: 0,
+          title: ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: UserAvatar(
+              userId: value.authorId,
+              avatarUrl: value.avatarUrl,
+            ),
+            title: UserName(
+              userId: value.authorId,
+              name: value.author,
+            ),
+            subtitle: Row(
+              children: [
+                Text(
+                  Utils.timeSpendFromCreated(value.postAt),
+                  style: theme.textTheme.titleSmall,
+                ),
+                const SizedBox(width: 4),
+                const Icon(Icons.public, size: 20),
+              ],
+            ),
+          ),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                controller: scrollController,
+                cacheExtent: 1000,
                 children: [
-                  Text(
-                    Utils.timeSpendFromCreated(value.postAt),
-                    style: theme.textTheme.titleSmall,
+                  value.content.isNotEmpty
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 16,
+                            horizontal: Utils.horizontalPadding(context),
+                          ),
+                          child: Text(value.content),
+                        )
+                      : const SizedBox(height: 16),
+                  if (value.mediaUrl != null) Image.network(value.mediaUrl!),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: LikeButton(
+                          isLiked: value.isLiked,
+                          onLiked: onLiked,
+                        ),
+                      ),
+                      Expanded(
+                        child: TextButton.icon(
+                          onPressed: onComment,
+                          icon: const Icon(Icons.mode_comment_outlined),
+                          label: Text(localizations.comment),
+                          style: TextButton.styleFrom(
+                            foregroundColor: theme.colorScheme.secondary,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 4),
-                  const Icon(Icons.public, size: 20),
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.favorite, color: Colors.red),
+                        const SizedBox(width: 4),
+                        Text(value.numLikes.toString()),
+                      ],
+                    ),
+                  ),
+                  ...commentWidgets,
                 ],
               ),
             ),
-          ),
-          body: Column(
-            children: [
-              Expanded(
-                child: ListView(
-                  controller: scrollController,
-                  cacheExtent: 1000,
-                  children: [
-                    value.content.isNotEmpty
-                        ? Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 16,
-                              horizontal: Utils.horizontalPadding(context),
-                            ),
-                            child: Text(value.content),
-                          )
-                        : const SizedBox(height: 16),
-                    if (value.mediaUrl != null) Image.network(value.mediaUrl!),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: LikeButton(
-                            isLiked: value.isLiked,
-                            onLiked: onLiked,
-                          ),
-                        ),
-                        Expanded(
-                          child: TextButton.icon(
-                            onPressed: onComment,
-                            icon: const Icon(Icons.mode_comment_outlined),
-                            label: Text(localizations.comment),
-                            style: TextButton.styleFrom(
-                              foregroundColor: theme.colorScheme.secondary,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.favorite, color: Colors.red),
-                          const SizedBox(width: 4),
-                          Text(value.numLikes.toString()),
-                        ],
-                      ),
-                    ),
-                    ...commentWidgets,
-                  ],
-                ),
-              ),
-              CommentTextField(
-                value.id,
-                focusNode: commentFocusNode,
-              ),
-            ],
-          ),
+            CommentTextField(
+              value.id,
+              focusNode: commentFocusNode,
+            ),
+          ],
         ),
-      _ => Scaffold(
-          appBar: AppBar(),
-          body: status.isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : null,
-        ),
-    };
+      );
+    }
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: id.isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : null,
+    );
   }
 }

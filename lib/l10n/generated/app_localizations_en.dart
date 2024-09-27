@@ -217,4 +217,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addFriend => 'Add friend';
+
+  @override
+  String get friend => 'Friend';
 }
